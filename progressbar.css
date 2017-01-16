@@ -1,0 +1,39 @@
+.progressbarcontainer {
+
+
+  }
+  .progressbar {
+      width: 50%;
+      counter-reset: step;
+      display: flex;
+  }
+  .progressbar li {
+      list-style-type: none;
+      width: 25%;
+      float: left;
+      font-size: 12px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7d7d7d;
+  }
+  .progressbar li:before {
+      width: 30px;
+      height: 30px;
+      content: "";
+      line-height: 30px;
+      border: 2px solid #7d7d7d;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 20%;
+      background-color: white;
+  }
+
+  .progressbar li.active {
+      color: #3c84b0;
+  }
+  .progressbar li.active:before {
+      background-color: #3c84b0;
+      border-color: #3c84b0;
+  }
