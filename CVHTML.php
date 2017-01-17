@@ -116,12 +116,17 @@
                 <!-- list personal qualities -->
 
 				<ul>
-					<li><?php echo $qual1 ?></li>
-					<li><?php echo $qual2 ?> </li>
-					<li><?php echo $qual3 ?> </li>
-					<li><?php echo $qual4 ?> </li>
-					<li><?php echo $qual5 ?> </li>
-					<li><?php echo $qual6 ?> </li>
+					<?php
+						for ($i = 0; $i < count($qualities); $i++) {
+					?>
+							<li>
+							<?php
+								echo $qualities[$i]
+							 ?>
+						 	</li>
+					<?php
+						}
+					?>
 				</ul>
 			</div>
 

@@ -39,7 +39,7 @@
 			                              if ($i % $cols == $j) { //If the index of this quality has a remainder equal to this column's index, we include it in this column.
 			                                  $val = $qualities[$i]; //val is the full quality string, label and description.
 			                                  $valShort = explode(":", $val)[0]; //Take the text before the semicolon in the quality string, treat that as the label.
-			                                  echo "<label title = \"$val\"><input value=\"$val\" type=\"checkbox\"/>$valShort</label>"; //Add a labeled checkbox into the column.
+			                                  echo "<label title = \"$val\"><input value=\"$val\" name=\"qualities[]\" type=\"checkbox\"/>$valShort</label>"; //Add a labeled checkbox into the column.
 			                              }
 			                          }
 			                          echo "</div>";
