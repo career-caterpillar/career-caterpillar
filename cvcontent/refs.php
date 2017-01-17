@@ -1,11 +1,11 @@
 <?php
 $referee_name = array();
-array_push( $referee_name,"refe");
+array_push( $referee_name,"");
 $referee_position = array();
-array_push( $referee_position,"pos");
+array_push( $referee_position,"");
 $referee_email = array();
-array_push( $referee_email,"123@123.com");
+array_push( $referee_email,"");
 $referee_phone = array();
-array_push( $referee_phone,"1212");
+array_push( $referee_phone,"");
 $arrsizeRefs="1";
 ?>

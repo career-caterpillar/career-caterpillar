@@ -1,106 +1,148 @@
-<!--
-		Description:
-			This block of CV Builder code allows the user to fill out their Employment, Education and Extra-curricular history.
-		Programming Languages Used:
-			- HTML
-			- Javascript
-		Integration/Interface Points:
-			- CSS
-			- PHP
-		Functionality:
-			Presents an interactive form to the user to enter all mandatory and optional information,
-		-->
-		<div id = “outsideskills”>
-  <head>
 
-    <link rel="stylesheet" type="text/css" href="jquery-ui-1.12.1.custom/jquery-ui.css">
-		<link rel="stylesheet" type="text/css" href="progressbar.css">
+    <div id="outsideskills">
+      <!-- START OF PROGRESS BAR -->
+      <!-- END OF PROGRESS BAR -->
+      <!-- START OF FORM -->
+      <form name="myForm3" id="outsideskillform" action="wizardcomponents/outskillshandler.php"  method = "post" onsubmit="return validateForm3();">
+        <!-- START OF EMPLOYMENT SECTION -->
 
-</head>
-<body>
+        <div id = "employmentsection">
+          <fieldset>
+            <legend>Employment/Volunteering (Optional)</legend>
+            <div class = "row">
+              <div class="col-lg-8 col-lg-offset-2">
+                <!-- SECTION HINT -->
+                <img id="employmenthelp" src="helpicon.png"/>
+                <p id="employmenthint" style="color:red; font-style:italic;">
+                  Probably the most important part of your CV, previous jobs and volunteering roles are very important to you're future employers.
+                  These tend to be the biggest part in which a future employer will judge you. Volunteering is often just as valuable as previous work
+                  experience and can help get your foot in the door.(Always start with the most recent experience first)
+                </p>
+                <div id="employing">
+                    <h2>Position Title</h2>
+                    <input type='text' name='employment_posn[]'>
+                    <h2>City</h2>
+                    <input type="text" name="employment_city[]">
+                    <h2>Country</h2>
+                    <input type="text" name="employment_country[]">
+                    <h2>Start Date</h2>
+                    <input class="datepicker" type="text" name="employment_start_date[]">
+                    <h2>Do you still work here?</h2>
+                    <input type="radio" name="still_work" value="yes"> Yes
+                    <input type="radio" name="still_work" value="no"> No
+                    <h2>End Date</h2>
+                    <h3>(if answer was 'no' above)</h3>
+                    <input class="datepicker" type="text" name="employment_end_date[]">
+                    <h2>Responsibilities</h2>
+                    <textarea name="employment_responsibility[]" class = "largetextfield" cols="70" rows="7"></textarea>
+                </div>
+                <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another employment" onClick="addEmployInput('employing');">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- END OF EMPLOYMENT SECTION -->
+        <!-- START OF EDUCATION SECTION -->
 
-	<ul class="progressbar">
-					<li>personal details</li>
-					<li>about me</li>
-					<li class="active">work & education</li>
-					<li>referees</li>
-	</ul>
+      <div id = "educationsection">
+        <fieldset>
+          <legend>Education History (COMPULSORY)</legend>
+          <div class = "row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <!-- SECTION HINT -->
+              <img id="educationhelp" src="helpicon.png"/>
+              <p id="educationhint" style="color:red; font-style:italic;">
+                NCEA can be complicated for many employers to understand, so make sure you put your academic results in a format that
+                will be easy for your future employers to understand.<br>Always start with your most recent year of study
+              </p>
 
-<!-- Curriculum Vitae Heading -->
-	<h1 align="center">Curriculum Vitae</h1>
+              <div id="education_hist">
 
-	<!-- Form begins here -->
-	<form name="myForm3" id="outsideskillform" action="wizardcomponents/outskillshandler.php"  method = "post" onsubmit="return validateForm3();">
-	 <!-- Form employmenent subsection begins here -->
-	 <fieldset>
-	  <legend>Employment/Volunteering (Optional)</legend>
-	  <!-- Hint -->
-		<img id="employmenthelp" src="helpicon.png"/>
-	  <span id="employmenthint" style="color:red;">Although this section is optional, it is probably the most important and the one that many employers will really judge you on. Part time jobs give  you have a range of skills and experience that you cannot learn at school. And if you can’t get a job in your area, volunteer! There are always opportunities to help others and demonstrate you have what it takes. Volunteering can often lead to work and it enables you to get important references.<br>(Always start with the most recent experience first)</span><br><br>
-	  <div id="employing">
-			<!-- Position Input -->
-		    <strong>Position Title </strong><br><input type='text' name='employment_posn[]'><br><br>
-			<!-- City Input -->
-			<strong>City </strong><br><input type="text" name="employment_city[]"><br><br>
-			<!-- Country Input -->
-			<strong>Country </strong><br><input type="text" name="employment_country[]"><br><br>
-			<!-- Start Date Input -->
-			<strong>Start Date </strong><br><input class="datepicker" type="text" name="employment_start_date[]"><br><br>
-			<!-- Sill work here? Radio button -->
-			<strong>Still work here? </strong><br><input type="radio" name="still_work" value="yes"> Yes
-			<input type="radio" name="still_work" value="no"> No<br><br>
-			<!-- End Date Input -->
-			<strong>End Date</strong> (if answer was 'no' above)<br><input class="datepicker" type="text" name="employment_end_date[]"><br><br>
-			<!--  Responsiblities Textarea -->
-			<strong>Responsiblities</strong><br>
-			<textarea name="employment_responsibility" class = "largetextfield" cols="70" rows="7"></textarea>
-	  </div>
-	  <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another employment" onClick="addEmployInput('employing');">
+                <h2>Year</h2>
+                  <input type='text' name='education_year[]' required>
+                  <h2>Achievements</h2>
+                  <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required></textarea>
 
-	 <!-- Form education subsection begins here -->
-	 </fieldset>
-	 <fieldset>
-	  <legend>Education History (COMPULSORY)</legend>
-	  <!-- Hint -->
-		<img id="educationhelp" src="helpicon.png"/>
-	  <span id="educationhint" style="color:red;">NCEA is a very complicated system for many employers so try to make this section as easy as possible for them to understand. If you get an interview, it is a good idea to explain what you have achieved in simple terms. In fact, many employers don’t even understand Year 9-13 and will talk about 5th form and School Certificate, so be ready for it)<br>Always start with your most recent year of study</span><br><br>
-	  <div id="education_hist">
-			<!-- Year Input -->
-		    <strong>Year </strong><br><input type='text' name='education_year[]' required><br><br>
-			<!-- Achievements Textarea -->
-			<strong>Achievements</strong><br>
-			<textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required></textarea>
-	  </div>
-	  <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of study" onClick="addEducationInput('education_hist');">
-	 </fieldset>
+              </div>
+              <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of study" onClick="addEducationInput('education_hist');">
+            </div>
+          </div>
+        </fieldset>
+      </div>
 
-
-	 <!-- Form extracurricular subsection begins here -->
-	 <fieldset>
-	  <legend>Extracurricular (Optional)</legend>
-	  <!-- Hint -->
-		<img id="extracurrichelp" src="helpicon.png"/>
-	  <span id="extracurrichint" style="color:red;">Involvement in sport, the arts and leadership opportunities shows you are motivated, keen and willing to commit. Having these on your CV is hugely important and sends a great message to any employer. Remember, it is not just things you do at school that count, things such as youth groups or coaching all count and help show you have huge potential as a employee.</span><br><br>
-	  <div id="extracurricular_hist">
-			<!-- Year Input -->
-		    <strong>Year </strong><br><input type='text' name='extracurricular_year[]'><br><br>
-			<!-- Achievements Textarea -->
-			<strong>Achievements</strong><br>
-			<textarea name="extracurricular_achievements[]" class = "largetextfield" cols="70" rows="7"></textarea>
-	  </div>
-	  <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of extracurricular achievements" onClick="addExtracurricularInput('extracurricular_hist');">
-	 </fieldset>
-
-	 <!-- Form submission button -->
-	 <br><input type="submit" class="btn btn-primary btn-outline btn-sm" value="Save">
-	</form>
-	<!-- Form ends here -->
-
-</div>
+        <!-- END OF EDUCATION SECTION -->
+        <!-- START OF EXTRACURRICULAR SECTION -->
 
 
+      <div id = "extracurricularsection">
+        <fieldset>
+          <legend>Extracurricular (Optional)</legend>
+          <div class = "row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <!-- SECTION HINT -->
+              <img id="extracurrichelp" src="helpicon.png"/>
+          	  <p id="extracurrichint" style="color:red; font-style:italic;">
+                Involement in sport, the arts and leadership oppurtunites show you are motivated, and you can commit. Involvement in these
+                 send great messages to your employer, so be sure to place them on your CV here.
+               </p>
+               <div id="extracurricular_hist">
+                 <h2>Year</h2>
+                 <input type='text' name='extracurricular_year[]'>
+                 <h2>Achievements</h2>
+                 <textarea name="extracurricular_achievements[]" class = "largetextfield" cols="70" rows="7"></textarea>
+               </div>
+                 <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of extracurricular achievements" onClick="addExtracurricularInput('extracurricular_hist');">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+        <!-- END OF EXTRACURRICULAR SECTION -->
 
-<script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script>
-  $( ".datepicker" ).datepicker();
-</script>
+        <!-- OTHER SKILLS -->
+        <div id = "otherskills">
+
+        <legend>Other skills(Optional)</legend>
+
+        <div class = "row">
+          <div class="col-lg-8 col-lg-offset-2">
+
+        <div id="languages">
+
+            <h2>Languages </h2>
+
+            <input type="text" name="lang[]" value="<?php if($fileexists == true && empty($lang[0]) == false){echo $lang[0];} ?>" required placeholder="French">
+            <?php
+
+       if ($fileexists == true)	{
+         if(empty($arrsizeLang)==false && $arrsizeLang>1){
+
+         for($i=1; $i < $arrsizeLang; $i++){
+           if(empty($lang[$i]) == false){
+             print	"<input type='text' value ='".  $lang[$i] . "' name='lang[]'><br>";
+           }
+         }
+        }
+       }
+       ?>
+        </div>
+        <input type="button" class = "btn btn-primary btn-outline btn-sm" value="Add another language" onClick="addLanguageInput('languages');">
+
+        <h2>Driver's License</h2>
+
+        <!-- HINT -->
+        <img id="dlhelp" src="helpicon.png"/>
+        <p id="dlhint" style="color:red;font-style:italic;"> Having a drivers licence is very important, it can get you an interview over those who don't. If you dont start the process <a  target = "_blank" href = "https://www.nzta.govt.nz/driver-licences/getting-a-licence/licences-by-vehicle-type/cars/"> here </a></p>
+        <input type="text" name="drivers" value="<?php if($fileexists == true && empty($drivers) == false){echo $drivers;} ?>" required placeholder="Full License">
+
+          </div>
+
+       </div>
+
+       </div> <!-- otherskills -->
+
+      </form>
+      <!-- END OF FORM -->
+    </div>
+    <script>
+      $( ".datepicker" ).datepicker();
+    </script> 

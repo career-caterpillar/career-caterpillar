@@ -1,14 +1,10 @@
 <?php
-$name = "name";
-$street_add = "sdasdas";
-$suburb_add = "suburb";
-$city_add = "city";
-$phone = "11111";
-$mobile = "1111";
+$name = "Frank";
+$street_add = "Street 11";
+$suburb_add = "Te Aro";
+$city_add = "Wellington";
+$phone = "23123341";
+$mobile = "1212232";
 $email = "123@123.com";
-$lang = array();
-array_push( $lang,"English");
-$drivers = "dewfdewf";
 $school_name = "school";
-$arrsizeLang="1";
 ?>

@@ -1,0 +1,52 @@
+#cvpage * {
+  font-size: 11pt;
+
+}
+
+#cvpage ul {
+  margin-left: 50px;
+  list-style-type: none;
+}
+
+#restofcontent li {
+  margin-bottom: 10px;
+}
+td {
+	 vertical-align: top;
+	 padding-left: 20px;
+}
+
+
+#restofcontent div {
+  margin-bottom: 10px;
+}
+
+#cvpage h1 {
+  text-align: left;
+  font-size: 35pt;
+}
+
+#cvpage h4 {
+  font-size: 16pt;
+  text-align: left;
+  padding-bottom: 10pt;
+  border-bottom: 2px solid grey;
+}
+
+#cvheader {
+  align-items: center;
+}
+
+#name{
+  width: 100%;
+}
+
+#details {
+  width: 100%;
+}
+
+
+#details p {
+  color: grey;
+  margin-bottom: 10px;
+}

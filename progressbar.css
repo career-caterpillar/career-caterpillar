@@ -3,13 +3,14 @@
 
   }
   .progressbar {
-      width: 50%;
+      width: 100%;
       counter-reset: step;
       display: flex;
+      margin-top: 20px;
   }
   .progressbar li {
       list-style-type: none;
-      width: 25%;
+      width: 20%;
       float: left;
       font-size: 12px;
       position: relative;
@@ -31,9 +32,9 @@
   }
 
   .progressbar li.active {
-      color: #3c84b0;
+      color: rgb(38, 164, 235);
   }
   .progressbar li.active:before {
-      background-color: #3c84b0;
-      border-color: #3c84b0;
+      background-color: rgb(38, 164, 235);
+      border-color: rgb(38, 164, 235);
   }

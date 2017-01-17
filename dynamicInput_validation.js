@@ -1,6 +1,7 @@
-<!-- Javascript code for the dynamic opening of form elements -->
-var countLang = 1;
 
+
+var countLang = 1;
+/** adds a new input field for languages */
 function addLanguageInput(divName) {
 
     var newdiv = document.createElement('div');
@@ -11,7 +12,39 @@ function addLanguageInput(divName) {
     countLang++;
 }
 
-<!-- Javascript code for form validation -->
+/** adds new input fields for employment */
+function addEmployInput(divName) {
+    var newdiv = document.createElement('div');
+    newdiv.innerHTML = "<hr><strong>Position Title </strong><br><input type='text' name='employment_posn[]'><br><br><strong>City </strong><br><input type='text' name='employment_city[]'><br><br><strong>Country </strong><br><input type='text' name='employment_country[]'><br><br><strong>Start Date </strong><br><input type='text' class='datepicker' name='employment_start_date[]'><br><br><strong>Still work here? </strong><br><input type='radio' name='still_work[]' value='yes'> Yes<input type='radio' name='still_work[]' value='no'> No<br><br><strong>End Date</strong> (if answer was 'no' above)<br><input type='text' class='datepicker' name='employment_end_date[]'><br><br><strong>Responsiblities</strong><br><textarea name='employment_responsibility[]' cols='50' rows='10'></textarea>";
+    document.getElementById(divName).appendChild(newdiv);
+    $( ".datepicker" ).datepicker();
+}
+
+/** adds new input fields for education */
+function addEducationInput(divName) {
+    var newdiv = document.createElement('div');
+    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='education_year[]' required='required'><br><br><strong>Achievements</strong><br><textarea name='education_achievements[]' cols='70' rows='7' required='required'></textarea>";
+    document.getElementById(divName).appendChild(newdiv);
+}
+
+/** adds new input fields for extracurricular activities */
+function addExtracurricularInput(divName) {
+    var newdiv = document.createElement('div');
+    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='extracurricular_year[]'><br><br><strong>Achievements</strong><br><textarea name='extracurricular_achievements[]' cols='70' rows='7'></textarea>";
+    document.getElementById(divName).appendChild(newdiv);
+}
+
+var countReferee = 2;
+/** adds new input fields for referees */
+function addRefereeInput(divName) {
+    var newdiv = document.createElement('div');
+    newdiv.innerHTML = "<hr><strong>Referee [" + countReferee + "]</strong><br><br> Name<br><input type='text' name='referee_name[]'><br>Position <br><input type='text' name='referee_position[]'><br>Email <br><input type='text' name='referee_email[]'><br>Phone <br><input type='text' name='referee_phone[]'><br>";
+    document.getElementById(divName).appendChild(newdiv);
+    countReferee++;
+}
+
+
+/** validates each form field on the personal details page */
 function validateForm1() {
 
     var text_only = /^[a-zA-Z ]+$/;
@@ -68,13 +101,7 @@ function validateForm1() {
         document.myForm1.email.focus();
         return false;
     }
-    /*var element = document.getElementsByName("langInputs[]");
-    for (i = 0; i < element.length; i++) {
-        if (element[i].value.trim() !== "" && !(text_only.test(element[i].value))) {
-            alert("Language No. " + (i + 1) + " is invalid");
-            return false;
-        }
-    }*/
+
     if (document.myForm1.drivers.value.trim() == "") {
         alert("The 'Drivers License' field is empty!");
         document.myForm1.drivers.focus();
@@ -93,101 +120,7 @@ function validateForm1() {
     return true;
 }
 
-$(document).ready(function() {
-    // bind 'personaldetails' and provide a simple callback function 
-    $('#personaldetailsform').ajaxForm(function() {
-    	alert("saved personal details");
-    });
-});
-
-<!-- Javascript code for the dynamic opening of form elements -->
-function addAchievementInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='achieve_year[]'><br><br><strong>Achievements</strong><br><textarea name='awards_achievements[]' cols='70' rows='7'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
-}
-
-<!-- Javascript code for form validation -->
-function validateForm4() {
-    var all_achievements = new Array();
-    for (var inputNum = 1; inputNum <= 6; inputNum++) {
-        var answer = document.getElementById("qual" + inputNum);
-        all_achievements.push(answer[answer.selectedIndex].value);
-    }
-    if ((new Set(all_achievements)).size !== all_achievements.length) {
-        alert(l);
-        return false;
-    }
-    return true;
-}
-
-$(document).ready(function() {
-    // bind 'aboutmeform' and provide a simple callback function 
-    $('#aboutmeform').ajaxForm(function() {
-    	alert("Saved About me");
-    });
-});
-
-
-
-<!-- Javascript code for the dynamic opening of form elements -->
-function addEmployInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Position Title </strong><br><input type='text' name='employment_posn[]'><br><br><strong>City </strong><br><input type='text' name='employment_city[]'><br><br><strong>Country </strong><br><input type='text' name='employment_country[]'><br><br><strong>Start Date </strong><br><input type='text' class='datepicker' name='employment_start_date[]'><br><br><strong>Still work here? </strong><br><input type='radio' name='still_work[]' value='yes'> Yes<input type='radio' name='still_work[]' value='no'> No<br><br><strong>End Date</strong> (if answer was 'no' above)<br><input type='text' class='datepicker' name='employment_end_date[]'><br><br><strong>Responsiblities</strong><br><textarea name='employment_responsibility[]' cols='50' rows='10'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
-}
-
-function addEducationInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='education_year[]' required='required'><br><br><strong>Achievements</strong><br><textarea name='education_achievements[]' cols='70' rows='7' required='required'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
-}
-
-function addExtracurricularInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='extracurricular_year[]'><br><br><strong>Achievements</strong><br><textarea name='extracurricular_achievements[]' cols='70' rows='7'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
-}
-
-<!-- Javascript code for form validation -->
-function validateForm3() {
-    var num_only = /^[0-9]*$/;
-
-    var element = document.getElementsByName("education_year[]");
-    var element2 = document.getElementsByName("education_achievements[]");
-    for (i = 0; i < element.length; i++) {
-        if (element[i].value.trim() == "" || !(num_only.test(element[i].value))) {
-            alert("The year of education '" + element[i].value + "' can only contain numbers eg 2017!");
-            return false;
-        }
-        if (element2[i].value.trim() == "") {
-            alert("The educational achievements must not be empty. ");
-            return false;
-        }
-    }
-    return true;
-}
-
-
-$(document).ready(function() {
-    // bind 'outsideskillform' and provide a simple callback function 
-    $('#outsideskillform').ajaxForm(function() {
-    	alert("Saved Work and Education");
-    });
-});
-
-
-<!-- Javascript code for the dynamic opening of form elements -->
-var countReferee = 2;
-
-function addRefereeInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Referee [" + countReferee + "]</strong><br><br> Name<br><input type='text' name='referee_name[]'><br>Position <br><input type='text' name='referee_position[]'><br>Email <br><input type='text' name='referee_email[]'><br>Phone <br><input type='text' name='referee_phone[]'><br>";
-    document.getElementById(divName).appendChild(newdiv);
-    countReferee++;
-}
-
-<!-- Javascript code for form validation -->
+/** validates each form field on the referees page */
 function validateForm2() {
     var text_only = /^[a-zA-Z ]+$/;
     var num_only = /^[0-9]*$/;
@@ -222,8 +155,69 @@ function validateForm2() {
     return true;
 }
 
+/** validates each form field of the education section of the outside skills page */
+function validateForm3() {
+    var num_only = /^[0-9]*$/;
+
+    var element = document.getElementsByName("education_year[]");
+    var element2 = document.getElementsByName("education_achievements[]");
+    for (i = 0; i < element.length; i++) {
+        if (element[i].value.trim() == "" || !(num_only.test(element[i].value))) {
+            alert("The year of education '" + element[i].value + "' can only contain numbers eg 2017!");
+            return false;
+        }
+        if (element2[i].value.trim() == "") {
+            alert("The educational achievements must not be empty. ");
+            return false;
+        }
+    }
+    return true;
+}
+
+/** validates each form field on the about me page */
+function validateForm4() {
+    var all_achievements = new Array();
+    for (var inputNum = 1; inputNum <= 6; inputNum++) {
+        var answer = document.getElementById("qual" + inputNum);
+        all_achievements.push(answer[answer.selectedIndex].value);
+    }
+    if ((new Set(all_achievements)).size !== all_achievements.length) {
+        alert(l);
+        return false;
+    }
+    return true;
+}
+
 $(document).ready(function() {
-    // bind 'refereeform' and provide a simple callback function 
+    // bind 'personaldetails' and provide a simple callback function
+    $('#personaldetailsform').ajaxForm(function() {
+    	alert("saved personal details");
+    });
+});
+
+/** adds a new input field for achievements */
+function addAchievementInput(divName) {
+    var newdiv = document.createElement('div');
+    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='achieve_year[]'><br><br><strong>Achievements</strong><br><textarea name='awards_achievements[]' cols='70' rows='7'></textarea>";
+    document.getElementById(divName).appendChild(newdiv);
+}
+
+// Submit  'aboutmeform'  data via AJAX
+$(document).ready(function() {
+    $('#aboutmeform').ajaxForm(function() {
+    	alert("Saved About me");
+    });
+});
+
+// Submit  'outsideskillform'  data via AJAX
+$(document).ready(function() {
+    $('#outsideskillform').ajaxForm(function() {
+    	alert("Saved Work and Education");
+    });
+});
+
+// Submit  'refereeform'  data via AJAX
+$(document).ready(function() {
     $('#refereeform').ajaxForm(function() {
     	alert("Saved Referees");
     });

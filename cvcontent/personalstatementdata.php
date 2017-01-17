@@ -1,0 +1,3 @@
+<?php
+$personal_statement = " ";
+?>
