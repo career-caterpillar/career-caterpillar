@@ -271,3 +271,19 @@ textarea {
 	width: 100%;
 	margin-bottom: 2%;
 }
+
+/* Stuff that Mark added for personal qualities */
+.QualitiesFlex {
+	display: flex;
+}
+
+.FlexColumn {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.disabledText {
+	color: #888;
+	font-style: italic;
+}
