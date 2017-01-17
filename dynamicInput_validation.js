@@ -1,4 +1,7 @@
-
+/** This javascript file provides code for
+ *    (a) dynamic opening of form elements (i.e. display additional form fields to enter)
+ *    (b) validation of compulsory form sections
+ */
 
 var countLang = 1;
 /** adds a new input field for languages */
@@ -46,75 +49,59 @@ function addRefereeInput(divName) {
 
 /** validates each form field on the personal details page */
 function validateForm1() {
-
+ 
     var text_only = /^[a-zA-Z ]+$/;
     var num_only = /^[0-9]*$/;
     var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+ 
+    var output_msg = "";
+ 
     if (document.myForm1.name.value.trim() == "") {
-        alert("The 'Name' field is empty!");
-        document.myForm1.name.focus();
-        return false;
+        output_msg += "* The 'Name' field is empty!\n";
+    } 
+    else if (!(text_only.test(document.myForm1.name.value))) {
+        output_msg += "* The 'Name' field can only contain text!\n";
     }
-    if (!(text_only.test(document.myForm1.name.value))) {
-        alert("The 'Name' field can only contain text!");
-        document.myForm1.name.focus();
-        return false;
-    }
+    
     if (document.myForm1.street_add.value.trim() == "") {
-        alert("The 'Street Address' field is empty!");
-        document.myForm1.street_add.focus();
-        return false;
+        output_msg += "* The 'Street Address' field is empty!\n";
     }
+    
     if (document.myForm1.suburb_add.value.trim() == "") {
-        alert("The 'Suburb' field is empty!");
-        document.myForm1.suburb_add.focus();
-        return false;
+        output_msg += "* The 'Suburb' field is empty!\n";
+    } 
+    else if (!(text_only.test(document.myForm1.suburb_add.value))) {
+        output_msg += "* The 'Suburb' can only contain text!\n";
     }
-    if (!(text_only.test(document.myForm1.suburb_add.value))) {
-        alert("The 'Suburb' can only contain text!");
-        document.myForm1.suburb_add.focus();
-        return false;
-    }
+    
     if (document.myForm1.city_add.value.trim() == "") {
-        alert("The 'City' field is empty!");
-        document.myForm1.city_add.focus();
-        return false;
+        output_msg += "* The 'City' field is empty!\n";
+    } 
+    else if (!(text_only.test(document.myForm1.city_add.value))) {
+        output_msg += "* The 'City' field can only contain text!\n";
     }
-    if (!(text_only.test(document.myForm1.city_add.value))) {
-        alert("The 'City' field can only contain text!");
-        document.myForm1.city_add.focus();
-        return false;
-    }
+    
     if (!(num_only.test(document.myForm1.phone.value))) {
-        alert("The 'Phone' field can only contain numbers!");
-        document.myForm1.phone.focus();
-        return false;
+        output_msg += "* The 'Phone' field can only contain numbers!\n";
     }
+    
     if (!(num_only.test(document.myForm1.mobile.value))) {
-        alert("The 'Mobile' field can only contain numbers!");
-        document.myForm1.mobile.focus();
-        return false;
+        output_msg += "* The 'Mobile' field can only contain numbers!\n";
     }
+    
     if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
-        alert("The 'Email' entered is invalid! Enter email in the format of someone@example.com");
-        document.myForm1.email.focus();
-        return false;
+        output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
     }
-
-    if (document.myForm1.drivers.value.trim() == "") {
-        alert("The 'Drivers License' field is empty!");
-        document.myForm1.drivers.focus();
-        return false;
-    }
+    
     if (document.myForm1.school_name.value.trim() == "") {
-        alert("The 'School' field is empty!");
-        document.myForm1.school_name.focus();
-        return false;
+        output_msg += "* The 'School' field is empty!\n";
+    } 
+    else if (!(text_only.test(document.myForm1.school_name.value))) {
+        output_msg += "* The 'School' field can only contain text!\n";
     }
-    if (!(text_only.test(document.myForm1.school_name.value))) {
-        alert("The 'School' field can only contain text!");
-        document.myForm1.school_name.focus();
+ 
+    if (output_msg !== "") {
+        alert(output_msg);
         return false;
     }
     return true;
@@ -125,6 +112,8 @@ function validateForm2() {
     var text_only = /^[a-zA-Z ]+$/;
     var num_only = /^[0-9]*$/;
     var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    var output_msg = "";
 
     var ans1 = document.getElementsByName("referee_name[]");
     var ans2 = document.getElementsByName("referee_position[]");
@@ -132,25 +121,31 @@ function validateForm2() {
     var ans4 = document.getElementsByName("referee_phone[]");
     for (i = 0; i < ans1.length; i++) {
         if (ans1[i].value.trim() == "") {
-            alert("The Referee [" + (1 + i) + "] 'Name' field is empty!");
-            return false;
+            output_msg += "* The Referee [" + (1 + i) + "] 'Name' field is empty!\n";
         }
-        if (!(text_only.test(ans1[i].value))) {
-            alert("The Referee [" + (1 + i) + "] 'Name' field can only contain text!");
-            return false;
+        else if (!(text_only.test(ans1[i].value))) {
+            output_msg += "* The Referee [" + (1 + i) + "] 'Name' field can only contain text!\n";
         }
         if (ans2[i].value.trim() == "") {
-            alert("The Referee [" + (1 + i) + "] 'Position' field is empty!");
-            return false;
+            output_msg += "* The Referee [" + (1 + i) + "] 'Position' field is empty!\n";
+        }
+        else if (!(text_only.test(ans2[i].value))) {
+            output_msg += "* The Referee [" + (1 + i) + "] 'Position' field can only contain text!\n";
         }
         if (!(email_yo.test(ans3[i].value)) || ans3[i].value.trim() == "") {
-            alert("The Referee [" + (1 + i) + "] 'Email' entered is invalid! Enter email in the format of someone@example.com");
-            return false;
+            output_msg += "* The Referee [" + (1 + i) + "] 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
         }
-        if (!(num_only.test(ans4[i].value))) {
-            alert("The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers!");
-            return false;
+        if (ans4[i].value.trim() == "") {
+            output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field is empty!\n";
         }
+        else if (!(num_only.test(ans4[i].value))) {
+            output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers!\n";
+        }
+    }
+ 
+    if (output_msg !== "") {
+        alert(output_msg);
+        return false;
     }
     return true;
 }
@@ -158,18 +153,26 @@ function validateForm2() {
 /** validates each form field of the education section of the outside skills page */
 function validateForm3() {
     var num_only = /^[0-9]*$/;
+    
+    var output_msg = "";
 
     var element = document.getElementsByName("education_year[]");
     var element2 = document.getElementsByName("education_achievements[]");
     for (i = 0; i < element.length; i++) {
-        if (element[i].value.trim() == "" || !(num_only.test(element[i].value))) {
-            alert("The year of education '" + element[i].value + "' can only contain numbers eg 2017!");
-            return false;
+        if (element[i].value.trim() == "") {
+            output_msg += "* The year of education cannot be empty!\n";
+        }
+        else if (!(num_only.test(element[i].value))) {
+            output_msg += "* The year of education '" + element[i].value + "' can only contain numbers e.g. 2017!\n";
         }
         if (element2[i].value.trim() == "") {
-            alert("The educational achievements must not be empty. ");
-            return false;
+            output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }
+    }   
+ 
+    if (output_msg !== "") {
+        alert(output_msg);
+        return false;
     }
     return true;
 }
