@@ -18,9 +18,10 @@
             <fieldset>
                  <legend>Personal Details</legend>
                  <div class = "row">
-                     <div class="col-lg-8 col-lg-offset-2">
+                     <div class="col-lg-8">
                          <h3><span class="redAsterisk">*</span>Indicates required field.</h3>
                          <h2>Name<span class="redAsterisk">*</span></h2>
+
                          <input type="text" name="name" value="<?php if($fileexists == true && empty($name) == false){echo $name;} ?>" required placeholder="Franco Frankenstein">
                          <h2>Address</h2>
                          <h3>Street Address<span class="redAsterisk">*</span></h3>
