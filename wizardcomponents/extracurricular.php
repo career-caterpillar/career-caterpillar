@@ -7,7 +7,7 @@
         <!-- START OF EXTRACURRICULAR SECTION -->
 
         <fieldset>
-          <legend>Extracurricular (Optional)</legend>
+          <legend>Extracurricular</legend>
           <div class = "row">
             <div class="col-lg-8 col-lg-offset-2">
               <!-- SECTION HINT -->

@@ -269,3 +269,7 @@ textarea {
 	color: #888;
 	font-style: italic;
 }
+
+.redAsterisk {
+	color: red;
+}

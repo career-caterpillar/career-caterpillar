@@ -17,7 +17,7 @@
 	<form name="myForm2" id = "refereeform" action="wizardcomponents/refhandler.php" method = "post" onsubmit="return validateForm2();">
 		<!-- Form referees subsection begins here -->
 		<fieldset>
-			<legend>Referees (COMPULSORY)</legend>
+			<legend>Referees</legend>
 				<div class = "row">
 					<div class="col-lg-8 col-lg-offset-2">
 						<!-- Hint -->
@@ -26,16 +26,16 @@
 						<div id="referee_list">
 							<h2>Referee [1]</h2>
 							<!--Name Input -->
-							<h3>Name</h3>
+							<h3>Name<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_name[]' required>
 							<!--Position Input -->
-							<h3>Position</h3>
+							<h3>Position<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_position[]' required>
 							<!--Email Input -->
-							<h3>Email</h3>
+							<h3>Email<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_email[]' required>
 							<!--Phone Input -->
-							<h3>Phone</h3>
+							<h3>Phone<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_phone[]' required>
 						</div>
 						<input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another referee" onClick="addRefereeInput('referee_list');">

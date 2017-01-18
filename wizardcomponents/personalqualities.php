@@ -19,7 +19,7 @@
 		<!-- Form personal qual subsection begins here -->
 		<div id=“personalqualities”>
 			<fieldset>
-				<legend>Personal Qualities (COMPULSORY)</legend>
+				<legend>Personal Qualities<span class="redAsterisk">*</span></legend>
 					<!-- Hint -->
 					<span id="pqhint" style="color:red;">Select up to 6 of the following that best describe you. Hover over each for a description.</span><br>
 
