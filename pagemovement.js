@@ -25,13 +25,13 @@ $(document).ready(function(){
     $("#refereespage").hide();
     $("#submitpage").hide();
     $("#cvCreate").hide();
-		$("#otherskills").hide();
-		$("#extracurricularsection").hide();
-		$("#educationsection").hide();
-		$("#employmentsection").hide();
-		$("#personalstatementsection").hide();
-		$("#personalqualitiessection").hide();
-		$("#achievementssection").hide();
+    $("#otherskills").hide();
+    $("#extracurricularsection").hide();
+    $("#educationsection").hide();
+    $("#employmentsection").hide();
+    $("#personalstatementsection").hide();
+    $("#personalqualitiessection").hide();
+    $("#achievementssection").hide();
 
   }
 
@@ -219,6 +219,8 @@ $(document).ready(function(){
 		switch (curpage) {
 
 			case 1:
+                            
+                                if(!validateForm1()) return; //MKH: If there are validation errors in the PERSONAL DETAILS entered, exit the switch statement. 
 
 				$( "#personaldetailspage").hide();
 				//$( "#aboutmepage").show();
@@ -234,15 +236,15 @@ $(document).ready(function(){
 
 			case 2:
 
-					$("#personalqualitiessection").show();
-					$("#personalstatementsection").hide();
+                                $("#personalqualitiessection").show();
+                                $("#personalstatementsection").hide();
 
-					personalstatementsubmit();
+                                personalstatementsubmit();
 
-					curpage++;
-					break;
+                                curpage++;
+                                break;
 
-		 case 3:
+                        case 3:
 
 				$("#achievementssection").show();
 				$("#personalqualitiessection").hide();
@@ -283,6 +285,7 @@ $(document).ready(function(){
 				break;
 
 			case 7:
+                                if(!validateForm3()) return; //MKH: If there are validation errors in the EDUCATION details entered, exit the switch statement.
 
 				$("#otherskills").show();
 				$("#educationsection").hide();
@@ -303,6 +306,7 @@ $(document).ready(function(){
 				break;
 
 			case 9:
+                                if(!validateForm2()) return; //MKH: If there are validation errors in the REFEREE details entered, exit the switch statement. 
 
 				$("#refereespage").hide();
 				$("#submitpage").show();
@@ -346,7 +350,7 @@ $(document).ready(function(){
 				curpage--;
 				break;
 
-		 case 4:
+                        case 4:
 
 				$("#personalqualitiessection").show();
 		 		$("#achievementssection").hide();
