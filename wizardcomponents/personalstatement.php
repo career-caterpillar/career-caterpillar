@@ -17,7 +17,7 @@
 		<!-- Form personal statement subsection begins here -->
 			<div id=“personalstatement” class=“optional”>
 				<fieldset>
-				<legend>Personal Statement (Optional)</legend>
+				<legend>Personal Statement</legend>
 					<div class = "row">
 						<div class="col-lg-8 col-lg-offset-2">
 							<img id="pshelp" src="helpicon.png" />

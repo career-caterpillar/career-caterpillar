@@ -7,7 +7,7 @@
         <!-- START OF EDUCATION SECTION -->
 
         <fieldset>
-          <legend>Education History (COMPULSORY)</legend>
+          <legend>Education History</legend>
           <div class = "row">
             <div class="col-lg-8 col-lg-offset-2">
               <!-- SECTION HINT -->
@@ -19,9 +19,9 @@
 
               <div id="education_hist">
 
-                <h2>Year</h2>
+                <h2>Year<span class="redAsterisk">*</span></h2>
                   <input type='text' name='education_year[]' required>
-                  <h2>Achievements</h2>
+                  <h2>Achievements<span class="redAsterisk">*</span></h2>
                   <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required></textarea>
 
               </div>

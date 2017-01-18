@@ -19,7 +19,7 @@
 
 			<div id=“achievements” class=“optional”>
 				<fieldset>
-					<legend>Achievements/Awards (Optional)</legend>
+					<legend>Achievements & Awards</legend>
 						<div class = "row">
 							<div class="col-lg-8 col-lg-offset-2">
 							<!-- Hint -->

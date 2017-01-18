@@ -4,7 +4,7 @@
         <!-- START OF EMPLOYMENT SECTION -->
 
           <fieldset>
-            <legend>Employment/Volunteering (Optional)</legend>
+            <legend>Employment/Volunteering</legend>
             <div class = "row">
               <div class="col-lg-8 col-lg-offset-2">
                 <!-- SECTION HINT -->

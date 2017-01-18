@@ -4,7 +4,7 @@
       <!-- START OF FORM -->
       <form name="otherskillsForm" id="otherskillsform" action="wizardcomponents/otherskillshandler.php"  method = "post">
 
-        <legend>Other skills(Optional)</legend>
+        <legend>Other skills</legend>
 
         <div class = "row">
           <div class="col-lg-8 col-lg-offset-2">
