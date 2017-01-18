@@ -22,9 +22,6 @@ html {
 	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	-webkit-border-radius: 10;
-	-moz-border-radius: 10;
-	border-radius: 10px;
 	color: #000000;
 	font-size: 12px;
 	border: solid #3c84b0 2px;
@@ -94,7 +91,6 @@ input[type=text] {
 	height: 30px;
 	border: 1px solid #000000;
 	background-color: #ffffff;
-	border-radius: 10px;
 	border-style: solid;;
 	font-size: 14px;
 	padding-top: 5px;
@@ -105,7 +101,6 @@ input[type=text]:focus {
 	background-color: #f6f6f6;
 	border: 1px solid #000000;
 	width: 100%;
-	border-radius: 10px;
 	border-style: solid;
 }
 
@@ -114,7 +109,6 @@ input[type=email] {
 	height: 30px;
 	border: 1px solid #000000;
 	background-color: #ffffff;
-	border-radius: 10px;
 	border-style: solid;;
 	font-size: 14px;
 	padding-top: 5px;
@@ -124,8 +118,6 @@ input[type=email] {
 input[type=email]:focus {
 	background-color: #f6f6f6;
 	border: 1px solid #000000;
-	width: 50%;
-	border-radius: 10px;
 	border-style: solid;
 }
 
@@ -139,7 +131,6 @@ input[type=email]:focus {
 .largetextfield {
 	margin-left: auto;
 	background-color: #f6f6f6;
-	border-radius: 10px;
 	border-style: hidden;
 }
 
@@ -216,9 +207,6 @@ input[type=email]:focus {
 	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	-webkit-border-radius: 5;
-	-moz-border-radius: 5;
-	border-radius: 5px;
 	color: #000000;
 	font-size: 24px;
 	background: none;
@@ -234,9 +222,6 @@ input[type=email]:focus {
 	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	-webkit-border-radius: 5;
-	-moz-border-radius: 5;
-	border-radius: 5px;
 	color: #000000;
 	font-size: 24pt;
 	width: 15%;
@@ -251,9 +236,6 @@ input[type=email]:focus {
 	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
 	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	-webkit-border-radius: 5;
-	-moz-border-radius: 5;
-	border-radius: 5px;
 	color: #000000;
 	font-size: 24px;
 	border: solid #555555 5px;
