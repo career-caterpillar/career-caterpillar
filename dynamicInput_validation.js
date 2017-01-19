@@ -177,7 +177,7 @@ function validateForm3() {
     return true;
 }
 
-/** validates that atleast 2 qualities are selected on the personal qualities page */
+/** MKH: validates that atleast 3 qualities are selected on the personal qualities page */
 function validateForm4() {
 	var numChecked = 0;
 	
@@ -187,8 +187,8 @@ function validateForm4() {
         }
 	});
 
-    if (numChecked<2) {
-        alert("Please make sure to have selected atleast 2 qualities");
+    if (numChecked<3) {
+        alert("Please make sure to have selected atleast 3 qualities");
         return false;
     }
     return true;
