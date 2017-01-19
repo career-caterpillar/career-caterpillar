@@ -1,7 +1,4 @@
-/** This javascript file provides code for
- *    (a) dynamic opening of form elements (i.e. display additional form fields to enter)
- *    (b) validation of compulsory form sections
- */
+
 
 var countLang = 1;
 /** adds a new input field for languages */
@@ -30,12 +27,87 @@ function addEducationInput(divName) {
     document.getElementById(divName).appendChild(newdiv);
 }
 
-/** adds new input fields for extracurricular activities */
-function addExtracurricularInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='extracurricular_year[]'><br><br><strong>Achievements</strong><br><textarea name='extracurricular_achievements[]' cols='70' rows='7'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
+/* kahu- I'm using this section to test delete/edit functionality*/
+
+/* changes:
+
+1)  got rid of br tags and strong tags from innhtml string so each appended child look the same
+2)  created function that builds feedback html div
+3)  created
+3)  modified addExtracurricularInput for dynamic feedback
+
+*/
+
+function deleteSection(inputnode){
+
+  inputnode.parentNode.nextSibling.remove();
+  inputnode.parentNode.remove();
+
 }
+
+function editSection(inputnode){
+  var childrenNo =  inputnode.parentNode.children.length;
+  inputnode.parentNode.nextSibling.style.display = 'block';
+
+}
+
+function buildFeedback(year, achievments){
+
+    var newdiv = document.createElement('div');//create div
+
+    var year_heading = "<h2 style= 'text-decoration: underline;'>Year:</h2>"; //create heading
+    var yearval = "<p>" + year + "</p>";// enter year into p tag
+    var achievments_heading = "<h2 style= 'text-decoration: underline;'>Achievements:</h2>"; //create achievment heading
+    var achval = "<p>" + achievments + "</p>";// enter achievment into p tag
+
+
+    var editbtn =  '<input type="button" class="btn btn-primary btn-outline btn-sm delete" value="edit"  onClick="editSection(this);">';// create edit button
+    var deletebtn = '<input type="button" class="btn btn-primary btn-outline btn-sm delete" value="delete" onClick="deleteSection(this);">';// create delete button
+
+    newdiv.innerHTML = year_heading + yearval +
+                        achievments_heading + achval +
+                        editbtn + deletebtn ;//concatenate and insert into newDiv
+    return newdiv;
+}
+
+
+
+/* adds new input fields for extracurricular activities */
+
+function addExtracurricularInput(divName) {
+
+    var parentnode = document.getElementById(divName);
+    var childrenNo = parentnode.children.length;
+    var lastNode = parentnode.children[(childrenNo -1)];
+    var newdiv = document.createElement('div');
+
+    console.log(childrenNo);
+
+    var yearVal = String(lastNode.getElementsByTagName('input')[0].value);
+    var achVal =  String(lastNode.getElementsByTagName('textarea')[0].value);
+
+    achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
+    achVal=achVal.replace(/\n/g, '<br>');
+    achVal=achVal.replace(/\r/g, '<br>');
+
+    if ((yearVal || achVal) !== ""){
+
+      parentnode.insertBefore(buildFeedback(yearVal, achVal),lastNode); // always build next feedback div above last input form
+
+      lastNode.style.display = 'none'; // hide every node so that only the last form displays
+
+      newdiv.innerHTML = "<h2>Year</h2><br><input type='text' name='extracurricular_year[]'><h2>Achievements</h2><br><textarea name='extracurricular_achievements[]' cols='70' rows='7'></textarea>";
+      parentnode.appendChild(newdiv);
+
+    }else {
+        alert("Fields Empty");
+
+    }
+
+
+}
+
+
 
 var countReferee = 2;
 /** adds new input fields for referees */
@@ -49,57 +121,57 @@ function addRefereeInput(divName) {
 
 /** validates each form field on the personal details page */
 function validateForm1() {
- 
+
     var text_only = /^[a-zA-Z ]+$/;
     var num_only = /^[0-9]*$/;
     var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
- 
+
     var output_msg = "";
- 
+
     if (document.myForm1.name.value.trim() == "") {
         output_msg += "* The 'Name' field is empty!\n";
-    } 
+    }
     else if (!(text_only.test(document.myForm1.name.value))) {
         output_msg += "* The 'Name' field can only contain text!\n";
     }
-    
+
     if (document.myForm1.street_add.value.trim() == "") {
         output_msg += "* The 'Street Address' field is empty!\n";
     }
-    
+
     if (document.myForm1.suburb_add.value.trim() == "") {
         output_msg += "* The 'Suburb' field is empty!\n";
-    } 
+    }
     else if (!(text_only.test(document.myForm1.suburb_add.value))) {
         output_msg += "* The 'Suburb' can only contain text!\n";
     }
-    
+
     if (document.myForm1.city_add.value.trim() == "") {
         output_msg += "* The 'City' field is empty!\n";
-    } 
+    }
     else if (!(text_only.test(document.myForm1.city_add.value))) {
         output_msg += "* The 'City' field can only contain text!\n";
     }
-    
+
     if (!(num_only.test(document.myForm1.phone.value))) {
         output_msg += "* The 'Phone' field can only contain numbers!\n";
     }
-    
+
     if (!(num_only.test(document.myForm1.mobile.value))) {
         output_msg += "* The 'Mobile' field can only contain numbers!\n";
     }
-    
+
     if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
         output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
     }
-    
+
     if (document.myForm1.school_name.value.trim() == "") {
         output_msg += "* The 'School' field is empty!\n";
-    } 
+    }
     else if (!(text_only.test(document.myForm1.school_name.value))) {
         output_msg += "* The 'School' field can only contain text!\n";
     }
- 
+
     if (output_msg !== "") {
         alert(output_msg);
         return false;
@@ -112,7 +184,7 @@ function validateForm2() {
     var text_only = /^[a-zA-Z ]+$/;
     var num_only = /^[0-9]*$/;
     var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
+
     var output_msg = "";
 
     var ans1 = document.getElementsByName("referee_name[]");
@@ -142,7 +214,7 @@ function validateForm2() {
             output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers!\n";
         }
     }
- 
+
     if (output_msg !== "") {
         alert(output_msg);
         return false;
@@ -153,7 +225,7 @@ function validateForm2() {
 /** validates each form field of the education section of the outside skills page */
 function validateForm3() {
     var num_only = /^[0-9]*$/;
-    
+
     var output_msg = "";
 
     var element = document.getElementsByName("education_year[]");
@@ -168,8 +240,8 @@ function validateForm3() {
         if (element2[i].value.trim() == "") {
             output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }
-    }   
- 
+    }
+
     if (output_msg !== "") {
         alert(output_msg);
         return false;
