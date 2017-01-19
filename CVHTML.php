@@ -121,7 +121,7 @@
 					?>
 							<li>
 							<?php
-								echo $qualities[$i]
+								echo $qualities[$i];
 							 ?>
 						 	</li>
 					<?php

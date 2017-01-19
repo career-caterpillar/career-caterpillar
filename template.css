@@ -280,3 +280,9 @@ textarea {
 .redAsterisk {
 	color: red;
 }
+
+/*AV: CV Preview - Styled Button added*/
+.cvpreviewbtn {
+		list-style-type: none;
+		float: right;
+}
