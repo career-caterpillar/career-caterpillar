@@ -245,6 +245,7 @@ $(document).ready(function(){
                                 break;
 
                         case 3:
+                                if(!validateForm4()) return; //MKH: If the number of PERSONAL QUALITIES entered are less than required, exit the switch statement.
 
 				$("#achievementssection").show();
 				$("#personalqualitiessection").hide();
