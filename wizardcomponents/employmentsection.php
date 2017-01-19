@@ -6,7 +6,7 @@
           <fieldset>
             <legend>Employment/Volunteering</legend>
             <div class = "row">
-              <div class="col-lg-8 col-lg-offset-2">
+              <div class="col-lg-8">
                 <!-- SECTION HINT -->
                 <img id="employmenthelp" src="helpicon.png"/>
                 <p id="employmenthint" style="color:red; font-style:italic;">

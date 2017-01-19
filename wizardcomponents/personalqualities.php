@@ -24,7 +24,7 @@
 					<span id="pqhint" style="color:red;">Select up to 6 of the following that best describe you. Hover over each for a description.</span><br>
 
 			  	  	<div class = "row">
-			  	    	<div class="col-lg-8 col-lg-offset-2">
+			  	    	<div class="col-lg-8">
 
 			              	<?php
 

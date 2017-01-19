@@ -9,7 +9,7 @@
         <fieldset>
           <legend>Extracurricular</legend>
           <div class = "row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-8">
               <!-- SECTION HINT -->
               <img id="extracurrichelp" src="helpicon.png"/>
           	  <p id="extracurrichint" style="color:red; font-style:italic;">
@@ -24,9 +24,9 @@
                </div>
                  <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of extracurricular achievements" onClick="addExtracurricularInput('extracurricular_hist');">
             </div>
-          </div>
+
         </fieldset>
-      </div>
+
         <!-- END OF EXTRACURRICULAR SECTION -->
 
 
@@ -35,3 +35,4 @@
     <script>
       $( ".datepicker" ).datepicker();
     </script>
+    </div>

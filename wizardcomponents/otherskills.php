@@ -7,7 +7,7 @@
         <legend>Other skills</legend>
 
         <div class = "row">
-          <div class="col-lg-8 col-lg-offset-2">
+          <div class="col-lg-8">
 
             <div id="languages">
 
