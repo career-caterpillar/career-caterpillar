@@ -1,8 +1,8 @@
 <?php
 $referee_name = array();
-array_push( $referee_name,"Name");
+array_push( $referee_name,"refname");
 $referee_position = array();
-array_push( $referee_position,"refpo");
+array_push( $referee_position,"refpos");
 $referee_email = array();
 array_push( $referee_email,"refemail@123.com");
 $referee_phone = array();

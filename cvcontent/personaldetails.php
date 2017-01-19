@@ -1,5 +1,5 @@
 <?php
-$name = "Frank";
+$name = "Kahu";
 $street_add = "Street 11";
 $suburb_add = "Te Aro";
 $city_add = "Wellington";

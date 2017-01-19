@@ -15,5 +15,5 @@
 </head>
 
 <div id=”cv”>
-	 <iframe src="exporttopdf.php" height="1000" width="100%"></iframe>
+	 <iframe id="pdf-refresh" src="exporttopdf.php" height="1000" width="100%"></iframe>
 </div>

@@ -62,6 +62,58 @@ $(document).ready(function(){
 
 	}
 
+	/** displays about me section, sets up interactive components */
+	function aboutmesetup() {
+
+		$("#pqhint").show();
+
+		$("#pshelp").click(function(){
+			if ($("#pshint").is(":visible")) {
+				$("#pshint").fadeOut();
+			} else {
+				$("#pshint").fadeIn();
+			}
+		});
+
+		$("#achievehelp").click(function(){
+			if ($("#achievehint").is(":visible")) {
+				$("#achievehint").fadeOut();
+			} else {
+				$("#achievehint").fadeIn();
+			}
+		});
+
+	}
+
+	/** displays ouside skills section, sets up interactive components */
+	function outsideskillssetup() {
+
+		$("#employmenthelp").click(function(){
+			if ($("#employmenthint").is(":visible")) {
+				$("#employmenthint").fadeOut();
+			} else {
+				$("#employmenthint").fadeIn();
+			}
+		});
+
+		$("#educationhelp").click(function(){
+			if ($("#educationhint").is(":visible")) {
+				$("#educationhint").fadeOut();
+			} else {
+				$("#educationhint").fadeIn();
+			}
+		});
+
+		$("#extracurrichelp").click(function(){
+			if ($("#extracurrichint").is(":visible")) {
+				$("#extracurrichint").fadeOut();
+			} else {
+				$("#extracurrichint").fadeIn();
+			}
+		});
+
+	}
+
 	/** sets up functionality for referees hint button */
 	function refereeshintsetup() {
 
@@ -136,6 +188,8 @@ $(document).ready(function(){
 
   setup();
 	personaldetailssetup();
+	aboutmesetup();
+	outsideskillssetup();
 	refereeshintsetup();
 
 	//  hides current section and displays the next section when the user clicks the next button
@@ -407,6 +461,7 @@ $(document).ready(function(){
 					break;
 			}
 		} else {
+			$("#cvpreview").show();
 			$("#toprevbtn").hide();
 			$("#tonextbtn").hide();
 			// hide current page and show cv
@@ -414,7 +469,6 @@ $(document).ready(function(){
 				case 1:
 					$("#personaldetailspage").hide();
 					personaldetailsubmit();
-					$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
 					break;
 
 				case 2:
@@ -464,7 +518,7 @@ $(document).ready(function(){
 				default:
 					break;
 			}
-			$("#cvpreview").show();
+			$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
 		}
 	});
 });
