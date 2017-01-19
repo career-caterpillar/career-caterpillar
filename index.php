@@ -26,54 +26,55 @@
 
     <div class = "content">
 
+      <!-- AV: CV Preview - Added Button -->
+      <ul class="cvpreviewbtn">
+        <li> <input type="image" src="cvpreview.png" id="cvpreviewbtn"> </li>
+      </ul>
+
         <h1 align="center">Progress bar here?</h1>
       	<h1 align="center">Curriculum Vitae</h1>
 
         <div id = "postcontainer">
+          <div id="personaldetailspage">
+            <?php include 'wizardcomponents/personaldetailspge.php';?>
+          </div>
 
-            <div id="personaldetailspage">
-      <?php include 'wizardcomponents/personaldetailspge.php';?>
-            </div>
+          <div id="personalstatementsection">
+            <?php include 'wizardcomponents/personalstatement.php';?>
+          </div>
 
+          <div id = "personalqualitiessection">
+            <?php include 'wizardcomponents/personalqualities.php';?>
+          </div>
 
-            <div id="personalstatementsection">
-      <?php include 'wizardcomponents/personalstatement.php';?>
-            </div>
-
-            	<div id = "personalqualitiessection">
-      <?php include 'wizardcomponents/personalqualities.php';?>
-            </div>
-
-            <div id = "achievementssection">
-    <?php include 'wizardcomponents/achievements.php';?>
+          <div id = "achievementssection">
+            <?php include 'wizardcomponents/achievements.php';?>
           </div>
 
           <div id = "employmentsection">
-    <?php include 'wizardcomponents/employmentsection.php';?>
-        </div>
+            <?php include 'wizardcomponents/employmentsection.php';?>
+          </div>
 
-        <div id = "educationsection">
+          <div id = "educationsection">
+            <?php include 'wizardcomponents/educationsection.php';?>
+          </div>
 
-    <?php include 'wizardcomponents/educationsection.php';?>
+          <div id = "extracurricularsection">
+            <?php include 'wizardcomponents/extracurricular.php';?>
+          </div>
 
-        </div>
+          <div id = "otherskills">
+            <?php include 'wizardcomponents/otherskills.php';?>
+          </div>
 
-        <div id = "extracurricularsection">
-    <?php include 'wizardcomponents/extracurricular.php';?>
-        </div>
+          <div id="refereespage">
+            <?php  include 'wizardcomponents/refereespge.php';?>
+          </div>
 
-        <div id = "otherskills">
-    <?php include 'wizardcomponents/otherskills.php';?>
-        </div>
-
-           <div id="refereespage">
-      <?php  include 'wizardcomponents/refereespge.php';?>
-            </div>
-
-            <div id = "submitpage">
-      <?php include 'wizardcomponents/submitpage.php';?>
-            </div>
-
+          <!-- AV: CV Preview - Added cv preview page -->
+          <div id="cvpreview">
+            <?php  include 'wizardcomponents/cvpreview.php';?>
+          </div>
 </div>
 
 <div class = "empty2">
@@ -94,9 +95,6 @@
   });
 
 </script>
-
-
-
 
 </body>
 </html>
