@@ -20,7 +20,7 @@
     <div class = "BodyMain">
       <div class = "empty1">
         <!-- help make this button save items as it moves across -->
-          <input type="image" src = "emergencyleft.png" id = "toprevbtn" class="btnmain btn-primary btn-outline btn-sm" aria-label="Left Align">
+
 
       </div>
 
@@ -79,7 +79,19 @@
 
 <div class = "empty2">
 
-    <input type="image" src= "emergencyright.png" id = "tonextbtn" class="btnmain btn-primary "aria-label="Left Align">
+      <!--<input type="image" src = "emergencyleft.png" id = "toprevbtn" class="btnmain btn-primary btn-outline btn-sm" aria-label="Left Align">
+
+        <input type="image" src= "emergencyright.png" id = "tonextbtn" class="btnmain btn-primary "aria-label="Left Align">-->
+
+<span id = "toprevbtn" class="glyphicon glyphicon-chevron-left"></span>
+<span id = "tonextbtn" class="glyphicon glyphicon-chevron-right"></span>
+
+
+
+        <!-- <button type ="type" id - "tonextbtn" class = "btnmain btn-primary btn-sm btn-block"> PREV </button>
+
+        <button type ="type" id = "toprevbtn" class = "btnmain btn-primary btn-sm btn-block"> NEXT </button> -->
+
 
 </div>
   <script src="pagemovement.js"> </script>

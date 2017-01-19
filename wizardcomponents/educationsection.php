@@ -9,7 +9,7 @@
         <fieldset>
           <legend>Education History</legend>
           <div class = "row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-8">
               <!-- SECTION HINT -->
               <img id="educationhelp" src="helpicon.png"/>
               <p id="educationhint" style="color:red; font-style:italic;">
