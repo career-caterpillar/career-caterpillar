@@ -177,15 +177,18 @@ function validateForm3() {
     return true;
 }
 
-/** validates each form field on the about me page */
+/** validates that atleast 2 qualities are selected on the personal qualities page */
 function validateForm4() {
-    var all_achievements = new Array();
-    for (var inputNum = 1; inputNum <= 6; inputNum++) {
-        var answer = document.getElementById("qual" + inputNum);
-        all_achievements.push(answer[answer.selectedIndex].value);
-    }
-    if ((new Set(all_achievements)).size !== all_achievements.length) {
-        alert(l);
+	var numChecked = 0;
+	
+	$("input:checkbox").each(function() {
+        if($(this).is(':checked')){
+        numChecked++;
+        }
+	});
+
+    if (numChecked<2) {
+        alert("Please make sure to have selected atleast 2 qualities");
         return false;
     }
     return true;
