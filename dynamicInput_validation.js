@@ -81,11 +81,14 @@ function validateForm1() {
         output_msg += "* The 'City' field can only contain text!\n";
     }
     
-    if (!(num_only.test(document.myForm1.phone.value))) {
+    if (!(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
         output_msg += "* The 'Phone' field can only contain numbers!\n";
     }
     
-    if (!(num_only.test(document.myForm1.mobile.value))) {
+    if (document.myForm1.mobile.value.trim() == "") {                   //MKH: Prompts user to enter value if input missing
+        output_msg += "* The 'Mobile' field is empty!\n";
+    }
+    else if (!(num_only.test(document.myForm1.mobile.value))) {
         output_msg += "* The 'Mobile' field can only contain numbers!\n";
     }
     
@@ -93,10 +96,8 @@ function validateForm1() {
         output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
     }
     
-    if (document.myForm1.school_name.value.trim() == "") {
-        output_msg += "* The 'School' field is empty!\n";
-    } 
-    else if (!(text_only.test(document.myForm1.school_name.value))) {
+    //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
+    if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {      
         output_msg += "* The 'School' field can only contain text!\n";
     }
  
