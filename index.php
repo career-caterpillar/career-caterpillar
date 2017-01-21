@@ -70,7 +70,15 @@
 
   <script src="pagemovement.js"> </script>
 
+  <!--global form scripts to be put in some JS file -->
+
   <script>
+    $("* :input").tooltip({
+    show: {effect: "drop" },
+    hide: {effect: "drop" },
+    position: {my: "left+100 center", at: "right center"},
+    items: ":input:focus",
+    });
 
     $( ".styledselect" ).selectmenu({
     icons: { button: "ui-icon-caret-1-s" };
