@@ -2,6 +2,6 @@
 $education_year = array();
 array_push( $education_year,"2011");
 $education_achievements = array();
-array_push( $education_achievements,"achievement");
+array_push( $education_achievements,"Achivement");
 $arrsizeEdu="1";
 ?>
