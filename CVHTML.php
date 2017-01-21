@@ -133,11 +133,11 @@
 		<div id="employmentDetails">
 
         <?php
-            	$employment_posn_empty = empty ( $employment_posn [0] );
-            	$employment_city_empty = empty ( $employment_city [0] );
+              $employment_posn_empty = empty ( $employment_posn [0] );
+              $employment_city_empty = empty ( $employment_city [0] );
               $employment_country_empty = empty ( $employment_country [0] );
-            	$employment_start_date_empty = empty ( $employment_start_date [0] );
-              $employment_end_date_empty = empty ( $employment_end_date [0] );
+              $employment_start_date_empty = empty ( $employment_start_month [0] ) || empty ( $employment_start_year [0] ); /* MKH: Replaces start date with the start month and start year */
+              $employment_end_date_empty = empty ( $employment_end_month [0] ) || empty ( $employment_end_year [0] ); /* MKH: Replaces end date with the end month and end year */
               $employment_responsibility_empty = empty ( $employment_responsibility [0] );
 
                /* if the user has entered employment details then this section to CV else leave it blank */
@@ -161,8 +161,8 @@
                   $employment_posn_empty = empty ( $employment_posn [$i] );
                   $employment_city_empty = empty ( $employment_city [$i] );
                   $employment_country_empty = empty ( $employment_country [$i] );
-                  $employment_start_date_empty = empty ( $employment_start_date [$i] );
-                  $employment_end_date_empty = empty ( $employment_end_date [$i] );
+                  $employment_start_date_empty = empty ( $employment_start_month [$i] ) || empty ( $employment_start_year [$i] ); /* MKH: Replaces start date with the start month and start year */
+                  $employment_end_date_empty = empty ( $employment_end_month [$i] ) || empty ( $employment_end_year [$i] ); /* MKH: Replaces end date with the end month and end year */
                   $employment_responsibility_empty = empty ( $employment_responsibility [$i] );
 
                   echo '<ul>';
@@ -183,8 +183,8 @@
                         <tr><td style="width=30%">Position Title </td> <td style="width=3%"> : </td> <td style="width=66%"><?php echo $employment_posn[$i];?> </td></tr>
                         <tr><td style="width=30%">City </td> <td style="width=3%"> : </td> <td style="width=66%"> <?php echo $employment_city [$i];?> </td></tr>
                         <tr><td style="width=30%">Country </td><td style="width=3%"> : </td> <td style="width=66%"> <?php echo $employment_country [$i];?>  </td></tr>
-                        <tr><td style="width=30%">Start Date </td><td style="width=3%"> : </td><td style="width=66%"> <?php echo $employment_start_date [$i];?>  </td></tr>
-                        <tr><td style="width=30%">End Date </td><td style="width=3%"> : </td><td style="width=66%"><?php  echo $employment_end_date [$i];?> </td></tr>
+                        <tr><td style="width=30%">Start Date </td><td style="width=3%"> : </td><td style="width=66%"> <?php echo $employment_start_month [$i].' '.$employment_start_year [$i]; ?>  </td></tr> <!-- MKH: Start Date repaced by Start Month and Year and transferred to CV pdf -->
+                        <tr><td style="width=30%">End Date </td><td style="width=3%"> : </td><td style="width=66%"><?php echo $employment_end_month [$i].' '.$employment_end_year [$i]; ?> </td></tr> <!-- MKH: End Date repaced by End Month and Year and transferred to CV pdf -->
                         <tr><td style="width=30%">Responsibility </td><td style="width=3%"> : </td><td style="width=66%"><?php  echo $employment_responsibility [$i];?>  </td></tr>
                   </table>
 				<?php
