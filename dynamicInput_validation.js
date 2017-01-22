@@ -1,5 +1,4 @@
 
-var countLang = 1;
 /** adds a new input field for languages */
 
 /*KC
@@ -161,21 +160,29 @@ function addLanguageInput(divName) {
     console.log(newdiv.innerHTML);
     document.getElementById(divName).appendChild(newdiv);
 
-    countLang++;
 }
 
 /** adds new input fields for employment */
 function addEmployInput(divName) {
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Position Title </strong><br><input type='text' name='employment_posn[]'><br><br><strong>City </strong><br><input type='text' name='employment_city[]'><br><br><strong>Country </strong><br><input type='text' name='employment_country[]'><br><br><strong>Start Date </strong><br><input type='text' class='datepicker' name='employment_start_date[]'><br><br><strong>Still work here? </strong><br><input type='radio' name='still_work[]' value='yes'> Yes<input type='radio' name='still_work[]' value='no'> No<br><br><strong>End Date</strong> (if answer was 'no' above)<br><input type='text' class='datepicker' name='employment_end_date[]'><br><br><strong>Responsiblities</strong><br><textarea name='employment_responsibility[]' cols='50' rows='10'></textarea>";
+    /** MKH: Enables month/year dropdown to be available as a dynamic input **/
+    newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
     document.getElementById(divName).appendChild(newdiv);
-    $( ".datepicker" ).datepicker();
 }
 
 /** adds new input fields for education */
 function addEducationInput(divName) {
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='education_year[]' required='required'><br><br><strong>Achievements</strong><br><textarea name='education_achievements[]' cols='70' rows='7' required='required'></textarea>";
+    /** MKH: Enables year dropdown to be available as a dynamic input **/
+    newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ year_2050_2018+ " <option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
+    document.getElementById(divName).appendChild(newdiv);
+}
+
+/** adds a new input field for achievements */
+function addAchievementInput(divName) {
+    var newdiv = document.createElement('div');
+    /** MKH: Enables year dropdown to be available as a dynamic input **/
+    newdiv.innerHTML = "<hr><h2>Year </h2><br> <select name='achieve_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select><h2>Achievements</h2><br><textarea class='largetextfield' name='awards_achievements[]' cols='70' rows='7'></textarea>";
     document.getElementById(divName).appendChild(newdiv);
 }
 
@@ -232,8 +239,8 @@ function addExtracurricularInput(divName) {
     if ((firstNode.style.display != 'none')){
 
       if ((yearVal || achVal) !== ""){
-
-        newdiv.innerHTML = "<h2>Year</h2><br><input type='text' name='extracurricular_year[]'><h2>Achievements</h2><br><textarea name='extracurricular_achievements[]' cols='70' rows='7'></textarea>";
+        /** MKH: Enables year dropdown to be available as a dynamic input **/
+        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
 
         firstNode.style.display = 'none'; // hide firstnode
 
@@ -263,7 +270,7 @@ var countReferee = 2;
 /** adds new input fields for referees */
 function addRefereeInput(divName) {
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Referee [" + countReferee + "]</strong><br><br> Name<br><input type='text' name='referee_name[]'><br>Position <br><input type='text' name='referee_position[]'><br>Email <br><input type='text' name='referee_email[]'><br>Phone <br><input type='text' name='referee_phone[]'><br>";
+    newdiv.innerHTML = "<hr><h2>Referee [" + countReferee + "]</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
     document.getElementById(divName).appendChild(newdiv);
     countReferee++;
 }
@@ -428,12 +435,16 @@ $(document).ready(function() {
     });
 });
 
-/** adds a new input field for achievements */
-function addAchievementInput(divName) {
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><strong>Year </strong><br><input type='text' name='achieve_year[]'><br><br><strong>Achievements</strong><br><textarea name='awards_achievements[]' cols='70' rows='7'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
+/** MKH: Generates and stores the option tags for year dropdown dynamically **/
+var year_2050_2018 = "";
+for(i=2050; i>=2018; i--){
+    year_2050_2018 += "<option value="+i+">"+i+"</option>";
 }
+var year_2016_1990 = "";
+for(i=2016; i>=1990; i--){
+    year_2016_1990 += "<option value="+i+">"+i+"</option>";
+}
+/** MKH: Generation logic ends **/
 
 // Submit  'aboutmeform'  data via AJAX
 $(document).ready(function() {

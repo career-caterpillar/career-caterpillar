@@ -49,8 +49,8 @@
                   </div>
                   <div class="row">
                     <div class="col-left">
-                      <label>Phone<span class="redAsterisk">*</span></label>
-                      <input type="text" name="phone" value="<?php if($fileexists == true && empty($phone) == false){echo $phone;} ?>" required placeholder="(04) MYHOMEPHONENUMBER">
+                      <label>Phone</label>
+                      <input type="text" name="phone" value="<?php if($fileexists == true && empty($phone) == false){echo $phone;} ?>" placeholder="04 MYHOMEPHONENUMBER"> <!-- MKH: Makes phone number not mandatory -->
                     </div>
                     <div class="col-right">
                       <label>Mobile<span class="redAsterisk">*</span></label>
@@ -59,8 +59,8 @@
                    </div>
                    <div class="row">
                      <div class="col-left">
-                       <label>School<span class="redAsterisk">*</span></label>
-                        <input type="text" name="school_name" value="<?php if($fileexists == true && empty($school_name) == false){echo $school_name;} ?>" required placeholder="My School">
+                       <label>School</label>
+                        <input type="text" name="school_name" value="<?php if($fileexists == true && empty($school_name) == false){echo $school_name;} ?>" placeholder="My School"> <!-- MKH: Makes school field not mandatory -->
                      </div>
                     </div>
             </fieldset>
