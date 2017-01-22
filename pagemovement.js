@@ -18,6 +18,7 @@ $(document).ready(function(){
 		sets up the initial state, hiding all pages but the first
 	*/
   function setup() {
+
     $("#toprevbtn").hide();
 		$("#personalstatementsection").hide();
     $("#personalqualitiessection").hide();
@@ -29,6 +30,76 @@ $(document).ready(function(){
     $("#refereespage").hide();
 		$("#cvpreview").hide();  // AV: CV Preview - hide cvpreview page
   }
+
+	function hidepages() {//KC: hide all pages for use in gotoPage()
+
+		$("#refereespage").hide();
+		$("#submitpage").hide();
+		$("#cvCreate").hide();
+		$("#otherskills").hide();
+		$("#extracurricularsection").hide();
+		$("#educationsection").hide();
+		$("#employmentsection").hide();
+		$("#personalstatementsection").hide();
+		$("#personalqualitiessection").hide();
+		$("#achievementssection").hide();
+		$( "#personaldetailspage").hide();
+
+	}
+
+	function setallincomplete() {//KC: set all page breadcrumbs to incomplete
+		$("#personaldetailsbtn").attr('class', "incomplete");
+		$("#personalstatementbtn").attr('class', "incomplete");
+		$("#personalqualitiesbtn").attr('class', "incomplete");
+		$("#achievementsbtn").attr('class', "incomplete");
+		$("#employmentbtn").attr('class', "incomplete");
+		$("#extracurricularbtn").attr('class', "incomplete");
+		$("#educationbtn").attr('class', "incomplete");
+		$("#otherskillsbtn").attr('class', "incomplete");
+		$("#refereesbtn").attr('class', "incomplete");;
+		$("#cvbtn").attr('class', "incomplete");;
+
+	}
+
+	function setincomplete(pagenumber) {//KC: set all page breadcrumbs to incomplete
+    switch (pagenumber){
+			case 1 :
+					$("#personaldetailsbtn").attr('class', "incomplete");
+			break;
+			case 2 :
+					$("#personalstatementbtn").attr('class', "incomplete");
+			break;
+			case 3 :
+					$("#personalqualitiesbtn").attr('class', "incomplete");
+			break;
+			case 4 :
+					$("#achievementsbtn").attr('class', "incomplete");
+			break;
+			case 5 :
+					$("#employmentbtn").attr('class', "incomplete");
+			break;
+			case 6 :
+					$("#extracurricularbtn").attr('class', "incomplete");
+			break;
+			case 7 :
+					$("#educationbtn").attr('class', "incomplete");
+			break;
+			case 8 :
+					$("#otherskillsbtn").attr('class', "incomplete");
+			break;
+			case 9 :
+					$("#refereesbtn").attr('class', "incomplete");
+			break;
+			case 10 :
+					$("#cvbtn").attr('class', "incomplete");
+			break;
+
+			default:
+				break;
+
+		}
+
+	}
 
 	/** displays personal details section, sets up interactive components */
 	function personaldetailssetup() {
@@ -126,65 +197,128 @@ $(document).ready(function(){
 		});
 	}
 
-	function outsideskillssubmit(){
-		$("#outsideskillform").ajaxSubmit({
-			url: "wizardcomponents/outskillshandler.php",type: "post"
-		});
+	function validateForms(pagenumber){ //KC: validateForms for if pagenumber equals 1, 3,7,9
+			switch (pagenumber){
+				case 1:
+					if(!validateForm1()){ 						//MKH: If there are validation errors in the PERSONAL DETAILS entered, return the page that was not valid exit the switch statement.
+						return pagenumber;
+					} else {
+							$("#personaldetailsbtn").attr('class', "completed");
+						 	break;
+					}
+
+				case 3:
+					if(!validateForm4()) {
+						return pagenumber;//MKH: If there are validation errors in the PERSONAL QUALITIES entered, exit the switch statement.
+					} else {
+						$("#personalqualitiesbtn").attr('class', "completed");
+						break;
+					}
+				break;
+
+				case 7:
+		    	if(!validateForm3()){
+						return pagenumber;//MKH: If there are validation errors in the EDUCATION HISTORY entered, exit the switch statement.
+				} else {
+						$("#educationbtn").attr('class', "completed");
+					break;
+				}
+
+				case 9:
+					if(!validateForm2()) {
+						return pagenumber;//MKH: If there are validation errors in the REFEREES entered, exit the switch statement.
+					} else {
+						$("#refereesbtn").attr('class', "completed");
+						break;
+					}
+
+
+				default:
+				break;
+			}
 	}
 
-	function personaldetailsubmit(){
-		$("#personaldetailsform").ajaxSubmit({
-			url: "wizardcomponents/personaldetailspgehandler.php",type: "post"
-		});
-	}
+	function submitPage(pagenumber){//KC: submit page correseponding to pagenumber selected using jquery ajaxSubmit function
 
-	function personalstatementsubmit(){
-		$("#personalstatementform").ajaxSubmit({
-			url: "wizardcomponents/personalstatementhandler.php",type: "post"
-		});
-	}
+	switch (pagenumber) {
 
-	function personalqualitiessubmit(){
-		$("#personalqualitiesform").ajaxSubmit({
-			url: "wizardcomponents/personalqualitieshandler.php",type: "post"
-		});
-	}
+		case 1:
 
-	function achievementsubmit(){
-		$("#achievementsform").ajaxSubmit({
-			url: "wizardcomponents/achievementshandler.php",type: "post"
-		});
-	}
+	  	$("#personaldetailsform").ajaxSubmit({
+		  	url: "wizardcomponents/personaldetailspgehandler.php",type: "post"
+		  });
 
-	function employmentsubmit(){
-		$("#employmentform").ajaxSubmit({
-			url: "wizardcomponents/employmenthandler.php",type: "post"
-		});
-	}
+			break;
 
-	function educationsubmit(){
+		case 2:
+
+			$("#personalstatementform").ajaxSubmit({
+				url: "wizardcomponents/personalstatementhandler.php",type: "post"
+			});
+
+			break;
+
+		case 3:
+
+			$("#personalqualitiesform").ajaxSubmit({
+				url: "wizardcomponents/personalqualitieshandler.php",type: "post"
+			});
+
+			break;
+
+		case 4:
+
+			$("#achievementsform").ajaxSubmit({
+				url: "wizardcomponents/achievementshandler.php",type: "post"
+			});
+
+			break;
+
+		case 5:
+
+			$("#employmentform").ajaxSubmit({
+				url: "wizardcomponents/employmenthandler.php",type: "post"
+			});
+
+
+			break;
+
+		case 6:
+
+			$("#extracurricularform").ajaxSubmit({
+				url: "wizardcomponents/extracurricularhandler.php",type: "post"
+			});
+
+			break;
+
+		case 7:
+
 		$("#educationform").ajaxSubmit({
 			url: "wizardcomponents/educationhandler.php",type: "post"
 		});
-	}
 
-	function extracurricularsubmit(){
-		$("#extracurricularform").ajaxSubmit({
-			url: "wizardcomponents/extracurricularhandler.php",type: "post"
-		});
-	}
+			break;
 
-	function otherskillssubmit(){
+
+		case 8:
 		$("#otherskillsform").ajaxSubmit({
 			url: "wizardcomponents/otherskillshandler.php",type: "post"
 		});
+			break;
+
+		case 9:
+
+			$("#refereeform").ajaxSubmit({
+				url: "wizardcomponents/refhandler.php",type: "post"
+			});
+
+			break;
+
+		default:
+			break;
 	}
 
-	function refereesubmit(){
-		$("#refereeform").ajaxSubmit({
-			url: "wizardcomponents/refhandler.php",type: "post"
-		});
-	}
+}
 
   setup();
 	personaldetailssetup();
@@ -192,334 +326,268 @@ $(document).ready(function(){
 	outsideskillssetup();
 	refereeshintsetup();
 
-	//  hides current section and displays the next section when the user clicks the next button
-	$("#tonextbtn").click(function() {
-		$("#cvpreviewbtn").show(); //AV: CV Preview - display preview button
-		// hide current page and show next page
-		switch (curpage) {
+
+	function gotoPage(pagenumber){ //KC: let the user select which page to go to based on page number
+
+		switch (pagenumber) {
 
 			case 1:
 
-				if(!validateForm1()) return; //MKH: If there are validation errors in the PERSONAL DETAILS entered, exit the switch statement.
+				setincomplete(curpage);// setthe current page to incompete
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+					$("#personaldetailsbtn").attr('class', "current-box");
+				}
+        submitPage(curpage); //KC: submit lastpage that the user was in
+        hidepages();//KC:  hide all pages so when user navigates from any page, that page will be hidden
+				$( "#personaldetailspage").show();
+				$("#tonextbtn").show();//KC:  hide and show tonext and toprev buttons inorder for user to navigate from last page to first without hideing both buttons
+				$("#toprevbtn").hide();
 
-				$( "#personaldetailspage").hide();
-				//$( "#aboutmepage").show();
-				$("#personalstatementsection").show();
-				$("#toprevbtn").show();
-
-				//perform an ajax submit when the user moves to the next page;
-				personaldetailsubmit();
-
-				curpage++;
+				curpage = pagenumber;//KC: set current page for correct side scrolling
 				break;
 
 			case 2:
 
-				$("#personalqualitiessection").show();
-				$("#personalstatementsection").hide();
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+					$("#personalstatementbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+        $("#personalstatementsection").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
 
-				personalstatementsubmit();
+				curpage = pagenumber;
 
-				curpage++;
-				break;
+        break;
 
       case 3:
-        if(!validateForm4()) return; //MKH: If the number of PERSONAL QUALITIES entered are less than required, exit the switch statement.
 
-				$("#achievementssection").show();
-				$("#personalqualitiessection").hide();
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#personalqualitiesbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+				$("#personalqualitiessection").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
 
-				personalqualitiessubmit();
+				curpage = pagenumber;
 
-				curpage++;
+
 				break;
 
 			case 4:
 
-				$("#achievementssection").hide();
-				$("#employmentsection").show();
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#achievementsbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
 
-				achievementsubmit();
+				$("#achievementssection").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
+				curpage = pagenumber;
 
-				curpage++;
 				break;
 
 			case 5:
 
-				$("#employmentsection").hide();
-				$("#extracurricularsection").show();
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#employmentbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+				$("#employmentsection").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
+				curpage = pagenumber;
 
-				employmentsubmit();
-
-				curpage++;
 				break;
 
 			case 6:
 
-				$("#extracurricularsection").hide();
-				$("#educationsection").show();
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#extracurricularbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+				$("#extracurricularsection").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
 
-				extracurricularsubmit();
+				curpage = pagenumber;
 
-				curpage++;
 				break;
 
 			case 7:
 
-				if(!validateForm3()) return; //MKH: If there are validation errors in the EDUCATION details entered, exit the switch statement.
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#educationbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
 
-				$("#otherskills").show();
-				$("#educationsection").hide();
+				$("#educationsection").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
 
-				educationsubmit();
+				curpage = pagenumber;
 
-				curpage++;
 				break;
 
 			case 8:
 
-				$("#otherskills").hide();
-				$("#refereespage").show();
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#otherskillsbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+				$("#otherskills").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
 
-				otherskillssubmit();
+				curpage = pagenumber;
 
-				curpage++;
 				break;
 
 			case 9:
-				if(!validateForm2()) return; //MKH: If there are validation errors in the REFEREE details entered, exit the switch statement.
 
-				$("#refereespage").hide();
-				$("#cvpreviewbtn").hide();
-				$("#tonextbtn").hide();
-				$("#cvpreview").show(); //AV: CV Preview - to view CV in different template
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+					$("#refereesbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+				$("#refereespage").show();
+				$("#tonextbtn").show();
+				$("#toprevbtn").show();
 
-				refereesubmit();
-
-				$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
-
-				curpage++;
-
+				curpage = pagenumber;
 				break;
+
+			case 10:
+				setincomplete(curpage);
+				if (validateForms(curpage) === curpage) {
+					break;
+				} else {
+				$("#cvbtn").attr('class', "current-box");
+				}
+				submitPage(curpage);
+				hidepages();
+				$("#submitpage").show();
+				$("#cvCreate").show();
+				$("#tonextbtn").hide();
+				$("#toprevbtn").show();
+				$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
+				curpage = pagenumber;
+			  break;
 
 			default:
 				break;
 		}
 
-	});
+}
 
 	// hides current section and displays the previous section when the user clicks the back button
 	$("#toprevbtn").click(function() {
 
-		$("#cvpreviewbtn").show(); //AV: CV Preview - display preview button
+		var nextpage = curpage;
+		nextpage--;
+		gotoPage(nextpage);
 
-		// hide current page and show previous page
-		switch (curpage) {
-			case 2:
+		});
 
-				$("#personalstatementsection").hide();
-				$("#toprevbtn").hide();
-				$("#personaldetailspage").show();
-				curpage--;
-				break;
+	//  hides current section and displays the next section when the user clicks the next button
+	$("#tonextbtn").click(function() {
 
-			case 3:
-
-				$("#personalstatementsection").show();
-				$("#personalqualitiessection").hide();
-
-				personalqualitiessubmit();
-
-				curpage--;
-				break;
-
-      case 4:
-
-				$("#personalqualitiessection").show();
-		 		$("#achievementssection").hide();
-
-				achievementsubmit();
-
-				curpage--;
-				break;
-
-			case 5:
-
-				$("#employmentsection").hide();
-				$("#achievementssection").show();
-
-				employmentsubmit();
+		var nextpage = curpage; //store current page
+		nextpage++;//increment page index by
+		gotoPage(nextpage); // next page
 
 
-				curpage--;
-				break;
-
-			case 6:
-				$("#employmentsection").show();
-				$("#extracurricularsection").hide();
-
-				extracurricularsubmit();
-
-
-				curpage--;
-			break;
-
-			case 7:
-				$("#extracurricularsection").show();
-				$("#educationsection").hide();
-
-				educationsubmit();
-
-				curpage--;
-				break;
-
-			case 8:
-				$("#otherskills").hide();
-				$("#educationsection").show();
-
-				otherskillssubmit();
-
-				curpage--;
-			break;
-
-
-			case 9:
-
-				$("#refereespage").hide();
-				$("#otherskills").show();
-
-				refereesubmit();
-
-				curpage--;
-				break;
-
-			case 10:
-				$("#cvpreviewbtn").show();
-				$("#refereespage").show();
-				$("#tonextbtn").show();
-				$("#cvpreview").hide(); //AV: CV Preview - to hide CV in different template (to be added
-				curpage--;
-				break;
-
-			default:
-				break;
-		}
 	});
 
-	//AV: CV Preview - hides current section and displays CV (or) hides CV and diplays current section
-	$("#cvpreviewbtn").click(function() {
 
-		if ($("#cvpreview").is(":visible")) {
-			$("#toprevbtn").show();
-			$("#tonextbtn").show();
-			$("#cvpreview").hide();
-			// show current page and hide cv
 
-			switch (curpage) {
-				case 1:
-					$("#personaldetailspage").show();
-					$("#toprevbtn").hide();
-					break;
+	$("#personaldetailsbtn").click(function() { // gotoPage selected by user
+		gotoPage(1);
 
-				case 2:
-					$("#personalstatementsection").show();
-					break;
-
-				case 3:
-			    $("#personalqualitiessection").show();
-					break;
-
-				case 4:
-				  $("#achievementssection").show();
-					break;
-
-				case 5:
-					$("#employmentsection").show();
-					break;
-
-				case 6:
-					$("#extracurricularsection").show();
-					break;
-
-				case 7:
-					$("#educationsection").show();
-					break;
-
-				case 8:
-					$("#otherskills").show();
-					break;
-
-				case 9:
-					$("#refereespage").show();
-					break;
-
-				case 10:
-					$("#cvpreview").show();
-					$("#tonextbtn").hide();
-					break;
-
-				default:
-					break;
-			}
-		} else {
-			$("#cvpreview").show();
-			$("#toprevbtn").hide();
-			$("#tonextbtn").hide();
-			// hide current page and show cv
-			switch (curpage) {
-				case 1:
-					$("#personaldetailspage").hide();
-					personaldetailsubmit();
-					break;
-
-				case 2:
-					$("#personalstatementsection").hide();
-					personalstatementsubmit();
-					break;
-
-				case 3:
-			    $("#personalqualitiessection").hide();
-					personalqualitiessubmit();
-					break;
-
-				case 4:
-				  $("#achievementssection").hide();
-					achievementsubmit();
-					break;
-
-				case 5:
-					$("#employmentsection").hide();
-					employmentsubmit();
-					break;
-
-				case 6:
-					$("#extracurricularsection").hide();
-					extracurricularsubmit();
-					break;
-
-				case 7:
-					$("#educationsection").hide();
-					educationsubmit();
-					break;
-
-				case 8:
-					$("#otherskills").hide();
-					otherskillssubmit();
-					break;
-
-				case 9:
-					$("#refereespage").hide();
-					refereesubmit();
-					break;
-
-				case 10:
-					$("#cvpreview").hide();
-					break;
-
-				default:
-					break;
-			}
-			$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
-		}
 	});
+
+	$("#personalstatementbtn").click(function() {
+		gotoPage(2);
+
+	});
+
+
+	$("#personalqualitiesbtn").click(function() {
+		gotoPage(3);
+
+	});
+
+
+	$("#achievementsbtn").click(function() {
+		gotoPage(4);
+	});
+
+	$("#employmentbtn").click(function() {
+		gotoPage(5);
+	});
+
+	$("#extracurricularbtn").click(function() {
+		gotoPage(6);
+	});
+
+	$("#educationbtn").click(function() {
+		gotoPage(7);
+
+	});
+
+	$("#otherskillsbtn").click(function() {
+		gotoPage(8);
+
+	});
+
+	$("#refereesbtn").click(function() {
+		gotoPage(9);
+
+	});
+
+	$("#cvbtn").click(function() {
+		gotoPage(10);
+	});
+
+
+	$("#previewBtn").click(function() {
+		gotoPage(10);
+	});
+
+
 });

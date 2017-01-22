@@ -87,10 +87,10 @@
 
 		<div id="cvheader">
 			<div id="name">
-				<h1> <?php echo $name?> </h1>
+				<h1> <?php echo $first_name." ".$last_name?> </h1>
 			</div>
 			<div id="details">
-				<p><?php echo $street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $email . "  |  " . $phone . "  |  " . $mobile; ?></p>
+				<p><?php echo $street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $phone . "  |  " . $mobile; ?></p>
 			</div>
 		</div>
 
@@ -101,7 +101,7 @@
 			<div id="personalstatement">
 
 					<?php
-					if (empty ( $personal_statement ) == false) { // Check to see if there is a personal statement
+					if ((sizeof($personal_statement) > 1)) { // Check to see if there is a personal statement
 					?>
 
 					<h4 align="left">PERSONAL STATEMENT</h4>
@@ -258,14 +258,14 @@
 
 	<div id="extracurricularDetails">
 			<?php
-			if (empty ( $extracurricular_year [0] ) == false && empty ( $extracurricular_achievements [0] == false )) {?>
+			if ((sizeof($extracurricular_achievements) > 1)) { // KC change to 1 to avoid printing input to pdf?>
 				<h4 align="left">EXTRACURRICULAR DETAILS</h4>
 				<?php
 				echo ' <ul> ';
 
 				//create list of extracurricular details in the CV
 
-				for($i = 0; $i < $arrsizeExt; $i ++) {
+				for($i = 1; $i < $arrsizeExt; $i ++) {//KC change to 1 to avoid printing input to pdf
 					if (empty ( $extracurricular_year [$i] ) == false && empty ( $extracurricular_achievements [$i] == false )) {
 						echo '<li>Year: ' . $extracurricular_year [$i] . '</li>';
 						echo '<li>Acheivements: <br>  ' . $extracurricular_achievements [$i] . '</li>';
