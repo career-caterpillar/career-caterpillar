@@ -1,8 +1,4 @@
 
-
-
-
-
 var countLang = 1;
 /** adds a new input field for languages */
 
@@ -183,9 +179,30 @@ function addEducationInput(divName) {
     document.getElementById(divName).appendChild(newdiv);
 }
 
-/* created by MK modified by KC
 
-kahu- I'm using this section to test delete/edit functionality*/
+/* kahu- I'm using this section to test delete/edit functionality*/
+
+/* changes:
+
+1)  got rid of br tags and strong tags from innhtml string so each appended child look the same
+2)  created function that builds feedback html div
+3)  created
+3)  modified addExtracurricularInput for dynamic feedback
+
+*/
+
+function deleteSection(inputnode){
+
+  inputnode.parentNode.nextSibling.remove();
+  inputnode.parentNode.remove();
+
+}
+
+function editSection(inputnode){
+  var childrenNo =  inputnode.parentNode.children.length;
+  inputnode.parentNode.nextSibling.style.display = 'block';
+
+}
 
 
 /* adds new input fields for extracurricular activities */
@@ -210,6 +227,7 @@ function addExtracurricularInput(divName) {
     achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
     achVal=achVal.replace(/\n/g, '<br>');
     achVal=achVal.replace(/\r/g, '<br>');
+
 
     if ((firstNode.style.display != 'none')){
 
@@ -236,6 +254,7 @@ function addExtracurricularInput(divName) {
     }else{
       firstNode.style.display = 'block';
     }
+
 }
 
 
@@ -259,6 +278,7 @@ function validateForm1() {
 
     var output_msg = "";
 
+
     if (document.myForm1.first_name.value.trim() == "") {
         output_msg += "* The 'First Name' field is empty!\n";
     }
@@ -271,6 +291,7 @@ function validateForm1() {
     }
     else if (!(text_only.test(document.myForm1.last_name.value))) {
         output_msg += "* The 'Last Name' field can only contain text!\n";
+
     }
 
     if (document.myForm1.street_add.value.trim() == "") {
@@ -308,6 +329,7 @@ function validateForm1() {
 
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {
+
         output_msg += "* The 'School' field can only contain text!\n";
     }
 
