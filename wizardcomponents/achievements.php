@@ -31,7 +31,7 @@
 
 								<div id="achievements_hist">
 								<!-- Year Input -->
-								<h2>Year </h2><br>
+								<h2>Year </h2>
                                                                 <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
                                                                 <select name='achieve_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
                                                                         <?php for ($i = 2050; $i >= 2018; $i--) : ?>
