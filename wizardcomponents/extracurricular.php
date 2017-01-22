@@ -27,18 +27,24 @@
                <div id="extracurricular_hist">
                  <div class = "inputfields">
                    <h2>Year</h2>
-                   <input type='text' name='extracurricular_year[]'>
+                   <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
+                   <select name='extracurricular_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
+                          <?php for ($i = 2050; $i >= 2018; $i--) : ?>
+                              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                          <?php endfor; ?>
+                          <option value="2017" selected>2017</option>
+                          <?php for ($i = 2016; $i >= 1990; $i--) : ?>
+                              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                          <?php endfor; ?>
+                   </select>
                    <h2>Achievements</h2>
                    <textarea name="extracurricular_achievements[]" class = "largetextfield" cols="70" rows="7"></textarea>
                  </div>
-                 <input id = "addxtracrr" type="button" class="btn btn-primary btn-outline btn-sm" value="Add Extracurricular Achievement" onClick="addExtracurricularInput('extracurricular_hist');">
-              </div>
-          </div>
+               </div>
+                 <input id="addxtracrr" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of extracurricular achievements" onClick="addExtracurricularInput('extracurricular_hist');">
+            </div>              
         </fieldset>
-
         <!-- END OF EXTRACURRICULAR SECTION -->
-
-
       </form>
       <!-- END OF FORM -->
     <script>

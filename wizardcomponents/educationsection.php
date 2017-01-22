@@ -20,7 +20,17 @@
               <div id="education_hist">
 
                 <h2>Year<span class="redAsterisk">*</span></h2>
-                  <input type='text' name='education_year[]' required>
+                 <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
+                 <select name='education_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
+                        <?php for ($i = 2050; $i >= 2018; $i--) : ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php endfor; ?>
+                        <option value="2017" selected>2017</option>
+                        <?php for ($i = 2016; $i >= 1990; $i--) : ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php endfor; ?>
+                 </select>
+                  
                   <h2>Achievements<span class="redAsterisk">*</span></h2>
                   <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required></textarea>
 
