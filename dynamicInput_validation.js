@@ -159,13 +159,7 @@ function validateForm3() {
 
     var element = document.getElementsByName("education_year[]");
     var element2 = document.getElementsByName("education_achievements[]");
-    for (i = 0; i < element.length; i++) {
-        if (element[i].value.trim() == "") {
-            output_msg += "* The year of education cannot be empty!\n";
-        }
-        else if (!(num_only.test(element[i].value))) {
-            output_msg += "* The year of education '" + element[i].value + "' can only contain numbers e.g. 2017!\n";
-        }
+    for (i = 0; i < element.length; i++) {  // MKH: Removes Year-field validation for "empty" and "non-numeric" data as the input text replaced by drop-down option.
         if (element2[i].value.trim() == "") {
             output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }
