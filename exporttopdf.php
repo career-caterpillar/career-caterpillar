@@ -1,5 +1,6 @@
 <?php
-	$cvhtml = file_get_contents('http://localhost/CV2/CVHTML.php');
+
+	$cvhtml = file_get_contents('http://localhost/cvhome/CVHTML.php');
 	include("mpdf60/mpdf.php");
 	$mpdf = new mPDF();
 	$mpdf->WriteHTML("$cvhtml");

@@ -1,29 +1,139 @@
-/* navbar */
+@font-face {
+  font-family: 'Open Sans';
+       src: url('mpdf60/ttfonts/OpenSansRegular.ttf');
+	}
+
 body {
 	background-color: #faf7fa;
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: #ffffff;
-	width: 100%;
-	height: 100%;
 }
 
-html {
-	min-height: 100%;
+/* New bit starts here */
+
+#wholepage {
+  min-width: 100%;
+	display: flex;
+	flex-direction: row;
 }
+
+#postcontainer {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#buttonbar {
+  width: 7%;
+  margin-left: 1%;
+  margin-top: 18%;
+  position: fixed;
+  font-size: 30pt;
+}
+
+#buttonbar ul {
+  list-style-type: none;
+}
+
+#buttonbar li {
+  padding-bottom: 20%;
+}
+
+#sidebar {
+	display: flex;
+	width: 14%;
+	min-height: 100%;
+	background-color: rgb(38, 164, 235);
+  position: fixed;
+  padding-top: 50px;
+}
+
+#sidebar-left {
+	width: 70px;
+}
+
+#sidebar ul {
+	min-height: 100%;
+	list-style-type: none;
+	padding-left: 0;
+}
+
+#sidebar li {
+	height: 50px;
+	text-align: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+
+#sidebar-left li {
+	border: 4px solid white;
+	border-radius: 10px;
+}
+
+#sidebar-right li {
+	padding-top: 10px;
+  color: white;
+}
+
+.incomplete {
+  color: rgb(38, 164, 235);
+}
+
+.current {
+	font-weight: bold;
+}
+
+.current-box {
+	background-color: white;
+	color: white;
+}
+
+.completed {
+	background-color: grey;
+	border-color: grey !important;
+}
+
+.completed span {
+	color: white;
+	font-size: 25pt;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+.row {
+  display:flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.col-left {
+  min-width: 50%;
+}
+
+.col-right {
+  min-width: 50%;
+}
+
+input {
+  width: 90%;
+  line-height: 40px;
+  font-size: 20px;
+}
+
+input, label {
+  display: block;
+}
+
+label {
+  font-size: 20pt;
+  font-weight: normal;
+}
+
+/* New bit ends here */
 
 * {
-	font-family: Helvetica;
-}
-
-#tonextbtn{
-	font-size: 24px;
-	color: #ffffff;
-
-}
-
-#toprevbtn{
-	font-size: 24px;
-	color: #ffffff;
+	font-family: 'Open Sans';
 }
 
 .btn {
@@ -46,7 +156,10 @@ h1 {
 }
 
 legend {
-	font-size: 20pt;
+	font-size: 30pt;
+	text-align: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
 }
 
 h2 {
@@ -97,43 +210,12 @@ textarea {
 	padding-bottom: 10px;
 }
 
-input[type=text] {
-	width: 100%;
-	height: 30px;
-	border: 1px solid #000000;
-	background-color: #ffffff;
-	border-style: solid;;
-	font-size: 14px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-input[type=text]:focus {
-	background-color: #f6f6f6;
-	border: 1px solid #000000;
-	width: 100%;
-	border-style: solid;
-}
-
-input[type=email] {
-	width: 100%;
-	height: 30px;
-	border: 1px solid #000000;
-	background-color: #ffffff;
-	border-style: solid;;
-	font-size: 14px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-
-
-/*#centered {
+#centered {
 	position: float;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}*/
+}
 
 .largetextfield {
 	margin-left: auto;
@@ -162,31 +244,19 @@ input[type=email] {
 	min-height: 100vh;
 }
 
-.empty1 {
-	display: flex;
-	flex-grow: 1;
-	width: 20%;
-	background-color: rgb(38, 164, 235);
-	height: inherit;
-	padding-left: 50px;
-	padding-top: 200px;
-}
-
-.content {
-	flex-grow: 1;
-	width: 80%;
+#content {
+	width: 79%;
 	background-color: #ffffff;
-	margin-left: 15px;
-	margin-right: 15px;
+  margin-left: 13%;
 	height: 100%;
 }
 
-/*.center {
+.center {
 	position: float;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}*/
+}
 
 .submitdiv {
 	flex-grow: 1;
@@ -196,15 +266,6 @@ input[type=email] {
 	border: 3px solid green;
 }
 
-.empty2 {
-	display: flex;
-	flex-grow: 2;
-	width: 10%;
-	background-color: rgb(38, 164, 235);
-	height: inherit;
-	padding-left: 50px;
-	padding-top: 200px;
-}
 .btnmain {
 	text-align:right;
 	position: fixed;
@@ -264,12 +325,6 @@ textarea {
 /* Stuff that Mark added for personal qualities */
 .QualitiesFlex {
 	display: flex;
-}
-
-.FlexColumn {
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
 }
 
 .disabledText {
