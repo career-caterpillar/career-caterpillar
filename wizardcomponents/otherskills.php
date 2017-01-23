@@ -7,7 +7,7 @@
         <legend>Other skills</legend>
 
         <div class = "row">
-          <div class="col-lg-8 col-lg-offset-2">
+          <div class="col-wholepage">
 
             <div id="languages">
 
@@ -41,7 +41,6 @@
        </div>
       </form>
     <script>
-      $( ".datepicker" ).datepicker();
       $("input[name='drivers']").tooltip({
         content: $("#dlhint").html()
       });

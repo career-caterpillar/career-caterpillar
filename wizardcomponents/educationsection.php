@@ -9,7 +9,7 @@
         <fieldset>
           <legend>Education History</legend>
           <div class = "row">
-            <div class="col-lg-8">
+            <div class="col-wholepage">
 
               <div id="education_hist">
 

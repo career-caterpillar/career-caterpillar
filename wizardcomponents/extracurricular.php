@@ -17,7 +17,7 @@
         <fieldset>
           <legend>Extracurricular</legend>
           <div class = "row">
-            <div class="col-lg-8">
+            <div class="col-wholepage">
                <div id="extracurricular_hist">
                  <div class = "inputfields">
                    <h2>Year</h2>
