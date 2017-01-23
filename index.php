@@ -18,7 +18,7 @@
     <div id="sidebar">
       <div id="sidebar-left">
         <ul>
-          <li id = "personaldetailsbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
+          <li id = "personaldetailsbtn" class="current-box"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "personalstatementbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "personalqualitiesbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "achievementsbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
@@ -32,16 +32,16 @@
       </div>
       <div id="sidebar-right">
         <ul>
-          <li class="current">Personal Details</li>
-          <li>Personal Statement</li>
-          <li>Personal Qualities</li>
-          <li>Achievements</li>
-          <li>Employment</li>
-          <li>Extracurricular</li>
-          <li>Education</li>
-          <li>Other Skills</li>
-          <li>Referees</li>
-          <li>CV</li>
+          <li id="pdlabel" class="current">Personal Details</li>
+          <li id="pslabel">Personal Statement</li>
+          <li id="pqlabel">Personal Qualities</li>
+          <li id="achievelabel">Achievements</li>
+          <li id="employlabel">Employment</li>
+          <li id="extracurlabel">Extracurricular</li>
+          <li id="edulabel" >Education</li>
+          <li id="skillslabel">Other Skills</li>
+          <li id="refslabel">Referees</li>
+          <li id="cvlabel">CV</li>
         </ul>
       </div>
     </div>
@@ -53,10 +53,11 @@
         <div id = "achievementssection"><?php include 'wizardcomponents/achievements.php';?></div>
         <div id = "employmentsection"><?php include 'wizardcomponents/employmentsection.php';?></div>
         <div id = "educationsection"><?php include 'wizardcomponents/educationsection.php';?></div>
-        <div id = "extracurricularsection"><?php include 'wizardcomponents/extracurricular.php';?></div>
         <div id = "otherskills"><?php include 'wizardcomponents/otherskills.php';?></div>
         <div id="refereespage"><?php  include 'wizardcomponents/refereespge.php';?></div>
-        <div id = "submitpage"><?php include 'wizardcomponents/submitpage.php';?></div>
+        <div id = "cvpreview"><?php include 'wizardcomponents/cvpreview.php';?></div>
+        <div id = "extracurricularsection"><?php include 'wizardcomponents/extracurricular.php';?></div>
+
       </div>
       <div id="buttonbar">
         <ul>
@@ -80,6 +81,5 @@
   </script>
 
 </body>
-</html>
 
 </html>
