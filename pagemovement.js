@@ -541,7 +541,9 @@ $(document).ready(function(){
 				$("#cvCreate").show();
 				$("#tonextbtn").css("visibility", "hidden");
 				$("#toprevbtn").css("visibility", "visible");
-				$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
+				$('#cv1').attr('src', $('#cv1').attr('src'));
+				$('#cv2').attr('src', $('#cv2').attr('src'));
+				$('#cv').attr('src', $('#cv').attr('src'));
 				curpage = pagenumber;
 			  break;
 
@@ -735,7 +737,9 @@ $(document).ready(function(){
 				default:
 					break;
 			}
-			$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
+			$('#cv1').attr('src', $('#cv1').attr('src'));
+			$('#cv2').attr('src', $('#cv2').attr('src'));
+			$('#cv').attr('src', $('#cv').attr('src'));
 		}
 	});
 });

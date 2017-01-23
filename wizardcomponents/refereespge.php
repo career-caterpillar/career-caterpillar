@@ -19,7 +19,7 @@
 		<fieldset>
 			<legend>Referees</legend>
 				<div class = "row">
-					<div class="col-lg-8">
+					<div class="col-wholepage">
 						<!-- Hint -->
 						<img id="refereeshelp" src="helpicon.png"/>
 						<p id="refereeshint" style="color:red; font-style:italic;">Ensure you contact your referees before you put them in your CV. You cannot use family here, ask people that know you well, and will represent you the best for the job you are applying for. Ensure you put your manager from your latest job here first, and then others that represent you following that</p><br><br>
@@ -28,6 +28,9 @@
 							<!--Name Input -->
 							<h3>Name<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_name[]' required>
+							<!--Company Input -->
+							<h3>Company<span class="redAsterisk">*</span></h3> <!-- MKH: Adds a new field "Referee Company" -->
+							<input type='text' name='referee_company[]' required>
 							<!--Position Input -->
 							<h3>Position<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_position[]' required>
