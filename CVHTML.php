@@ -109,6 +109,8 @@
 						<li> <?php echo $personal_statement; } ?></li> <!-- Add statment to CV-->
 					</ul>
 			</div>
+
+	
 			<div id="personalqualities">
 
 				<h4>PERSONAL QUALITIES</h4>
