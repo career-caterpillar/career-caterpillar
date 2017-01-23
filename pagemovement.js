@@ -5,12 +5,6 @@
 
 $(document).ready(function(){
 
-  // we have 5 pages
-	// 1: personal details
-	// 2: about me
-	// 3: outside skills
-	// 4: referees
-	// 5: submit
 	var curpage = 1;
 
 	/**
@@ -19,16 +13,18 @@ $(document).ready(function(){
 	*/
   function setup() {
 
-    $("#toprevbtn").hide();
-		$("#personalstatementsection").hide();
-    $("#personalqualitiessection").hide();
-    $("#achievementssection").hide();
-    $("#employmentsection").hide();
+    $("#toprevbtn").css("visibility", "hidden");
+    $("#refereespage").hide();
+    $("#submitpage").hide();
+    $("#cvCreate").hide();
+    $("#otherskills").hide();
     $("#extracurricularsection").hide();
     $("#educationsection").hide();
-    $("#otherskills").hide();
-    $("#refereespage").hide();
-		$("#cvpreview").hide();  // AV: CV Preview - hide cvpreview page
+    $("#employmentsection").hide();
+    $("#personalstatementsection").hide();
+    $("#personalqualitiessection").hide();
+    $("#achievementssection").hide();
+
   }
 
 	function hidepages() {//KC: hide all pages for use in gotoPage()
@@ -45,6 +41,19 @@ $(document).ready(function(){
 		$("#achievementssection").hide();
 		$( "#personaldetailspage").hide();
 
+	}
+
+	function removecurrentfromalllabels() { //LV removes the current class tag from all sidebar labels
+		$("#pdlabel").removeClass("current");
+		$("#pslabel").removeClass("current");
+		$("#pqlabel").removeClass("current");
+		$("#achievelabel").removeClass("current");
+		$("#employlabel").removeClass("current");
+		$("#extracurlabel").removeClass("current");
+		$("#edulabel").removeClass("current");
+		$("#skillslabel").removeClass("current");
+		$("#refslabel").removeClass("current");
+		$("#cvlabel").removeClass("current");
 	}
 
 	function setallincomplete() {//KC: set all page breadcrumbs to incomplete
@@ -103,8 +112,8 @@ $(document).ready(function(){
 
 	/** displays personal details section, sets up interactive components */
 	function personaldetailssetup() {
+
 		$("p").hide();
-		$("#cvpreviewbtn").show();
 
 		$("#emailhelp").click(function(){
 			if ($("#emailhint").is(":visible")) {
@@ -113,6 +122,7 @@ $(document).ready(function(){
 				$("#emailhint").fadeIn();
 			}
 		});
+
 
 
 		$("#dlhelp").click(function(){
@@ -195,12 +205,14 @@ $(document).ready(function(){
 				$("#refereeshint").fadeIn();
 			}
 		});
+
 	}
 
 	function validateForms(pagenumber){ //KC: validateForms for if pagenumber equals 1, 3,7,9
 			switch (pagenumber){
 				case 1:
 					if(!validateForm1()){ 						//MKH: If there are validation errors in the PERSONAL DETAILS entered, return the page that was not valid exit the switch statement.
+						$("#personaldetailsbtn").attr('class', "current-box");
 						return pagenumber;
 					} else {
 							$("#personaldetailsbtn").attr('class', "completed");
@@ -209,6 +221,7 @@ $(document).ready(function(){
 
 				case 3:
 					if(!validateForm4()) {
+						$("#personalqualitiesbtn").attr('class', "current-box");
 						return pagenumber;//MKH: If there are validation errors in the PERSONAL QUALITIES entered, exit the switch statement.
 					} else {
 						$("#personalqualitiesbtn").attr('class', "completed");
@@ -218,6 +231,7 @@ $(document).ready(function(){
 
 				case 7:
 		    	if(!validateForm3()){
+						$("#educationbtn").attr('class', "current-box");
 						return pagenumber;//MKH: If there are validation errors in the EDUCATION HISTORY entered, exit the switch statement.
 				} else {
 						$("#educationbtn").attr('class', "completed");
@@ -226,6 +240,7 @@ $(document).ready(function(){
 
 				case 9:
 					if(!validateForm2()) {
+						$("#refereesbtn").attr('class', "current-box");
 						return pagenumber;//MKH: If there are validation errors in the REFEREES entered, exit the switch statement.
 					} else {
 						$("#refereesbtn").attr('class', "completed");
@@ -299,11 +314,12 @@ $(document).ready(function(){
 
 			break;
 
-
 		case 8:
 		$("#otherskillsform").ajaxSubmit({
 			url: "wizardcomponents/otherskillshandler.php",type: "post"
 		});
+
+
 			break;
 
 		case 9:
@@ -319,6 +335,7 @@ $(document).ready(function(){
 	}
 
 }
+
 
   setup();
 	personaldetailssetup();
@@ -337,13 +354,15 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+					removecurrentfromalllabels();
 					$("#personaldetailsbtn").attr('class', "current-box");
+					$("#pdlabel").attr('class', "current");
 				}
         submitPage(curpage); //KC: submit lastpage that the user was in
         hidepages();//KC:  hide all pages so when user navigates from any page, that page will be hidden
 				$( "#personaldetailspage").show();
-				$("#tonextbtn").show();//KC:  hide and show tonext and toprev buttons inorder for user to navigate from last page to first without hideing both buttons
-				$("#toprevbtn").hide();
+				$("#tonextbtn").css("visibility", "visible");//KC:  hide and show tonext and toprev buttons inorder for user to navigate from last page to first without hideing both buttons
+				$("#toprevbtn").css("visibility", "hidden");
 
 				curpage = pagenumber;//KC: set current page for correct side scrolling
 				break;
@@ -354,13 +373,15 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+					removecurrentfromalllabels();
 					$("#personalstatementbtn").attr('class', "current-box");
+					$("#pslabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
         $("#personalstatementsection").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
 
@@ -372,13 +393,15 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+				removecurrentfromalllabels();
 				$("#personalqualitiesbtn").attr('class', "current-box");
+				$("#pqlabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 				$("#personalqualitiessection").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
 
@@ -387,18 +410,20 @@ $(document).ready(function(){
 
 			case 4:
 
-				setincomplete(curpage);
+			  setincomplete(curpage);
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+				removecurrentfromalllabels();
 				$("#achievementsbtn").attr('class', "current-box");
+				$("#achievelabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 
 				$("#achievementssection").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 				curpage = pagenumber;
 
 				break;
@@ -409,13 +434,15 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+					removecurrentfromalllabels();
 				$("#employmentbtn").attr('class', "current-box");
+				$("#employlabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 				$("#employmentsection").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 				curpage = pagenumber;
 
 				break;
@@ -426,13 +453,15 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+					removecurrentfromalllabels();
 				$("#extracurricularbtn").attr('class', "current-box");
-				}
+				$("#extracurlabel").attr('class', "current");
+			}
 				submitPage(curpage);
 				hidepages();
 				$("#extracurricularsection").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
 
@@ -444,14 +473,16 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+				removecurrentfromalllabels();
 				$("#educationbtn").attr('class', "current-box");
+				$("#edulabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 
 				$("#educationsection").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
 
@@ -463,31 +494,34 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+				removecurrentfromalllabels();
 				$("#otherskillsbtn").attr('class', "current-box");
+				$("#skillslabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 				$("#otherskills").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
 
 				break;
 
 			case 9:
-
 				setincomplete(curpage);
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+					removecurrentfromalllabels();
 					$("#refereesbtn").attr('class', "current-box");
+					$("#refslabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 				$("#refereespage").show();
-				$("#tonextbtn").show();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "visible");
+				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
 				break;
@@ -497,14 +531,16 @@ $(document).ready(function(){
 				if (validateForms(curpage) === curpage) {
 					break;
 				} else {
+				removecurrentfromalllabels();
 				$("#cvbtn").attr('class', "current-box");
+				$("#pslabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
 				$("#submitpage").show();
 				$("#cvCreate").show();
-				$("#tonextbtn").hide();
-				$("#toprevbtn").show();
+				$("#tonextbtn").css("visibility", "hidden");
+				$("#toprevbtn").css("visibility", "visible");
 				$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
 				curpage = pagenumber;
 			  break;
@@ -513,17 +549,8 @@ $(document).ready(function(){
 				break;
 		}
 
-}
 
-	// hides current section and displays the previous section when the user clicks the back button
-	$("#toprevbtn").click(function() {
-
-		var nextpage = curpage;
-		nextpage--;
-		gotoPage(nextpage);
-
-		});
-
+	}
 	//  hides current section and displays the next section when the user clicks the next button
 	$("#tonextbtn").click(function() {
 
@@ -534,7 +561,14 @@ $(document).ready(function(){
 
 	});
 
+	// hides current section and displays the previous section when the user clicks the back button
+	$("#toprevbtn").click(function() {
 
+		var nextpage = curpage;
+		nextpage--;
+		gotoPage(nextpage);
+
+	});
 
 	$("#personaldetailsbtn").click(function() { // gotoPage selected by user
 		gotoPage(1);
@@ -589,5 +623,120 @@ $(document).ready(function(){
 		gotoPage(10);
 	});
 
+  $("#cvpreviewbtn").click(function() {
+
+		if ($("#cvpreview").is(":visible")) {
+			$("#toprevbtn").show();
+			$("#tonextbtn").show();
+			$("#cvpreview").hide();
+			// show current page and hide cv
+
+			switch (curpage) {
+				case 1:
+					$("#personaldetailspage").show();
+					$("#toprevbtn").hide();
+					break;
+
+				case 2:
+					$("#personalstatementsection").show();
+					break;
+
+				case 3:
+			    $("#personalqualitiessection").show();
+					break;
+
+				case 4:
+				  $("#achievementssection").show();
+					break;
+
+				case 5:
+					$("#employmentsection").show();
+					break;
+
+				case 6:
+					$("#extracurricularsection").show();
+					break;
+
+				case 7:
+					$("#educationsection").show();
+					break;
+
+				case 8:
+					$("#otherskills").show();
+					break;
+
+				case 9:
+					$("#refereespage").show();
+					break;
+
+				case 10:
+					$("#cvpreview").show();
+					$("#tonextbtn").hide();
+					break;
+
+				default:
+					break;
+			}
+		} else {
+			$("#cvpreview").show();
+			$("#toprevbtn").hide();
+			$("#tonextbtn").hide();
+			// hide current page and show cv
+			switch (curpage) {
+				case 1:
+					$("#personaldetailspage").hide();
+					personaldetailsubmit();
+					break;
+
+				case 2:
+					$("#personalstatementsection").hide();
+					personalstatementsubmit();
+					break;
+
+				case 3:
+			    $("#personalqualitiessection").hide();
+					personalqualitiessubmit();
+					break;
+
+				case 4:
+				  $("#achievementssection").hide();
+					achievementsubmit();
+					break;
+
+				case 5:
+					$("#employmentsection").hide();
+					employmentsubmit();
+					break;
+
+				case 6:
+					$("#extracurricularsection").hide();
+					extracurricularsubmit();
+					break;
+
+				case 7:
+					$("#educationsection").hide();
+					educationsubmit();
+					break;
+
+				case 8:
+					$("#otherskills").hide();
+					otherskillssubmit();
+					break;
+
+				case 9:
+					$("#refereespage").hide();
+					refereesubmit();
+					break;
+
+				case 10:
+					$("#cvpreview").hide();
+					break;
+
+				default:
+					break;
+			}
+			$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
+		}
+	});
 
 });

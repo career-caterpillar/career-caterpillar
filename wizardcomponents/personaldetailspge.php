@@ -60,7 +60,11 @@
                    <div class="row">
                      <div class="col-left">
                        <label>School</label>
-                        <input type="text" name="school_name" value="<?php if($fileexists == true && empty($school_name) == false){echo $school_name;} ?>" placeholder="My School"> <!-- MKH: Makes school field not mandatory -->
+                       <input type="text" name="school_name" value="<?php if($fileexists == true && empty($school_name) == false){echo $school_name;} ?>" placeholder="My School"> <!-- MKH: Makes school field not mandatory -->
+                     </div>
+                     <div class="col-right">
+                       <label>Email<span class="redAsterisk">*</span></label>
+                       <input type="email" name="email" value="<?php if($fileexists == true && empty($email) == false){echo $email;} ?>" required placeholder="my.email@blueprint.co.nz">
                      </div>
                     </div>
             </fieldset>

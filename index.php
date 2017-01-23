@@ -18,7 +18,7 @@
     <div id="sidebar">
       <div id="sidebar-left">
         <ul>
-          <li id = "personaldetailsbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
+          <li id = "personaldetailsbtn" class="current-box"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "personalstatementbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "personalqualitiesbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "achievementsbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
@@ -32,16 +32,16 @@
       </div>
       <div id="sidebar-right">
         <ul>
-          <li class="current">Personal Details</li>
-          <li>Personal Statement</li>
-          <li>Personal Qualities</li>
-          <li>Achievements</li>
-          <li>Employment</li>
-          <li>Extracurricular</li>
-          <li>Education</li>
-          <li>Other Skills</li>
-          <li>Referees</li>
-          <li>CV</li>
+          <li id="pdlabel" class="current">Personal Details</li>
+          <li id="pslabel">Personal Statement</li>
+          <li id="pqlabel">Personal Qualities</li>
+          <li id="achievelabel">Achievements</li>
+          <li id="employlabel">Employment</li>
+          <li id="extracurlabel">Extracurricular</li>
+          <li id="edulabel" >Education</li>
+          <li id="skillslabel">Other Skills</li>
+          <li id="refslabel">Referees</li>
+          <li id="cvlabel">CV</li>
         </ul>
       </div>
     </div>
