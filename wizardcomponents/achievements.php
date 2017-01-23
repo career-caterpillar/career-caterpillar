@@ -31,17 +31,18 @@
 
 								<div id="achievements_hist">
 								<!-- Year Input -->
+
 								<h2>Year </h2>
-                                                                <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
-                                                                <select name='achieve_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
-                                                                        <?php for ($i = 2050; $i >= 2018; $i--) : ?>
-                                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                                        <?php endfor; ?>
-                                                                        <option value="2017" selected>2017</option>
-                                                                        <?php for ($i = 2016; $i >= 1990; $i--) : ?>
-                                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                                        <?php endfor; ?>
-                                                                </select>
+                      <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
+                      <select name='achieve_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
+                        <?php for ($i = 2050; $i >= 2018; $i--) : ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      	<?php endfor; ?>
+                            <option value="2017" selected>2017</option>
+                        <?php for ($i = 2016; $i >= 1990; $i--) : ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                              <?php endfor; ?>
+                        </select>
 								<!-- Achievements Textarea -->
 								<h2>Achievements</h2><br>
 								<textarea class="largetextfield" name="awards_achievements[]" cols="70" rows="7"></textarea>

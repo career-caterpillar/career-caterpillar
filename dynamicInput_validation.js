@@ -9,8 +9,8 @@ these are helper funcitons for edit/delete/feedback functionality
 
 function bubbleyearachieve(bubblenode){
     var parentnode = bubblenode.parentNode;
-    var cmp = Number(bubblenode.children[1].getElementsByTagName('input')[0].value);// find year value of input field that belongs to input feild wrapper
-    var nextsibval =  Number(bubblenode.nextSibling.children[1].getElementsByTagName('input')[0].value);
+    var cmp = Number(bubblenode.children[1].getElementsByTagName('select')[0].value);// find year value of input field that belongs to input feild wrapper
+    var nextsibval =  Number(bubblenode.nextSibling.children[1].getElementsByTagName('select')[0].value);
     //var prevvalue =   Number(bubblenode.previousSibling.children[1].getElementsByTagName('input')[0].value);
     console.log(cmp);
     console.log(nextsibval);
@@ -19,7 +19,7 @@ function bubbleyearachieve(bubblenode){
 
       while (cmp < nextsibval){
           parentnode.insertBefore(bubblenode.nextSibling, bubblenode);
-          nextsibval =  Number(bubblenode.nextSibling.children[1].getElementsByTagName('input')[0].value);
+          nextsibval =  Number(bubblenode.nextSibling.children[1].getElementsByTagName('select')[0].value);
         }
 
   /*  }else if (cmp > prevvalue) {
@@ -122,11 +122,19 @@ function editSection(inputnode){// hides all other irrelevent elements and shows
 }
 
 function finishSection(inputnode){
+
+  var yearVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[0].value);
+  var achVal =  String(jumpBack(inputnode,2).getElementsByTagName('textarea')[0].value);
+
   hideallnestedinputs(jumpBack(inputnode,3));
   hidefinished(jumpBack(inputnode,3));
   showhead(jumpBack(inputnode,3));
   showdeletes(jumpBack(inputnode,3));
   showedits(jumpBack(inputnode,3));
+
+  jumpBack(inputnode,2).appendChild(buildFeedback(yearVal, achVal));
+  jumpBack(inputnode,2).getElementsByClassName("feedback")[0].remove();
+
 
 }
 
@@ -150,8 +158,6 @@ function buildFeedback(year, achievments){ /*builds a feedback div programmatica
                         editbtn + finishedbtn + deletebtn ;//concatenate all and insert into newDiv
     return newdiv;
 }
-
-/**/
 
 function addLanguageInput(divName) {
 
@@ -187,27 +193,23 @@ function addAchievementInput(divName) {
 }
 
 
-/* kahu- I'm using this section to test delete/edit functionality*/
 
-/* changes:
+function deleteSection(inputnode){// deletes feedback div and form feilds associated with it when user clicks delete.
 
-1)  got rid of br tags and strong tags from innhtml string so each appended child look the same
-2)  created function that builds feedback html div
-3)  created
-3)  modified addExtracurricularInput for dynamic feedback
-
-*/
-
-function deleteSection(inputnode){
-
-  inputnode.parentNode.nextSibling.remove();
-  inputnode.parentNode.remove();
+  jumpBack(inputnode,2).remove();
 
 }
 
 function editSection(inputnode){
+
+  hidehead(jumpBack(inputnode,3));
+  hideallnestedinputs(jumpBack(inputnode,3));
+  hideedits(jumpBack(inputnode,3));
+  hidedeletes(jumpBack(inputnode,3));
+
+  inputnode.nextSibling.style.display = 'inline-block'; // display finished button
+  jumpBack(inputnode,1).previousSibling.style.display = 'block';
   var childrenNo =  inputnode.parentNode.children.length;
-  inputnode.parentNode.nextSibling.style.display = 'block';
 
 }
 
@@ -228,7 +230,7 @@ function addExtracurricularInput(divName) {
 
     console.log(childrenNo);
 
-    var yearVal = String(firstNode.getElementsByTagName('input')[0].value);
+    var yearVal = String(firstNode.getElementsByTagName('select')[0].value);
     var achVal =  String(firstNode.getElementsByTagName('textarea')[0].value);
 
     achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
@@ -247,10 +249,10 @@ function addExtracurricularInput(divName) {
         parentnode.insertBefore(wrapper,firstNode);
         firstNode = parentnode.children[0];//refresh list to reference wrapper
 
-        wrapper.appendChild(buildFeedback(yearVal, achVal)); // fill wrapper with divs
         wrapper.appendChild(firstNode.nextSibling);
-        parentnode.insertBefore(newdiv,firstNode);
+        wrapper.appendChild(buildFeedback(yearVal, achVal)); // fill wrapper with divs
 
+        parentnode.insertBefore(newdiv,firstNode);
         parentnode.insertBefore(document.getElementById("addxtracrr"),parentnode.children[1]);// move add extracurricular achievement
 
         bubbleyearachieve(wrapper);
@@ -406,7 +408,13 @@ function validateForm3() {
 
     var element = document.getElementsByName("education_year[]");
     var element2 = document.getElementsByName("education_achievements[]");
-    for (i = 0; i < element.length; i++) {  // MKH: Removes Year-field validation for "empty" and "non-numeric" data as the input text replaced by drop-down option.
+    for (i = 0; i < element.length; i++) {
+        if (element[i].value.trim() == "") {
+            output_msg += "* The year of education cannot be empty!\n";
+        }
+        else if (!(num_only.test(element[i].value))) {
+            output_msg += "* The year of education '" + element[i].value + "' can only contain numbers e.g. 2017!\n";
+        }
         if (element2[i].value.trim() == "") {
             output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }

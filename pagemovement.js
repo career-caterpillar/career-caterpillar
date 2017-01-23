@@ -623,7 +623,9 @@ $(document).ready(function(){
 		gotoPage(10);
 	});
 
-  $("#cvpreviewbtn").click(function() {
+
+
+/* this section does nothing use gotoPage $("#cvpreviewbtn").click(function() {
 
 		if ($("#cvpreview").is(":visible")) {
 			$("#toprevbtn").show();
@@ -737,6 +739,6 @@ $(document).ready(function(){
 			}
 			$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
 		}
-	});
+	}); */
 
 });
