@@ -81,8 +81,8 @@
     });
 
     $( ".styledselect" ).selectmenu({
-    icons: { button: "ui-icon-caret-1-s" };
-    width: 200;
+    icons: { button: "ui-icon-caret-1-s" },
+    width: 200,
     });
 
   </script>
