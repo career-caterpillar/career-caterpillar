@@ -7,7 +7,7 @@
         <legend>Other skills</legend>
 
         <div class = "row">
-          <div class="col-lg-8">
+          <div class="col-wholepage">
 
             <div id="languages">
 
@@ -41,6 +41,3 @@
           </div>
        </div>
       </form>
-    <script>
-      $( ".datepicker" ).datepicker();
-    </script>

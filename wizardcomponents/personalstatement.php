@@ -19,7 +19,7 @@
 				<fieldset>
 				<legend>Personal Statement</legend>
 					<div class = "row">
-						<div class="col-lg-8">
+						<div class="col-wholepage">
 							<img id="pshelp" src="helpicon.png" />
 							<!-- Hint -->
 							<p id="pshint" style="color: red; font-style:italic;">

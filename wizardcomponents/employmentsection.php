@@ -6,7 +6,7 @@
           <fieldset>
             <legend>Employment/Volunteering</legend>
             <div class = "row">
-              <div class="col-lg-8">
+              <div class="col-wholepage">
                 <!-- SECTION HINT -->
                 <img id="employmenthelp" src="helpicon.png"/>
                 <p id="employmenthint" style="color:red; font-style:italic;">
@@ -37,7 +37,7 @@
                             <option value="Oct">October</option>
                             <option value="Nov">November</option>
                             <option value="Dec">December</option>
-                    </select> 
+                    </select>
                     <select name="employment_start_year[]">     <!-- MKH: Allows Start Year to be selected between 1990 to 2050. Default 2017 -->
                             <?php for ($i = 2050; $i >= 2018; $i--) : ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -67,12 +67,12 @@
                             <option value="Oct">October</option>
                             <option value="Nov">November</option>
                             <option value="Dec">December</option>
-                    </select> 
+                    </select>
                     <select name="employment_end_year[]"> <!-- MKH: Allows End Year to be selected between 1990 to 2050. Default 2017 -->
                             <?php for ($i = 2050; $i >= 2018; $i--) : ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                             <?php endfor; ?>
-                            <option value="2017" selected>2017</option> 
+                            <option value="2017" selected>2017</option>
                             <?php for ($i = 2016; $i >= 1990; $i--) : ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                             <?php endfor; ?>
