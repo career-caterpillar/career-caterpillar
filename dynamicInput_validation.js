@@ -270,7 +270,7 @@ var countReferee = 2;
 /** adds new input fields for referees */
 function addRefereeInput(divName) {
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><h2>Referee [" + countReferee + "]</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
+    newdiv.innerHTML = "<hr><h2>Referee [" + countReferee + "]</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company<span class='redAsterisk'>*</span></h3><input type='text' name='referee_company[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
     document.getElementById(divName).appendChild(newdiv);
     countReferee++;
 }
@@ -359,12 +359,20 @@ function validateForm2() {
     var ans2 = document.getElementsByName("referee_position[]");
     var ans3 = document.getElementsByName("referee_email[]");
     var ans4 = document.getElementsByName("referee_phone[]");
+    var ans5 = document.getElementsByName("referee_company[]");
     for (i = 0; i < ans1.length; i++) {
         if (ans1[i].value.trim() == "") {
             output_msg += "* The Referee [" + (1 + i) + "] 'Name' field is empty!\n";
         }
         else if (!(text_only.test(ans1[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Name' field can only contain text!\n";
+        }
+        /** MKH: Validates that the new field "referee_company" is not empty & contains text input only **/
+        if (ans5[i].value.trim() == "") {
+            output_msg += "* The Referee [" + (1 + i) + "] 'Company' field is empty!\n";
+        }
+        else if (!(text_only.test(ans5[i].value))) {
+            output_msg += "* The Referee [" + (1 + i) + "] 'Company' field can only contain text!\n";
         }
         if (ans2[i].value.trim() == "") {
             output_msg += "* The Referee [" + (1 + i) + "] 'Position' field is empty!\n";
