@@ -357,3 +357,8 @@ textarea {
 		list-style-type: none;
 		float: right;
 }
+
+/*AV: CV Template*/
+.cvtemplates {
+  margin:30px;
+}
