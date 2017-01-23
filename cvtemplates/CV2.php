@@ -1,7 +1,7 @@
 <?php
 
 	$cvstyle = file_get_contents('stylesheet/CVstyle2.css');
-	$cvbody = file_get_contents('http://localhost/CV2/CVHTML.php');
+	$cvbody = file_get_contents('http://localhost/cvhome/CVHTML.php');
 	$cv = $cvstyle . $cvbody;
 
 	include("mpdf60/mpdf.php");
