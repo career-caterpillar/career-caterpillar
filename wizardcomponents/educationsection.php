@@ -9,7 +9,7 @@
         <fieldset>
           <legend>Education History</legend>
           <div class = "row">
-            <div class="col-lg-8">
+            <div class="col-wholepage">
               <!-- SECTION HINT -->
               <img id="educationhelp" src="helpicon.png"/>
               <p id="educationhint" style="color:red; font-style:italic;">
@@ -30,7 +30,7 @@
                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php endfor; ?>
                  </select>
-                  
+
                   <h2>Achievements<span class="redAsterisk">*</span></h2>
                   <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required></textarea>
 

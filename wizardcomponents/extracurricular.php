@@ -17,7 +17,7 @@
         <fieldset>
           <legend>Extracurricular</legend>
           <div class = "row">
-            <div class="col-lg-8">
+            <div class="col-wholepage">
               <!-- SECTION HINT -->
               <img id="extracurrichelp" src="helpicon.png"/>
           	  <p id="extracurrichint" style="color:red; font-style:italic;">

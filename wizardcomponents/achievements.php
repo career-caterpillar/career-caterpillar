@@ -21,7 +21,7 @@
 				<fieldset>
 					<legend>Achievements & Awards</legend>
 						<div class = "row">
-							<div class="col-lg-8">
+							<div class="col-wholepage">
 							<!-- Hint -->
 								<img id="achievehelp" src="helpicon.png" />
 								<p id="achievehint"style="color: red;font-style:italic;">
