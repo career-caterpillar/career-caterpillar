@@ -38,6 +38,10 @@ body {
   padding-bottom: 20%;
 }
 
+#buttonbar span {
+  cursor:pointer;
+}
+
 #sidebar {
 	display: flex;
 	width: 14%;
@@ -68,6 +72,7 @@ body {
 #sidebar-left li {
 	border: 4px solid white;
 	border-radius: 10px;
+  cursor: pointer;
 }
 
 #sidebar-right li {
