@@ -28,15 +28,9 @@
 
 								<h2>Year </h2>
                       <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
-                      <select name='achieve_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
-                        <?php for ($i = 2050; $i >= 2018; $i--) : ?>
-                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                      	<?php endfor; ?>
-                            <option value="2017" selected>2017</option>
-                        <?php for ($i = 2016; $i >= 1990; $i--) : ?>
-                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                              <?php endfor; ?>
-                        </select>
+                      <select name='achieve_year[]' class='year-dd'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default Current Year -->
+                      <script>document.write(years_2050_1990)</script> <!-- MKH: Option tags written dynamically from dyamicInput_validation.js variable -->
+                      </select>
 								<!-- Achievements Textarea -->
 								<h2>Achievements</h2><br>
 								<textarea class="largetextfield" name="awards_achievements[]" title="This is all about highlighting the great things you have done whether at school or in your own time. Acheivements and awards help personalise your CV. Make sure they add to who you want to present to your employer, don't just put everything down." cols="70" rows="7"></textarea>

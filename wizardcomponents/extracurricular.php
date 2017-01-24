@@ -22,14 +22,8 @@
                  <div class = "inputfields">
                    <h2>Year</h2>
                    <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
-                   <select name='extracurricular_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
-                           <?php for ($i = 2050; $i >= 2018; $i--) : ?>
-                              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                          <?php endfor; ?>
-                          <option value="2017" selected>2017</option>
-                          <?php for ($i = 2016; $i >= 1990; $i--) : ?>
-                              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                          <?php endfor; ?>
+                   <select name='extracurricular_year[]' class='year-dd'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default Current Year -->
+                   <script>document.write(years_2050_1990)</script> <!-- MKH: Option tags written dynamically from dyamicInput_validation.js variable -->
                    </select>
                    <h2>Achievements</h2>
                    <textarea name="extracurricular_achievements[]" class = "largetextfield" cols="70" rows="7" title="Involement in sport, the arts and leadership oppurtunites show you are motivated, and you can commit. Involvement in these send great messages to your employer, so be sure to place them on your CV here."></textarea>
