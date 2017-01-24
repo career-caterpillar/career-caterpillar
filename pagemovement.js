@@ -219,6 +219,14 @@ $(document).ready(function(){
 						 	break;
 					}
 
+				case 2:
+					if(!personalStatementFilled()) {
+						return;
+					}
+
+					$("#personalstatementbtn").attr('class', "completed");
+					break;
+
 				case 3:
 					if(!validateForm4()) {
 						$("#personalqualitiesbtn").attr('class', "current-box");

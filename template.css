@@ -72,6 +72,7 @@ body {
 	border: 4px solid white;
 	border-radius: 10px;
   cursor: pointer;
+  font-size: 25pt;
 }
 
 #sidebar-right li {
@@ -80,6 +81,10 @@ body {
 }
 
 .incomplete {
+  color: rgb(38, 164, 235);
+}
+
+.incomplete-required {
   color: rgb(38, 164, 235);
 }
 
@@ -92,18 +97,11 @@ body {
 	color: white;
 }
 
-.completed {
-	background-color: grey;
-	border-color: grey !important;
-}
-
 .completed span {
 	color: white;
-	font-size: 25pt;
-	padding-left: 5px;
+  padding-left: 5px;
 	padding-top: 5px;
 }
-
 
 .row {
   display:flex;
@@ -336,12 +334,36 @@ textarea {
 
 /* Stuff that Mark added for personal qualities */
 .QualitiesFlex {
-	display: flex;
+  -moz-columns: 3;
+  columns: 3;
+}
+
+.QualitiesFlex label {
+  font-size: 16pt;
+}
+
+.QualitiesFlex input {
+  display: inline;
+  width: auto;
 }
 
 .disabledText {
 	color: #888;
 	font-style: italic;
+}
+
+
+/* Tooltip styling */
+.ui-tooltip {
+
+}
+
+.ui-tooltip-content {
+
+}
+
+.ui-tooltip-content a {
+  text-decoration: underline;
 }
 
 .redAsterisk {

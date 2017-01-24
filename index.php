@@ -20,7 +20,7 @@
         <ul>
           <li id = "personaldetailsbtn" class="current-box"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "personalstatementbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
-          <li id = "personalqualitiesbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
+          <li id = "personalqualitiesbtn" class="incomplete-required"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "achievementsbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "employmentbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "extracurricularbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
@@ -71,11 +71,19 @@
 
   <script src="pagemovement.js"> </script>
 
+  <!--global form scripts to be put in some JS file -->
+
   <script>
+    $("* :input").tooltip({
+    show: {effect: "drop" },
+    hide: {effect: "drop" },
+    position: {my: "right top", at: "right bottom + 100"},
+    items: ":input:focus",
+    });
 
     $( ".styledselect" ).selectmenu({
-    icons: { button: "ui-icon-caret-1-s" };
-    width: 200;
+    icons: { button: "ui-icon-caret-1-s" },
+    width: 200,
     });
 
   </script>
