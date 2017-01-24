@@ -330,7 +330,7 @@ function addRefereeInput(divName) {
 
         if ((nameVal || companyVal || positionVal || emailVal || phoneVal) !== ""){
 
-          newdiv.innerHTML = "<hr><h2>Referee</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company<span class='redAsterisk'>*</span></h3><input type='text' name='referee_company[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
+          newdiv.innerHTML = "<hr><h2>Referee</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company</h3><input type='text' name='referee_company[]'><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
           firstNode.style.display = 'none'; // hide firstnode
 
           parentnode.insertBefore(wrapper,firstNode);
@@ -409,9 +409,9 @@ function validateForm1() {
         output_msg += "* The 'Mobile' field can only contain numbers!\n";
     }
 
-    /*if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
+    if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
         output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
-    }  coommented out because feild doesnot exist in modified form*/
+    } //MKH: Re-instate missing email validation
 
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {
@@ -446,11 +446,8 @@ function validateForm2() {
         else if (!(text_only.test(ans1[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Name' field can only contain text!\n";
         }
-        /** MKH: Validates that the new field "referee_company" is not empty & contains text input only **/
-        if (ans5[i].value.trim() == "") {
-            output_msg += "* The Referee [" + (1 + i) + "] 'Company' field is empty!\n";
-        }
-        else if (!(text_only.test(ans5[i].value))) {
+        /** MKH: Updates validation of field "referee_company" to contain text input only if entered**/
+        if (ans5[i].value.trim() !== ""  && !(text_only.test(ans5[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Company' field can only contain text!\n";
         }
         if (ans2[i].value.trim() == "") {
