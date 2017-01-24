@@ -31,8 +31,8 @@
 							<h3>Name<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_name[]' required>
 							<!--Company Input -->
-							<h3>Company<span class="redAsterisk">*</span></h3> <!-- MKH: Adds a new field "Referee Company" -->
-							<input type='text' name='referee_company[]' required>
+							<h3>Company</h3> <!-- MKH: Updates referee Company to be non-mandatory -->
+							<input type='text' name='referee_company[]'>
 							<!--Position Input -->
 							<h3>Position<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_position[]' required>
