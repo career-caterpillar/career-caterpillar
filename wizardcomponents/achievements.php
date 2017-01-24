@@ -31,7 +31,7 @@
 
 								<div id="achievements_hist">
 								<!-- Year Input -->
-
+								<div class = "inputfields">
 								<h2>Year </h2>
                       <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
                       <select name='achieve_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
@@ -47,7 +47,8 @@
 								<h2>Achievements</h2><br>
 								<textarea class="largetextfield" name="awards_achievements[]" cols="70" rows="7"></textarea>
 							</div>
-							<input type="button" class="btn btn-outline" value="Add another year of achievements" onClick="addAchievementInput('achievements_hist');">
+							</div>
+							<input id = "addach" type="button" class="btn btn-outline" value="Add another year of achievements" onClick="addAchievementInput('achievements_hist');">
 						</div>
 					</div>
 				</fieldset>

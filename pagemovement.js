@@ -620,8 +620,8 @@ $(document).ready(function(){
 		gotoPage(10);
 	});
 
-
 	$("#previewBtn").click(function() {
 		gotoPage(10);
 	});
+
 });
