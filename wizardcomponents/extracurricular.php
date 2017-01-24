@@ -23,7 +23,7 @@
                    <h2>Year</h2>
                    <!-- MKH: Replaces single line input for Year with a Drop-down selection -->
                    <select name='extracurricular_year[]'>     <!-- MKH: Allows Year to be selected between 1990 to 2050. Default 2017 -->
-                          <?php for ($i = 2050; $i >= 2018; $i--) : ?>
+                           <?php for ($i = 2050; $i >= 2018; $i--) : ?>
                               <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                           <?php endfor; ?>
                           <option value="2017" selected>2017</option>

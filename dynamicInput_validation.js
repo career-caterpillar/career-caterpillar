@@ -9,29 +9,23 @@ these are helper funcitons for edit/delete/feedback functionality
 
 function bubbleyearachieve(bubblenode){
     var parentnode = bubblenode.parentNode;
-    var cmp = Number(bubblenode.children[1].getElementsByTagName('input')[0].value);// find year value of input field that belongs to input feild wrapper
-    var nextsibval =  Number(bubblenode.nextSibling.children[1].getElementsByTagName('input')[0].value);
-    //var prevvalue =   Number(bubblenode.previousSibling.children[1].getElementsByTagName('input')[0].value);
-    console.log(cmp);
+
+    console.log(parentnode);
+    var cmp = Number(bubblenode.getElementsByTagName('select')[0].value);// find year value of input field that belongs to input feild wrapper
+
+    if (bubblenode.nextSibling !== 'null'){
+      var nextsibval =  Number(bubblenode.nextSibling.getElementsByTagName('select')[0].value);
+    }else {
+      return;
+    }
+
     console.log(nextsibval);
 
-    /*if (cmp < nextsibval){*/
 
       while (cmp < nextsibval){
           parentnode.insertBefore(bubblenode.nextSibling, bubblenode);
-          nextsibval =  Number(bubblenode.nextSibling.children[1].getElementsByTagName('input')[0].value);
-        }
-
-  /*  }else if (cmp > prevvalue) {
-
-      while (cmp > prevvalue ){
-          parentnode.insertBefore(bubblenode,bubblenode.previousSibling);
-          prevvalue =   Number(bubblenode.previousSibling.children[1].getElementsByTagName('input')[0].value);
+          nextsibval =  Number(bubblenode.nextSibling.getElementsByTagName('select')[0].value);
       }
-
-    }*/
-
-
 
 }
 
@@ -117,16 +111,45 @@ function editSection(inputnode){// hides all other irrelevent elements and shows
   inputnode.nextSibling.style.display = 'inline-block';
   jumpBack(inputnode,1).nextSibling.style.display = 'block';
 
-  console.log(jumpBack(inputnode,1).nextSibling);
+  //console.log(jumpBack(inputnode,1).nextSibling);
 
 }
 
 function finishSection(inputnode){
+
+  var yearVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[0].value);
+  var achVal =  String(jumpBack(inputnode,2).getElementsByTagName('textarea')[0].value);
+  var workingnode = jumpBack(inputnode,2);
+
   hideallnestedinputs(jumpBack(inputnode,3));
   hidefinished(jumpBack(inputnode,3));
   showhead(jumpBack(inputnode,3));
   showdeletes(jumpBack(inputnode,3));
   showedits(jumpBack(inputnode,3));
+
+  workingnode.appendChild(buildFeedback(yearVal, achVal));
+  workingnode.getElementsByClassName("feedback")[0].remove();
+
+}
+
+function finishrefsSection(inputnode){
+
+  var nameVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[0].value);
+  var companyVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[1].value);
+  var positionVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[2].value);
+  var emailVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[3].value);
+  var phoneVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[4].value);
+
+  var workingnode = jumpBack(inputnode,2);
+
+  hideallnestedinputs(jumpBack(inputnode,3));
+  hidefinished(jumpBack(inputnode,3));
+  showhead(jumpBack(inputnode,3));
+  showdeletes(jumpBack(inputnode,3));
+  showedits(jumpBack(inputnode,3));
+
+  workingnode.appendChild(buildrefFeedback(nameVal, companyVal,positionVal, emailVal, phoneVal));
+  workingnode.getElementsByClassName("feedback")[0].remove();
 
 }
 
@@ -151,7 +174,27 @@ function buildFeedback(year, achievments){ /*builds a feedback div programmatica
     return newdiv;
 }
 
-/**/
+function buildrefFeedback(name, company,position, email, phone){ /*builds a feedback div programmatically*/
+
+    var newdiv = document.createElement('div');//create div
+    newdiv.className = "feedback";//name div "feedback" for css
+
+    var nameVal = "<h2 style= 'text-decoration: underline;'>Name:</h2>" +  "<p>" + name + "</p>"; //create heading
+    var companyVal = "<h2 style= 'text-decoration: underline;'>Company:</h2>" +  "<p>" + company + "</p>";// enter year into p tag
+    var positionVal = "<h2 style= 'text-decoration: underline;'>Position:</h2>" +  "<p>" + position + "</p>";//create achievment heading
+    var emailVal = "<h2 style= 'text-decoration: underline;'>Email:</h2>" +  "<p>" + email + "</p>";// enter achievment into p tag
+    var phoneVal = "<h2 style= 'text-decoration: underline;'>Phone:</h2>" +  "<p>" + phone + "</p>";// enter achievment into p tag
+
+
+    var editbtn =  '<input type="button" class="btn btn-primary btn-outline btn-sm  editbtns" value="edit"  onClick="editSection(this);">';// create edit button
+    var finishedbtn = '<input type="button" class="btn btn-primary btn-outline btn-sm  finishedbtns" value="finished" style = "display : none"  onClick="finishrefsSection(this);">';// create finished button
+    var deletebtn = '<input type="button" class="btn btn-primary btn-outline btn-sm  deletebtns" value="delete" onClick="deleteSection(this);">';// create delete button
+
+    newdiv.innerHTML = nameVal + companyVal +
+                        positionVal + emailVal + phoneVal +
+                        editbtn + finishedbtn + deletebtn ;//concatenate all and insert into newDiv
+    return newdiv;
+}
 
 function addLanguageInput(divName) {
 
@@ -187,27 +230,24 @@ function addAchievementInput(divName) {
 }
 
 
-/* kahu- I'm using this section to test delete/edit functionality*/
 
-/* changes:
+function deleteSection(inputnode){// deletes feedback div and form feilds associated with it when user clicks delete.
 
-1)  got rid of br tags and strong tags from innhtml string so each appended child look the same
-2)  created function that builds feedback html div
-3)  created
-3)  modified addExtracurricularInput for dynamic feedback
-
-*/
-
-function deleteSection(inputnode){
-
-  inputnode.parentNode.nextSibling.remove();
-  inputnode.parentNode.remove();
+  jumpBack(inputnode,2).remove();
+  countReferee--;
 
 }
 
 function editSection(inputnode){
+
+  hidehead(jumpBack(inputnode,3));
+  hideallnestedinputs(jumpBack(inputnode,3));
+  hideedits(jumpBack(inputnode,3));
+  hidedeletes(jumpBack(inputnode,3));
+
+  inputnode.nextSibling.style.display = 'inline-block'; // display finished button
+  jumpBack(inputnode,1).previousSibling.style.display = 'block';
   var childrenNo =  inputnode.parentNode.children.length;
-  inputnode.parentNode.nextSibling.style.display = 'block';
 
 }
 
@@ -226,9 +266,9 @@ function addExtracurricularInput(divName) {
     newdiv.className = 'inputfields';
     wrapper.className = 'userinput';
 
-    console.log(childrenNo);
+    //console.log(childrenNo);
 
-    var yearVal = String(firstNode.getElementsByTagName('input')[0].value);
+    var yearVal = String(firstNode.getElementsByTagName('select')[0].value);
     var achVal =  String(firstNode.getElementsByTagName('textarea')[0].value);
 
     achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
@@ -247,10 +287,10 @@ function addExtracurricularInput(divName) {
         parentnode.insertBefore(wrapper,firstNode);
         firstNode = parentnode.children[0];//refresh list to reference wrapper
 
-        wrapper.appendChild(buildFeedback(yearVal, achVal)); // fill wrapper with divs
         wrapper.appendChild(firstNode.nextSibling);
-        parentnode.insertBefore(newdiv,firstNode);
+        wrapper.appendChild(buildFeedback(yearVal, achVal)); // fill wrapper with divs
 
+        parentnode.insertBefore(newdiv,firstNode);
         parentnode.insertBefore(document.getElementById("addxtracrr"),parentnode.children[1]);// move add extracurricular achievement
 
         bubbleyearachieve(wrapper);
@@ -269,9 +309,48 @@ function addExtracurricularInput(divName) {
 var countReferee = 2;
 /** adds new input fields for referees */
 function addRefereeInput(divName) {
+
+    var parentnode = document.getElementById(divName);
+    var childrenNo = parentnode.children.length;
+    var firstNode = parentnode.children[0];
+    var lastNode = parentnode.children[(childrenNo -1)];
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<hr><h2>Referee [" + countReferee + "]</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company<span class='redAsterisk'>*</span></h3><input type='text' name='referee_company[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
-    document.getElementById(divName).appendChild(newdiv);
+    var wrapper = document.createElement('div');//required for styleing
+
+    newdiv.className = 'inputfields';
+    wrapper.className = 'userinput';
+
+    var nameVal = String(firstNode.getElementsByTagName('input')[0].value);
+    var companyVal = String(firstNode.getElementsByTagName('input')[1].value);
+    var positionVal = String(firstNode.getElementsByTagName('input')[2].value);
+    var emailVal = String(firstNode.getElementsByTagName('input')[3].value);
+    var phoneVal = String(firstNode.getElementsByTagName('input')[4].value);
+
+    if ((firstNode.style.display != 'none')){
+
+        if ((nameVal || companyVal || positionVal || emailVal || phoneVal) !== ""){
+
+          newdiv.innerHTML = "<hr><h2>Referee</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company<span class='redAsterisk'>*</span></h3><input type='text' name='referee_company[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
+          firstNode.style.display = 'none'; // hide firstnode
+
+          parentnode.insertBefore(wrapper,firstNode);
+          firstNode = parentnode.children[0];//refresh list to reference wrapper
+
+          wrapper.appendChild(firstNode.nextSibling);
+          wrapper.appendChild(buildrefFeedback(nameVal, companyVal,positionVal, emailVal, phoneVal)); // fill wrapper with divs
+
+          parentnode.insertBefore(newdiv,firstNode);
+          parentnode.insertBefore(document.getElementById("refsclick"),parentnode.children[1]);// move add extracurricular achievement
+
+        //  bubbleyearachieve(wrapper);
+        }else {
+            alert("Fields Empty");
+        }
+
+    }else{
+      firstNode.style.display = 'block';
+    }
+
     countReferee++;
 }
 
@@ -406,7 +485,13 @@ function validateForm3() {
 
     var element = document.getElementsByName("education_year[]");
     var element2 = document.getElementsByName("education_achievements[]");
-    for (i = 0; i < element.length; i++) {  // MKH: Removes Year-field validation for "empty" and "non-numeric" data as the input text replaced by drop-down option.
+    for (i = 0; i < element.length; i++) {
+        if (element[i].value.trim() == "") {
+            output_msg += "* The year of education cannot be empty!\n";
+        }
+        else if (!(num_only.test(element[i].value))) {
+            output_msg += "* The year of education '" + element[i].value + "' can only contain numbers e.g. 2017!\n";
+        }
         if (element2[i].value.trim() == "") {
             output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }
