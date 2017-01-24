@@ -218,6 +218,8 @@
 
 						<li><strong>Driver's licence: </strong><?php echo $drivers;?> </li>
 
+						<li><strong>Vehicle Type allowed: </strong><?php echo $vehicle_type; ?> </li> <!--MKH: Transfers new 'Vehicle Type' field to CV pdf -->
+
 					</ul>
 	</div>
 
