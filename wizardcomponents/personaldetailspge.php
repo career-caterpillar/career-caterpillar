@@ -20,7 +20,7 @@
                  <div class="row">
                    <div class="col-left">
                      <label>First Name<span class="redAsterisk">*</span></label>
-                     <input type="text" name="first_name" value="<?php if($fileexists == true && empty($first_name) == false){echo $first_name;} ?>" required placeholder="John" title="This should be your legal first name.">
+                     <input type="text" name="first_name" value="<?php if($fileexists == true && empty($first_name) == false){echo $first_name;} ?>" required placeholder="John">
                    </div>
                    <div class="col-right">
                      <label>Last Name<span class="redAsterisk">*</span></label>
@@ -64,7 +64,7 @@
                      </div>
                      <div class="col-right">
                        <label>Email<span class="redAsterisk">*</span></label>
-                       <input type="email" name="email" value="<?php if($fileexists == true && empty($email) == false){echo $email;} ?>" required placeholder="my.email@blueprint.co.nz">
+                       <input type="email" name="email" value="<?php if($fileexists == true && empty($email) == false){echo $email;} ?>" required placeholder="my.email@blueprint.co.nz" title="Make sure you choose an email address that is professional, not ilovetequila@hotmail.com. If possible, create one that contains both your first and last names.">
                      </div>
                     </div>
             </fieldset>
