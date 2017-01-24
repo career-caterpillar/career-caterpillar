@@ -399,7 +399,7 @@ function validateForm1() {;
         output_msg += "* The 'City' field can only contain text!\n";
     }
 
-    if (!(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
+    if (document.myForm1.phone.value.trim() !== "" && !(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
         output_msg += "* The 'Phone' field can only contain numbers and spaces!\n";
     }
 
