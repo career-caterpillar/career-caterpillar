@@ -113,7 +113,7 @@ $(document).ready(function(){
 	/** displays personal details section, sets up interactive components */
 	function personaldetailssetup() {
 
-		$("p").hide();
+		// $("p").hide();
 
 		$("#emailhelp").click(function(){
 			if ($("#emailhint").is(":visible")) {
