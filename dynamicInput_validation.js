@@ -409,9 +409,9 @@ function validateForm1() {
         output_msg += "* The 'Mobile' field can only contain numbers!\n";
     }
 
-    /*if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
+    if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
         output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
-    }  coommented out because feild doesnot exist in modified form*/
+    } //MKH: Re-instate missing email validation
 
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {

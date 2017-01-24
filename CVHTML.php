@@ -90,7 +90,7 @@
 				<h1> <?php echo $first_name." ".$last_name?> </h1>
 			</div>
 			<div id="details">
-				<p><?php echo $street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $phone . "  |  " . $mobile; ?></p>
+				<p><?php echo $street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $email . "  |  " . $phone . "  |  " . $mobile; ?></p> <!-- MKH: Transfers Email details  to CV pdf. Identified missing duirng regression testing 24/1/2017 -->
 			</div>
 		</div>
 
