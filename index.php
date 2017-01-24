@@ -55,7 +55,7 @@
         <div id = "educationsection"><?php include 'wizardcomponents/educationsection.php';?></div>
         <div id = "otherskills"><?php include 'wizardcomponents/otherskills.php';?></div>
         <div id="refereespage"><?php  include 'wizardcomponents/refereespge.php';?></div>
-        <div id = "cvpreview"><?php include 'wizardcomponents/cvpreview.php';?></div>
+        <div id = "cvpreview"><?php  include 'wizardcomponents/cvpreview.php';?></div>
         <div id = "extracurricularsection"><?php include 'wizardcomponents/extracurricular.php';?></div>
 
       </div>

@@ -13,10 +13,13 @@ $employment_start_month = array();
 array_push( $employment_start_month,"");
 $employment_start_year = array();
 array_push( $employment_start_year,"2017");
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 $still_work = "no";
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> origin/master
 $employment_end_month = array();
 array_push( $employment_end_month,"");
 $employment_end_year = array();

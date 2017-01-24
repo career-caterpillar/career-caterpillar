@@ -24,7 +24,9 @@
 						<img id="refereeshelp" src="helpicon.png"/>
 						<p id="refereeshint" style="color:red; font-style:italic;">Ensure you contact your referees before you put them in your CV. You cannot use family here, ask people that know you well, and will represent you the best for the job you are applying for. Ensure you put your manager from your latest job here first, and then others that represent you following that</p><br><br>
 						<div id="referee_list">
-							<h2>Referee [1]</h2>
+
+							<div class = "inputfields">
+							<h2>Referee</h2>
 							<!--Name Input -->
 							<h3>Name<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_name[]' required>
@@ -41,7 +43,8 @@
 							<h3>Phone<span class="redAsterisk">*</span></h3>
 							<input type='text' name='referee_phone[]' required>
 						</div>
-						<input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another referee" onClick="addRefereeInput('referee_list');">
+						</div>
+						<input id = "refsclick" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another referee" onClick="addRefereeInput('referee_list');">
 					</div>
 				</div>
 		</fieldset>
