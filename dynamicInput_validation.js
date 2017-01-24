@@ -356,11 +356,7 @@ function addRefereeInput(divName) {
 
 
 /** validates each form field on the personal details page */
-function validateForm1() {
-
-    var text_only = /^[a-zA-Z ]+$/;
-    var num_only = /^[0-9]*$/;
-    var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+function validateForm1() {;
 
     var output_msg = "";
 
@@ -377,7 +373,13 @@ function validateForm1() {
     }
     else if (!(text_only.test(document.myForm1.last_name.value))) {
         output_msg += "* The 'Last Name' field can only contain text!\n";
-
+    }
+    
+    if (document.myForm1.street_num.value.trim() == "") {                   //MKH: Validates Street Number to be numeric only. Identified in Regression Testing 24/01/2017
+        output_msg += "* The 'Street Number' field is empty!\n";
+    }
+    else if (!(num_only.test(document.myForm1.street_num.value))) {
+        output_msg += "* The 'Street Number' field can only contain numbers!\n";
     }
 
     if (document.myForm1.street_add.value.trim() == "") {
@@ -399,14 +401,14 @@ function validateForm1() {
     }
 
     if (!(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
-        output_msg += "* The 'Phone' field can only contain numbers!\n";
+        output_msg += "* The 'Phone' field can only contain numbers and spaces!\n";
     }
 
     if (document.myForm1.mobile.value.trim() == "") {                   //MKH: Prompts user to enter value if input missing
         output_msg += "* The 'Mobile' field is empty!\n";
     }
     else if (!(num_only.test(document.myForm1.mobile.value))) {
-        output_msg += "* The 'Mobile' field can only contain numbers!\n";
+        output_msg += "* The 'Mobile' field can only contain numbers and spaces!\n";
     }
 
     if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
@@ -415,7 +417,6 @@ function validateForm1() {
 
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {
-
         output_msg += "* The 'School' field can only contain text!\n";
     }
 
@@ -428,10 +429,6 @@ function validateForm1() {
 
 /** validates each form field on the referees page */
 function validateForm2() {
-    var text_only = /^[a-zA-Z ]+$/;
-    var num_only = /^[0-9]*$/;
-    var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
     var output_msg = "";
 
     var ans1 = document.getElementsByName("referee_name[]");
@@ -463,7 +460,7 @@ function validateForm2() {
             output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field is empty!\n";
         }
         else if (!(num_only.test(ans4[i].value))) {
-            output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers!\n";
+            output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers and spaces!\n";
         }
     }
 
@@ -476,19 +473,12 @@ function validateForm2() {
 
 /** validates each form field of the education section of the outside skills page */
 function validateForm3() {
-    var num_only = /^[0-9]*$/;
-
     var output_msg = "";
 
     var element = document.getElementsByName("education_year[]");
     var element2 = document.getElementsByName("education_achievements[]");
     for (i = 0; i < element.length; i++) {
-        if (element[i].value.trim() == "") {
-            output_msg += "* The year of education cannot be empty!\n";
-        }
-        else if (!(num_only.test(element[i].value))) {
-            output_msg += "* The year of education '" + element[i].value + "' can only contain numbers e.g. 2017!\n";
-        }
+        /** MKH: Removed validation code for Year due to change in input design from text to dropdown **/
         if (element2[i].value.trim() == "") {
             output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }
@@ -546,6 +536,12 @@ for(i=2016; i>=1990; i--){
     year_2016_1990 += "<option value="+i+">"+i+"</option>";
 }
 /** MKH: Generation logic ends **/
+
+/** MKH: Validation regexes stored here **/
+var text_only = /^[a-zA-Z ]+$/;
+var num_only = /^(?=.*\d)[\d ]+$/;
+var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+/** MKH: Regexes ends **/
 
 // Submit  'aboutmeform'  data via AJAX
 $(document).ready(function() {
