@@ -209,7 +209,7 @@ function addLanguageInput(divName) {
 function addEmployInput(divName) {
     var newdiv = document.createElement('div');
     /** MKH: Enables month/year dropdown to be available as a dynamic input **/
-    newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+    newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ years_2050_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ years_2050_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
     document.getElementById(divName).appendChild(newdiv);
 }
 
@@ -217,7 +217,7 @@ function addEmployInput(divName) {
 function addEducationInput(divName) {
     var newdiv = document.createElement('div');
     /** MKH: Enables year dropdown to be available as a dynamic input **/
-    newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ year_2050_2018+ " <option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
+    newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
     document.getElementById(divName).appendChild(newdiv);
 }
 
@@ -225,10 +225,9 @@ function addEducationInput(divName) {
 function addAchievementInput(divName) {
     var newdiv = document.createElement('div');
     /** MKH: Enables year dropdown to be available as a dynamic input **/
-    newdiv.innerHTML = "<hr><h2>Year </h2><br> <select name='achieve_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select><h2>Achievements</h2><br><textarea class='largetextfield' name='awards_achievements[]' cols='70' rows='7'></textarea>";
+    newdiv.innerHTML = "<hr><h2>Year </h2><br> <select name='achieve_year[]'> "+ years_2050_1990 + " </select><h2>Achievements</h2><br><textarea class='largetextfield' name='awards_achievements[]' cols='70' rows='7'></textarea>";
     document.getElementById(divName).appendChild(newdiv);
 }
-
 
 
 function deleteSection(inputnode){// deletes feedback div and form feilds associated with it when user clicks delete.
@@ -280,7 +279,7 @@ function addExtracurricularInput(divName) {
 
       if ((yearVal || achVal) !== ""){
         /** MKH: Enables year dropdown to be available as a dynamic input **/
-        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
 
         firstNode.style.display = 'none'; // hide firstnode
 
@@ -527,13 +526,15 @@ $(document).ready(function() {
 });
 
 /** MKH: Generates and stores the option tags for year dropdown dynamically **/
-var year_2050_2018 = "";
-for(i=2050; i>=2018; i--){
-    year_2050_2018 += "<option value="+i+">"+i+"</option>";
-}
-var year_2016_1990 = "";
-for(i=2016; i>=1990; i--){
-    year_2016_1990 += "<option value="+i+">"+i+"</option>";
+var years_2050_1990 = "";
+var current_year = new Date().getFullYear();
+
+for(i=2050; i>=1990; i--){
+    if(i==current_year){
+        years_2050_1990 += "<option value="+i+" selected>"+i+"</option>";
+    } else {
+        years_2050_1990 += "<option value="+i+">"+i+"</option>";
+    }
 }
 /** MKH: Generation logic ends **/
 
