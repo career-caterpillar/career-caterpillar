@@ -20,7 +20,7 @@
         <ul>
           <li id = "personaldetailsbtn" class="current-box"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "personalstatementbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
-          <li id = "personalqualitiesbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
+          <li id = "personalqualitiesbtn" class="incomplete-required"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "achievementsbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "employmentbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>
           <li id = "extracurricularbtn" class="incomplete"> <span class="glyphicon glyphicon-ok"></span></li>

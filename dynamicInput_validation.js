@@ -521,6 +521,17 @@ function validateForm4() {
     return true;
 }
 
+/** LV returns whether or not the personal statement section has been filled out  */
+function personalStatementFilled() {
+  if ($.trim($('#pstextarea').val()).length < 1) {
+    return false;
+  }
+
+  return true;
+}
+
+
+
 $(document).ready(function() {
     // bind 'personaldetails' and provide a simple callback function
     $('#personaldetailsform').ajaxForm(function() {
