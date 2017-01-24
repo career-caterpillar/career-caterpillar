@@ -9,7 +9,6 @@ $employment_start_month = array();
 array_push( $employment_start_month,"");
 $employment_start_year = array();
 array_push( $employment_start_year,"2017");
-$still_work = "no";
 $employment_end_month = array();
 array_push( $employment_end_month,"");
 $employment_end_year = array();
