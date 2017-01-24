@@ -77,7 +77,7 @@
     $("* :input").tooltip({
     show: {effect: "drop" },
     hide: {effect: "drop" },
-    position: {my: "left+100 center", at: "right center"},
+    position: {my: "right top", at: "right bottom + 100"},
     items: ":input:focus",
     });
 
