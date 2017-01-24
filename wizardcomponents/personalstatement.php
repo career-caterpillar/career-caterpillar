@@ -26,7 +26,7 @@
 								If you are not submitting a covering letter it is a good idea to write a personal statement that outlines your skills that are related to the job you are applying for,
 								as well as future goals. Try to keep it brief, roughly 4-5 sentences. Most importantly, tell them what makes you different and special.
 							</p><br>
-							<textarea class="largetextfield" name="personal_statement" rows="7"  placeholder=""> </textarea>
+							<textarea id="pstextarea" class="largetextfield" name="personal_statement" rows="7"  placeholder=""> </textarea>
 						</div>
 					</div>
 				</fieldset>
