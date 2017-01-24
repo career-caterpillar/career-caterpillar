@@ -292,7 +292,9 @@
 
 				echo ' <ul> ';
 				echo '<li><strong>' . $referee_name[$i] .  '</strong></li>';
-				echo '<li>Company: ' . $referee_company[$i]  .  '</li>';     //MKH: Transfers the new field "referee_company" to CV pdf.
+				if(trim($referee_company[$i])!=="") { //MKH: Transfers referee company to CV pdf only if input entered
+                                    echo '<li>Company: ' . $referee_company[$i]  .  '</li>';     
+                                }
 				echo '<li>Position: ' . $referee_position[$i]  .  '</li>';
 				echo '<li>Email: ' . $referee_email[$i] .  '</li>';
 				echo '<li>Phone: ' . $referee_phone[$i]  .  '</li>';
