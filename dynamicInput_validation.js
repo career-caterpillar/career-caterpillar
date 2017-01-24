@@ -377,7 +377,13 @@ function validateForm1() {
     }
     else if (!(text_only.test(document.myForm1.last_name.value))) {
         output_msg += "* The 'Last Name' field can only contain text!\n";
-
+    }
+    
+    if (document.myForm1.street_num.value.trim() == "") {                   //MKH: Validates Street Number to be numeric only. Identified in Regression Testing 24/01/2017
+        output_msg += "* The 'Street Number' field is empty!\n";
+    }
+    else if (!(num_only.test(document.myForm1.street_num.value))) {
+        output_msg += "* The 'Street Number' field can only contain numbers!\n";
     }
 
     if (document.myForm1.street_add.value.trim() == "") {
@@ -415,7 +421,6 @@ function validateForm1() {
 
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {
-
         output_msg += "* The 'School' field can only contain text!\n";
     }
 
