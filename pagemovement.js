@@ -15,7 +15,7 @@ $(document).ready(function(){
 
     $("#toprevbtn").css("visibility", "hidden");
     $("#refereespage").hide();
-    $("#submitpage").hide();
+    $("#cvpreview").hide();
     $("#cvCreate").hide();
     $("#otherskills").hide();
     $("#extracurricularsection").hide();
@@ -30,7 +30,7 @@ $(document).ready(function(){
 	function hidepages() {//KC: hide all pages for use in gotoPage()
 
 		$("#refereespage").hide();
-		$("#submitpage").hide();
+		$("#cvpreview").hide();
 		$("#cvCreate").hide();
 		$("#otherskills").hide();
 		$("#extracurricularsection").hide();
@@ -537,11 +537,13 @@ $(document).ready(function(){
 				}
 				submitPage(curpage);
 				hidepages();
-				$("#submitpage").show();
+				$("#cvpreview").show();
 				$("#cvCreate").show();
 				$("#tonextbtn").css("visibility", "hidden");
 				$("#toprevbtn").css("visibility", "visible");
-				$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
+				$('#cv1').attr('src', $('#cv1').attr('src'));
+				$('#cv2').attr('src', $('#cv2').attr('src'));
+				$('#cv').attr('src', $('#cv').attr('src'));
 				curpage = pagenumber;
 			  break;
 
@@ -622,123 +624,4 @@ $(document).ready(function(){
 	$("#previewBtn").click(function() {
 		gotoPage(10);
 	});
-
-
-
-/* this section does nothing use gotoPage $("#cvpreviewbtn").click(function() {
-
-		if ($("#cvpreview").is(":visible")) {
-			$("#toprevbtn").show();
-			$("#tonextbtn").show();
-			$("#cvpreview").hide();
-			// show current page and hide cv
-
-			switch (curpage) {
-				case 1:
-					$("#personaldetailspage").show();
-					$("#toprevbtn").hide();
-					break;
-
-				case 2:
-					$("#personalstatementsection").show();
-					break;
-
-				case 3:
-			    $("#personalqualitiessection").show();
-					break;
-
-				case 4:
-				  $("#achievementssection").show();
-					break;
-
-				case 5:
-					$("#employmentsection").show();
-					break;
-
-				case 6:
-					$("#extracurricularsection").show();
-					break;
-
-				case 7:
-					$("#educationsection").show();
-					break;
-
-				case 8:
-					$("#otherskills").show();
-					break;
-
-				case 9:
-					$("#refereespage").show();
-					break;
-
-				case 10:
-					$("#cvpreview").show();
-					$("#tonextbtn").hide();
-					break;
-
-				default:
-					break;
-			}
-		} else {
-			$("#cvpreview").show();
-			$("#toprevbtn").hide();
-			$("#tonextbtn").hide();
-			// hide current page and show cv
-			switch (curpage) {
-				case 1:
-					$("#personaldetailspage").hide();
-					personaldetailsubmit();
-					break;
-
-				case 2:
-					$("#personalstatementsection").hide();
-					personalstatementsubmit();
-					break;
-
-				case 3:
-			    $("#personalqualitiessection").hide();
-					personalqualitiessubmit();
-					break;
-
-				case 4:
-				  $("#achievementssection").hide();
-					achievementsubmit();
-					break;
-
-				case 5:
-					$("#employmentsection").hide();
-					employmentsubmit();
-					break;
-
-				case 6:
-					$("#extracurricularsection").hide();
-					extracurricularsubmit();
-					break;
-
-				case 7:
-					$("#educationsection").hide();
-					educationsubmit();
-					break;
-
-				case 8:
-					$("#otherskills").hide();
-					otherskillssubmit();
-					break;
-
-				case 9:
-					$("#refereespage").hide();
-					refereesubmit();
-					break;
-
-				case 10:
-					$("#cvpreview").hide();
-					break;
-
-				default:
-					break;
-			}
-			$('#pdf-refresh').attr('src', $('#pdf-refresh').attr('src'));
-		}
-	}); */
-
 });
