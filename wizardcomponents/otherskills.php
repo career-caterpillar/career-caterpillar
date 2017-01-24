@@ -33,11 +33,15 @@
 
         <h2>Driver's License</h2>
 
-        <!-- HINT -->
-        <img id="dlhelp" src="helpicon.png"/>
-        <p id="dlhint" style="color:red;font-style:italic;"> Having a drivers licence is very important, it can get you an interview over those who don't. If you dont start the process <a  target = "_blank" href = "https://www.nzta.govt.nz/driver-licences/getting-a-licence/licences-by-vehicle-type/cars/"> here </a></p>
+        <!-- HINT, this one left in because it contains an HTML <a> tag which cannot be contained in a title. Added to the input using a jquery script snippet -->
+        <p id="dlhint"> Having a drivers licence is very important, it can get you an interview over those who don't. If you don't, start the process <a  target = "_blank" href = "https://www.nzta.govt.nz/driver-licences/getting-a-licence/licences-by-vehicle-type/cars/"> here</a>.</p>
         <input type="text" name="drivers" value="<?php if($fileexists == true && empty($drivers) == false){echo $drivers;} ?>" required placeholder="Full License">
 
           </div>
        </div>
       </form>
+    <script>
+      $("input[name='drivers']").tooltip({
+        content: $("#dlhint").html()
+      });
+    </script>

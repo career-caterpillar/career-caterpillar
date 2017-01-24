@@ -71,11 +71,19 @@
 
   <script src="pagemovement.js"> </script>
 
+  <!--global form scripts to be put in some JS file -->
+
   <script>
+    $("* :input").tooltip({
+    show: {effect: "drop" },
+    hide: {effect: "drop" },
+    position: {my: "right top", at: "right bottom + 100"},
+    items: ":input:focus",
+    });
 
     $( ".styledselect" ).selectmenu({
-    icons: { button: "ui-icon-caret-1-s" };
-    width: 200;
+    icons: { button: "ui-icon-caret-1-s" },
+    width: 200,
     });
 
   </script>

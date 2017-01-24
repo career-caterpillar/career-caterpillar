@@ -336,12 +336,36 @@ textarea {
 
 /* Stuff that Mark added for personal qualities */
 .QualitiesFlex {
-	display: flex;
+  -moz-columns: 3;
+  columns: 3;
+}
+
+.QualitiesFlex label {
+  font-size: 16pt;
+}
+
+.QualitiesFlex input {
+  display: inline;
+  width: auto;
 }
 
 .disabledText {
 	color: #888;
 	font-style: italic;
+}
+
+
+/* Tooltip styling */
+.ui-tooltip {
+
+}
+
+.ui-tooltip-content {
+
+}
+
+.ui-tooltip-content a {
+  text-decoration: underline;
 }
 
 .redAsterisk {
