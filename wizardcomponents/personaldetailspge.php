@@ -60,11 +60,11 @@
                    <div class="row">
                      <div class="col-left">
                        <label>School</label>
-                       <input type="text" name="school_name" value="<?php if($fileexists == true && empty($school_name) == false){echo $school_name;} ?>" placeholder="My School"> <!-- MKH: Makes school field not mandatory -->
+                       <input type="text" name="school_name" value="<?php if($fileexists == true && empty($school_name) == false){echo $school_name;} ?>" placeholder="My School" title="New Zealand is a very small place and it is very easy to make connections, having your school down on your CV is just one way to do this."> <!-- MKH: Makes school field not mandatory -->
                      </div>
                      <div class="col-right">
                        <label>Email<span class="redAsterisk">*</span></label>
-                       <input type="email" name="email" value="<?php if($fileexists == true && empty($email) == false){echo $email;} ?>" required placeholder="my.email@blueprint.co.nz">
+                       <input type="email" name="email" value="<?php if($fileexists == true && empty($email) == false){echo $email;} ?>" required placeholder="my.email@blueprint.co.nz" title="Make sure you choose an email address that is professional, not ilovetequila@hotmail.com. If possible, create one that contains both your first and last names.">
                      </div>
                     </div>
             </fieldset>

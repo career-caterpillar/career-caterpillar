@@ -10,12 +10,6 @@
           <legend>Education History</legend>
           <div class = "row">
             <div class="col-wholepage">
-              <!-- SECTION HINT -->
-              <img id="educationhelp" src="helpicon.png"/>
-              <p id="educationhint" style="color:red; font-style:italic;">
-                NCEA can be complicated for many employers to understand, so make sure you put your academic results in a format that
-                will be easy for your future employers to understand.<br>Always start with your most recent year of study
-              </p>
 
               <div id="education_hist">
 
@@ -30,9 +24,9 @@
                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php endfor; ?>
                  </select>
-
+                  
                   <h2>Achievements<span class="redAsterisk">*</span></h2>
-                  <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required></textarea>
+                  <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required title="NCEA can be complicated for many employers to understand, so make sure you put your academic results in a format that will be easy for your future employers to understand. Always start with your most recent year of study."></textarea>
 
               </div>
               <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of study" onClick="addEducationInput('education_hist');">

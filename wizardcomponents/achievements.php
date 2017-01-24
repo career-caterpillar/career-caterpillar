@@ -22,12 +22,6 @@
 					<legend>Achievements & Awards</legend>
 						<div class = "row">
 							<div class="col-wholepage">
-							<!-- Hint -->
-								<img id="achievehelp" src="helpicon.png" />
-								<p id="achievehint"style="color: red;font-style:italic;">
-								This is all about highlighting the great things you have done whether at school or in your own time.
-								Acheivements and awards help personalise your CV. Make sure they add to who you want to present to your employer, don't just put everything down.
-								</p><br/>
 
 								<div id="achievements_hist">
 								<!-- Year Input -->
@@ -45,7 +39,7 @@
                         </select>
 								<!-- Achievements Textarea -->
 								<h2>Achievements</h2><br>
-								<textarea class="largetextfield" name="awards_achievements[]" cols="70" rows="7"></textarea>
+								<textarea class="largetextfield" name="awards_achievements[]" title="This is all about highlighting the great things you have done whether at school or in your own time. Acheivements and awards help personalise your CV. Make sure they add to who you want to present to your employer, don't just put everything down." cols="70" rows="7"></textarea>
 							</div>
 							<input type="button" class="btn btn-outline" value="Add another year of achievements" onClick="addAchievementInput('achievements_hist');">
 						</div>
