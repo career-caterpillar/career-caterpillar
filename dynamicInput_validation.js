@@ -40,6 +40,9 @@ function jumpBack(node, num){ // traverse tree back a number of parentnodes from
     return working;
 }
 
+function deletethis(inputnode){
+  inputnode.remove();
+}
 
 function deleteSection(inputnode){// deletes feedback div and form feilds associated with it when user clicks delete.
 
@@ -121,6 +124,10 @@ function finishSection(inputnode){
   var achVal =  String(jumpBack(inputnode,2).getElementsByTagName('textarea')[0].value);
   var workingnode = jumpBack(inputnode,2);
 
+  achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
+  achVal=achVal.replace(/\n/g, '<br>');
+  achVal=achVal.replace(/\r/g, '<br>');
+
   hideallnestedinputs(jumpBack(inputnode,3));
   hidefinished(jumpBack(inputnode,3));
   showhead(jumpBack(inputnode,3));
@@ -153,7 +160,46 @@ function finishrefsSection(inputnode){
 
 }
 
-function buildFeedback(year, achievments){ /*builds a feedback div programmatically*/
+function finishempSection(inputnode) {
+
+  var posVal =  String(jumpBack(inputnode,2).getElementsByTagName('input')[0].value);
+  var cityVal =  String(jumpBack(inputnode,2).getElementsByTagName('input')[1].value);
+  var countryVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[2].value);
+  var startmonthVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[0].value);
+  var startyearVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[1].value);
+  var stillValYes = String(jumpBack(inputnode,2).getElementsByTagName('input')[3].value);
+  var stillValNo = String(jumpBack(inputnode,2).getElementsByTagName('input')[4].value);
+  var endmonthVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[2].value);
+  var endyearVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[3].value);
+  var responsibilitiesVal = String(jumpBack(inputnode,2).getElementsByTagName('textarea')[0].value);
+
+  var stillVal = "select choice";
+
+  if (stillValYes === "yes"){
+    stillVal = "yes";
+
+  }else if (stillValNes === "no") {
+    stillVal = "no";
+  }
+
+  responsibilitiesVal=responsibilitiesVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
+  responsibilitiesVal=responsibilitiesVal.replace(/\n/g, '<br>');
+  responsibilitiesVal=responsibilitiesVal.replace(/\r/g, '<br>');
+
+  var workingnode = jumpBack(inputnode,2);
+
+  hideallnestedinputs(jumpBack(inputnode,3));
+  hidefinished(jumpBack(inputnode,3));
+  showhead(jumpBack(inputnode,3));
+  showdeletes(jumpBack(inputnode,3));
+  showedits(jumpBack(inputnode,3));
+
+  workingnode.appendChild(buildempFeedback(posVal, cityVal, countryVal, startmonthVal, startyearVal,stillVal,endmonthVal,endyearVal, responsibilitiesVal));
+  workingnode.getElementsByClassName("feedback")[0].remove();
+
+}
+
+function buildFeedback(year, achievements){ /*builds a feedback div programmatically*/
 
     var newdiv = document.createElement('div');//create div
     newdiv.className = "feedback";//name div "feedback" for css
@@ -161,7 +207,7 @@ function buildFeedback(year, achievments){ /*builds a feedback div programmatica
     var year_heading = "<h2 style= 'text-decoration: underline;'>Year:</h2>"; //create heading
     var yearval = "<p>" + year + "</p>";// enter year into p tag
     var achievments_heading = "<h2 style= 'text-decoration: underline;'>Achievements:</h2>"; //create achievment heading
-    var achval = "<p>" + achievments + "</p>";// enter achievment into p tag
+    var achval = "<p>" + achievements + "</p>";// enter achievment into p tag
 
 
     var editbtn =  '<input type="button" class="btn btn-primary btn-outline btn-sm  editbtns" value="edit"  onClick="editSection(this);">';// create edit button
@@ -196,6 +242,33 @@ function buildrefFeedback(name, company,position, email, phone){ /*builds a feed
     return newdiv;
 }
 
+function buildempFeedback(position, city, country, start_month, start_year,stillwork,end_month,end_year, responsibilities){
+
+  var newdiv = document.createElement('div');//create div
+  newdiv.className = "feedback";//name div "feedback" for css
+
+  var posVal = "<h2 style= 'text-decoration: underline;'>Position:</h2>" +  "<p>" + position + "</p>"; //create heading
+  var cityVal = "<h2 style= 'text-decoration: underline;'>City:</h2>" +  "<p>" + city + "</p>";// enter year into p tag
+  var countryVal = "<h2 style= 'text-decoration: underline;'>Country:</h2>" +  "<p>" + country + "</p>";//create achievment heading
+  var startmonthVal = "<h2 style= 'text-decoration: underline;'>Start Month:</h2>" +  "<p>" + start_month + "</p>";// enter achievment into p tag
+  var startyearVal = "<h2 style= 'text-decoration: underline;'>Start Year:</h2>" +  "<p>" + start_year + "</p>";// enter achievment into p tag
+  var stillVal = "<h2 style= 'text-decoration: underline;'>Still Working:</h2>" +  "<p>" + stillwork + "</p>";
+  var endmonthVal = "<h2 style= 'text-decoration: underline;'>End Month:</h2>" +  "<p>" + end_month + "</p>";
+  var endyearVal = "<h2 style= 'text-decoration: underline;'>End Year:</h2>" +  "<p>" + end_year + "</p>";
+  var responsibilitiesVal = "<h2 style= 'text-decoration: underline;'>Responsibilities:</h2>" +  "<p>" + responsibilities + "</p>";
+
+  var editbtn =  '<input type="button" class="btn btn-primary btn-outline btn-sm  editbtns" value="edit"  onClick="editSection(this);">';// create edit button
+  var finishedbtn = '<input type="button" class="btn btn-primary btn-outline btn-sm  finishedbtns" value="finished" style = "display : none"  onClick="finishempSection(this);">';// create finished button
+  var deletebtn = '<input type="button" class="btn btn-primary btn-outline btn-sm  deletebtns" value="delete" onClick="deleteSection(this);">';// create delete button
+
+  newdiv.innerHTML = posVal + cityVal + countryVal + startmonthVal + startyearVal + stillVal + endmonthVal +
+                      endyearVal + responsibilitiesVal +
+                      editbtn + finishedbtn + deletebtn ;//concatenate all and insert into newDiv
+
+  return newdiv;
+
+}
+
 function addLanguageInput(divName) {
 
     var newdiv = document.createElement('div');
@@ -207,28 +280,187 @@ function addLanguageInput(divName) {
 
 /** adds new input fields for employment */
 function addEmployInput(divName) {
+
+    var parentnode = document.getElementById(divName);
+    var childrenNo = parentnode.children.length;
+    var firstNode = parentnode.children[0];
+    var lastNode = parentnode.children[(childrenNo -1)];
     var newdiv = document.createElement('div');
-    /** MKH: Enables month/year dropdown to be available as a dynamic input **/
+    var wrapper = document.createElement('div');//required for styleing
+    var stillVal = "Select Choice";
+
+    newdiv.className = 'inputfields';
+    wrapper.className = 'userinput';
+
+
+    var posVal =  String(firstNode.getElementsByTagName('input')[0].value);
+    var cityVal =  String(firstNode.getElementsByTagName('input')[1].value);
+    var countryVal = String(firstNode.getElementsByTagName('input')[2].value)
+    var startmonthVal = String(firstNode.getElementsByTagName('select')[0].value);
+    var startyearVal = String(firstNode.getElementsByTagName('select')[1].value);
+    var stillValYes = String(firstNode.getElementsByTagName('input')[3].value);
+    var stillValNo = String(firstNode.getElementsByTagName('input')[4].value);
+    var endmonthVal = String(firstNode.getElementsByTagName('select')[2].value);
+    var endyearVal = String(firstNode.getElementsByTagName('select')[3].value);
+    var responsibilitiesVal = String(firstNode.getElementsByTagName('textarea')[0].value);
+
+    if (stillValYes === "yes"){
+      stillVal = "yes";
+
+    }else if (stillValNes === "no") {
+      stillVal = "no";
+    }
+
+
+    responsibilitiesVal=responsibilitiesVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
+    responsibilitiesVal=responsibilitiesVal.replace(/\n/g, '<br>');
+    responsibilitiesVal=responsibilitiesVal.replace(/\r/g, '<br>');
+
+    if ((firstNode.style.display != 'none')){
+
+        if ((posVal || cityVal || countryVal || startmonthVal || startyearVal|| endmonthVal|| endyearVal|| responsibilitiesVal) !== ""){
+
+          newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+          firstNode.style.display = 'none'; // hide firstnode
+
+          parentnode.insertBefore(wrapper,firstNode);
+          firstNode = parentnode.children[0];//refresh list to reference wrapper
+
+          wrapper.appendChild(firstNode.nextSibling);
+          wrapper.appendChild(buildempFeedback(posVal, cityVal, countryVal, startmonthVal, startyearVal,stillVal,endmonthVal,endyearVal, responsibilitiesVal)); // fill wrapper with divs
+
+          parentnode.insertBefore(newdiv,firstNode);
+          parentnode.insertBefore(document.getElementById("addemp"),parentnode.children[1]);// move add extracurricular achievement
+
+        }else {
+            alert("Fields Empty");
+        }
+
+    }else{
+      firstNode.style.display = 'block';
+    }
+
+    /** MKH: Enables month/year dropdown to be available as a dynamic input
     newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);
+    document.getElementById(divName).appendChild(newdiv);*/
 }
 
-/** adds new input fields for education */
+function addEducationInput(divName) {
+
+    var parentnode = document.getElementById(divName);
+    var childrenNo = parentnode.children.length;
+    var firstNode = parentnode.children[0];
+    var lastNode = parentnode.children[(childrenNo -1)];
+    var newdiv = document.createElement('div');
+    var wrapper = document.createElement('div');//required for styleing
+
+    newdiv.className = 'inputfields';
+    wrapper.className = 'userinput';
+
+    //console.log(childrenNo);
+
+    var yearVal = String(firstNode.getElementsByTagName('select')[0].value);
+    var achVal =  String(firstNode.getElementsByTagName('textarea')[0].value);
+
+    achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
+    achVal=achVal.replace(/\n/g, '<br>');
+    achVal=achVal.replace(/\r/g, '<br>');
+
+
+    if ((firstNode.style.display != 'none')){
+
+      if ((yearVal || achVal) !== ""){
+        /** MKH: Enables year dropdown to be available as a dynamic input **/
+        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+
+        firstNode.style.display = 'none'; // hide firstnode
+
+        parentnode.insertBefore(wrapper,firstNode);
+        firstNode = parentnode.children[0];//refresh list to reference wrapper
+
+        wrapper.appendChild(firstNode.nextSibling);
+        wrapper.appendChild(buildFeedback(yearVal, achVal)); // fill wrapper with divs
+
+        parentnode.insertBefore(newdiv,firstNode);
+        parentnode.insertBefore(document.getElementById("addedu"),parentnode.children[1]);// move add extracurricular achievement
+
+        bubbleyearachieve(wrapper);
+
+      }else {
+          alert("Fields Empty");
+      }
+    }else{
+      firstNode.style.display = 'block';
+    }
+
+}
+
+function addAchievementInput(divName) {
+
+    var parentnode = document.getElementById(divName);
+    var childrenNo = parentnode.children.length;
+    var firstNode = parentnode.children[0];
+    var lastNode = parentnode.children[(childrenNo -1)];
+    var newdiv = document.createElement('div');
+    var wrapper = document.createElement('div');//required for styleing
+
+    newdiv.className = 'inputfields';
+    wrapper.className = 'userinput';
+
+    //console.log(childrenNo);
+
+    var yearVal = String(firstNode.getElementsByTagName('select')[0].value);
+    var achVal =  String(firstNode.getElementsByTagName('textarea')[0].value);
+
+    achVal=achVal.replace(/\r\n/g, '<br>');// replace plaintext carraige returns with html so achievements are displayed how they were entered
+    achVal=achVal.replace(/\n/g, '<br>');
+    achVal=achVal.replace(/\r/g, '<br>');
+
+
+    if ((firstNode.style.display != 'none')){
+
+      if ((yearVal || achVal) !== ""){
+        /** MKH: Enables year dropdown to be available as a dynamic input **/
+        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+
+        firstNode.style.display = 'none'; // hide firstnode
+
+        parentnode.insertBefore(wrapper,firstNode);
+        firstNode = parentnode.children[0];//refresh list to reference wrapper
+
+        wrapper.appendChild(firstNode.nextSibling);
+        wrapper.appendChild(buildFeedback(yearVal, achVal)); // fill wrapper with divs
+
+        parentnode.insertBefore(newdiv,firstNode);
+        parentnode.insertBefore(document.getElementById("addach"),parentnode.children[1]);// move add extracurricular achievement
+
+        bubbleyearachieve(wrapper);
+
+      }else {
+          alert("Fields Empty");
+      }
+    }else{
+      firstNode.style.display = 'block';
+    }
+
+}
+
+/** adds new input fields for education
 function addEducationInput(divName) {
     var newdiv = document.createElement('div');
-    /** MKH: Enables year dropdown to be available as a dynamic input **/
+    /** MKH: Enables year dropdown to be available as a dynamic input *
     newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ year_2050_2018+ " <option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
     document.getElementById(divName).appendChild(newdiv);
 }
-
-/** adds a new input field for achievements */
+*/
+/** adds a new input field for achievements
 function addAchievementInput(divName) {
     var newdiv = document.createElement('div');
-    /** MKH: Enables year dropdown to be available as a dynamic input **/
+    /** MKH: Enables year dropdown to be available as a dynamic input *
     newdiv.innerHTML = "<hr><h2>Year </h2><br> <select name='achieve_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select><h2>Achievements</h2><br><textarea class='largetextfield' name='awards_achievements[]' cols='70' rows='7'></textarea>";
     document.getElementById(divName).appendChild(newdiv);
 }
-
+*/
 
 
 function deleteSection(inputnode){// deletes feedback div and form feilds associated with it when user clicks delete.
