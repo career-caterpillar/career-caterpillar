@@ -8,15 +8,17 @@
             <div class = "row">
               <div class="col-wholepage">
                 <!-- SECTION HINT -->
-                <p class="general-helptext">
+                <img id="employmenthelp" src="helpicon.png"/>
+                <p id="employmenthint" style="color:red; font-style:italic;">
                   Probably the most important part of your CV, previous jobs and volunteering roles are very important to you're future employers.
                   These tend to be the biggest part in which a future employer will judge you. Volunteering is often just as valuable as previous work
-                  experience and can help get your foot in the door.
-                  (Always start with the most recent experience first)
+                  experience and can help get your foot in the door.(Always start with the most recent experience first)
                 </p>
                 <div id="employing">
                     <h2>Position Title</h2>
                     <input type='text' name='employment_posn[]'>
+					<h2>Organization</h2>
+                    <input type='text' name='employment_orgnz[]'> <!-- MKH: Adds a new field "Organization" to the Employment section -->
                     <h2>City</h2>
                     <input type="text" name="employment_city[]">
                     <h2>Country</h2>
