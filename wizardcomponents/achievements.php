@@ -37,7 +37,7 @@
 							</div>
 							</div>
 
-							<input id = "addach" type="button" class="btn btn-outline" value="Add another year" onClick="addAchievementInput('achievements_hist');">
+							<input id = "addach" type="button" class="btn btn-primary" value="Add" onClick="addAchievementInput('achievements_hist');">
 
 						</div>
 					</div>

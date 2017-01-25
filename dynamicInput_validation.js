@@ -359,7 +359,7 @@ function buildempFeedback(position, organization, city, country, start_month, st
 function addLanguageInput(divName) {
 
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<input type='text' required='required' name='lang[]'> <input type='button' class='btn btn-primary btn-outline btn-sm  deletelang' value='delete' onClick='deletethis(this);'>";
+    newdiv.innerHTML = "<input type='text' required='required' name='lang[]'> <input type='button' class='btn btn-primary deletelang' value='delete' onClick='deletethis(this);'>";
     console.log(newdiv.innerHTML);
     document.getElementById(divName).appendChild(newdiv);
 
@@ -866,38 +866,27 @@ function validateForm4() {
 
 /** LV returns whether or not the optional personal statement section has been filled out  */
 function personalStatementFilled() {
-  if ($.trim($('textarea[name="personal_statement"]').val()).length < 1) {
-    return false;
-  }
-
-  return true;
+  return $.trim($('textarea[name="personal_statement"]').val()).length > 0;
 }
 
 /** LV returns whether or not the optional achievements & awards section has been filled out  */
 function achievementsFilled() {
-  if ($.trim($('textarea[name="awards_achievements[]"]').val()).length < 1) {
-    return false;
-  }
+  return $.trim($('textarea[name="awards_achievements[]"]').val()).length > 0;
+}
 
-  return true;
+/** LV returns whether the position field of the optional employment section has been filled out  */
+function employmentFilled() {
+  return $.trim($('input[name="employment_posn[]"]').val()).length > 0;
 }
 
 /** LV returns whether or not the optional extracurricular section has been filled out  */
 function extracurricularFilled() {
-  if ($.trim($('textarea[name="extracurricular_achievements[]"]').val()).length < 1) {
-    return false;
-  }
-
-  return true;
+  return $.trim($('textarea[name="extracurricular_achievements[]"]').val()).length > 0;
 }
 
 /** LV returns whether or not the optional other skills section has been filled out  */
 function otherSkillsFilled() {
-  if ($.trim($('input[name="lang[]"]').val()).length < 1 && $.trim($('input[name="drivers[]"]').val()).length < 1) {
-    return false;
-  }
-
-  return true;
+  return $.trim($('input[name="lang[]"]').val()).length < 1 && $.trim($('input[name="drivers[]"]').val()).length > 0;
 }
 
 $(document).ready(function() {

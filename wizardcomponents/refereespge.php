@@ -21,7 +21,6 @@
 				<div class = "row">
 					<div class="col-wholepage">
 						<!-- Hint -->
-						<img id="refereeshelp" src="helpicon.png"/>
 						<p id="refereeshint" style="color:red; font-style:italic;">Ensure you contact your referees before you put them in your CV. You cannot use family here, ask people that know you well, and will represent you the best for the job you are applying for. Ensure you put your manager from your latest job here first, and then others that represent you following that</p><br><br>
 						<div id="referee_list">
 
@@ -44,7 +43,7 @@
 							<input type='text' name='referee_phone[]' required>
 						</div>
 						</div>
-						<input id = "refsclick" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another referee" onClick="addRefereeInput('referee_list');">
+						<input id = "refsclick" type="button" class="btn btn-primary" value="Add" onClick="addRefereeInput('referee_list');">
 					</div>
 				</div>
 		</fieldset>

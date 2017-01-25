@@ -4,11 +4,10 @@
         <!-- START OF EMPLOYMENT SECTION -->
 
           <fieldset>
-            <legend>Employment/Volunteering</legend>
+            <legend>Employment & Volunteering</legend>
             <div class = "row">
               <div class="col-wholepage">
                 <!-- SECTION HINT -->
-                <img id="employmenthelp" src="helpicon.png"/>
                 <p id="employmenthint" style="color:red; font-style:italic;">
                   Probably the most important part of your CV, previous jobs and volunteering roles are very important to you're future employers.
                   These tend to be the biggest part in which a future employer will judge you. Volunteering is often just as valuable as previous work
@@ -73,7 +72,7 @@
                     <textarea name="employment_responsibility[]" class = "largetextfield" cols="70" rows="7"></textarea>
                 </div>
               </div>
-                <input id = "addemp" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another employment" onClick="addEmployInput('employing');">
+                <input id = "addemp" type="button" class="btn btn-primary" value="Add" onClick="addEmployInput('employing');">
               </div>
             </div>
           </fieldset>
