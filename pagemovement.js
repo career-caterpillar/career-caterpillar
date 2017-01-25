@@ -617,6 +617,7 @@ $(document).ready(function(){
 				$("#toprevbtn").css("visibility", "visible");
 				$('#pdf-refresh1').attr('src', $('#pdf-refresh1').attr('src'));
 				$('#pdf-refresh2').attr('src', $('#pdf-refresh2').attr('src'));
+				$('#pdf-refresh3').attr('src', $('#pdf-refresh3').attr('src'));
 				$('#cv').attr('src', $('#cv').attr('src'));
 				curpage = pagenumber;
 			  break;
