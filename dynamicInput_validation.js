@@ -7,6 +7,95 @@ these are helper funcitons for edit/delete/feedback functionality
 
 */
 
+function convertMonthtoNumber(month){
+  switch (month) {
+    case "Jan":
+      return 1;
+      break;
+
+    case "Feb":
+      return 2;
+      break;
+
+    case "Mar":
+      return 3;
+      break;
+
+    case "Apr":
+      return 4;
+      break;
+
+    case "May":
+      return 5;
+      break;
+
+    case "Jun":
+      return 6;
+      break;
+
+    case "Jul":
+      return 7;
+      break;
+
+    case "Aug":
+      return 8;
+      break;
+
+    case "Sep":
+      return 9;
+      break;
+
+    case "Oct":
+      return 10;
+      break;
+
+    case "Nov":
+      return 11;
+      break;
+
+    case "Dec":
+      return 12;
+      break;
+
+
+    default:
+      break;
+
+  }
+
+}
+
+function bubbleyearEmployment(bubblenode){
+    var parentnode = bubblenode.parentNode;
+
+
+    var cmpMonth = Number(convertMonthtoNumber(bubblenode.getElementsByTagName('select')[0].value));// find year value of input field that belongs to input feild wrapper
+    var cmpYear = Number(bubblenode.getElementsByTagName('select')[1].value);
+
+    console.log(bubblenode.getElementsByTagName('select')[0].value);
+    console.log(cmpYear);
+
+    var cmp = cmpMonth*cmpYear;
+
+
+    if (bubblenode.nextSibling !== 'null'){
+      var nextsibvalMonth =  convertMonthtoNumber(bubblenode.nextSibling.getElementsByTagName('select')[0].value);
+      var nextsibvalYear =   Number(bubblenode.nextSibling.getElementsByTagName('select')[1].value);
+      nextsibval = nextsibvalMonth*nextsibvalYear;
+    }else {
+      return;
+    }
+
+    console.log(cmp);
+    console.log(nextsibval);
+
+
+      while (cmp < nextsibval){
+          parentnode.insertBefore(bubblenode.nextSibling, bubblenode);
+          nextsibval =  Number(bubblenode.nextSibling.getElementsByTagName('select')[0].value);
+      }
+
+}
 function bubbleyearachieve(bubblenode){
     var parentnode = bubblenode.parentNode;
 
@@ -38,6 +127,10 @@ function jumpBack(node, num){ // traverse tree back a number of parentnodes from
     }
 
     return working;
+}
+
+function deletethis(inputnode){
+  jumpBack(inputnode,1).remove();
 }
 
 
@@ -171,7 +264,8 @@ function finishempSection(inputnode) {
   if (stillValYes === "yes"){
     stillVal = "yes";
 
-  }else if (stillValNes === "no") {
+  }
+  if (stillValNo === "no") {
     stillVal = "no";
   }
 
@@ -266,7 +360,7 @@ function buildempFeedback(position, city, country, start_month, start_year,still
 function addLanguageInput(divName) {
 
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<input type='text' required='required' name='lang[]'>";
+    newdiv.innerHTML = "<input type='text' required='required' name='lang[]'> <input type='button' class='btn btn-primary btn-outline btn-sm  deletelang' value='delete' onClick='deletethis(this);'>";
     console.log(newdiv.innerHTML);
     document.getElementById(divName).appendChild(newdiv);
 
@@ -301,7 +395,9 @@ function addEmployInput(divName) {
     if (stillValYes === "yes"){
       stillVal = "yes";
 
-    }else if (stillValNes === "no") {
+    }
+
+    if (stillValNo === "no") {
       stillVal = "no";
     }
 
@@ -314,7 +410,7 @@ function addEmployInput(divName) {
 
         if ((posVal || cityVal || countryVal || startmonthVal || startyearVal|| endmonthVal|| endyearVal|| responsibilitiesVal) !== ""){
 
-          newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+      newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ years_2050_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ years_2050_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
           firstNode.style.display = 'none'; // hide firstnode
 
           parentnode.insertBefore(wrapper,firstNode);
@@ -326,6 +422,8 @@ function addEmployInput(divName) {
           parentnode.insertBefore(newdiv,firstNode);
           parentnode.insertBefore(document.getElementById("addemp"),parentnode.children[1]);// move add extracurricular achievement
 
+          bubbleyearEmployment(wrapper);
+
         }else {
             alert("Fields Empty");
         }
@@ -333,6 +431,11 @@ function addEmployInput(divName) {
     }else{
       firstNode.style.display = 'block';
     }
+
+
+    /** MKH: Enables month/year dropdown to be available as a dynamic input *
+    newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ years_2050_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ years_2050_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+    document.getElementById(divName).appendChild(newdiv);*/
 
 }
 
@@ -362,8 +465,7 @@ function addEducationInput(divName) {
 
       if ((yearVal || achVal) !== ""){
         /** MKH: Enables year dropdown to be available as a dynamic input **/
-        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
-
+            newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
         firstNode.style.display = 'none'; // hide firstnode
 
         parentnode.insertBefore(wrapper,firstNode);
@@ -384,6 +486,11 @@ function addEducationInput(divName) {
       firstNode.style.display = 'block';
     }
 
+
+    /** MKH: Enables year dropdown to be available as a dynamic input *
+    newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
+    document.getElementById(divName).appendChild(newdiv);*/
+
 }
 
 function addAchievementInput(divName) {
@@ -394,6 +501,12 @@ function addAchievementInput(divName) {
     var lastNode = parentnode.children[(childrenNo -1)];
     var newdiv = document.createElement('div');
     var wrapper = document.createElement('div');//required for styleing
+
+    /** MKH: Enables year dropdown to be available as a dynamic input *
+    newdiv.innerHTML = "<hr><h2>Year </h2><br> <select name='achieve_year[]'> "+ years_2050_1990 + " </select><h2>Achievements</h2><br><textarea class='largetextfield' name='awards_achievements[]' cols='70' rows='7'></textarea>";
+    document.getElementById(divName).appendChild(newdiv);*/
+
+
 
     newdiv.className = 'inputfields';
     wrapper.className = 'userinput';
@@ -412,7 +525,7 @@ function addAchievementInput(divName) {
 
       if ((yearVal || achVal) !== ""){
         /** MKH: Enables year dropdown to be available as a dynamic input **/
-        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+          newdiv.innerHTML = "<hr><h2>Year </h2><br> <select name='achieve_year[]'> "+ years_2050_1990 + " </select><h2>Achievements</h2><br><textarea class='largetextfield' name='awards_achievements[]' cols='70' rows='7'></textarea>";
 
         firstNode.style.display = 'none'; // hide firstnode
 
@@ -435,7 +548,6 @@ function addAchievementInput(divName) {
     }
 
 }
-
 
 function deleteSection(inputnode){// deletes feedback div and form feilds associated with it when user clicks delete.
 
@@ -486,7 +598,7 @@ function addExtracurricularInput(divName) {
 
       if ((yearVal || achVal) !== ""){
         /** MKH: Enables year dropdown to be available as a dynamic input **/
-        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ year_2050_2018+ "<option value='2017' selected>2017</option>"+ year_2016_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+        newdiv.innerHTML = "<hr><h2>Year</h2> <select name='extracurricular_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements</h2> <textarea name='extracurricular_achievements[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
 
         firstNode.style.display = 'none'; // hide firstnode
 
@@ -536,7 +648,7 @@ function addRefereeInput(divName) {
 
         if ((nameVal || companyVal || positionVal || emailVal || phoneVal) !== ""){
 
-          newdiv.innerHTML = "<hr><h2>Referee</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company<span class='redAsterisk'>*</span></h3><input type='text' name='referee_company[]' required><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
+          newdiv.innerHTML = "<hr><h2>Referee</h2><h3>Name<span class='redAsterisk'>*</span></h3><input type='text' name='referee_name[]' required><h3>Company</h3><input type='text' name='referee_company[]'><h3>Position<span class='redAsterisk'>*</span></h3><input type='text' name='referee_position[]' required><h3>Email<span class='redAsterisk'>*</span></h3><input type='text' name='referee_email[]' required><h3>Phone<span class='redAsterisk'>*</span></h3><input type='text' name='referee_phone[]' required>";
           firstNode.style.display = 'none'; // hide firstnode
 
           parentnode.insertBefore(wrapper,firstNode);
@@ -562,11 +674,7 @@ function addRefereeInput(divName) {
 
 
 /** validates each form field on the personal details page */
-function validateForm1() {
-
-    var text_only = /^[a-zA-Z ]+$/;
-    var num_only = /^[0-9]*$/;
-    var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+function validateForm1() {;
 
     var output_msg = "";
 
@@ -583,7 +691,13 @@ function validateForm1() {
     }
     else if (!(text_only.test(document.myForm1.last_name.value))) {
         output_msg += "* The 'Last Name' field can only contain text!\n";
+    }
 
+    if (document.myForm1.street_num.value.trim() == "") {                   //MKH: Validates Street Number to be numeric only. Identified in Regression Testing 24/01/2017
+        output_msg += "* The 'Street Number' field is empty!\n";
+    }
+    else if (!(num_only.test(document.myForm1.street_num.value))) {
+        output_msg += "* The 'Street Number' field can only contain numbers!\n";
     }
 
     if (document.myForm1.street_add.value.trim() == "") {
@@ -604,24 +718,23 @@ function validateForm1() {
         output_msg += "* The 'City' field can only contain text!\n";
     }
 
-    if (!(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
-        output_msg += "* The 'Phone' field can only contain numbers!\n";
+    if (document.myForm1.phone.value.trim() !== "" && !(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
+        output_msg += "* The 'Phone' field can only contain numbers and spaces!\n";
     }
 
     if (document.myForm1.mobile.value.trim() == "") {                   //MKH: Prompts user to enter value if input missing
         output_msg += "* The 'Mobile' field is empty!\n";
     }
     else if (!(num_only.test(document.myForm1.mobile.value))) {
-        output_msg += "* The 'Mobile' field can only contain numbers!\n";
+        output_msg += "* The 'Mobile' field can only contain numbers and spaces!\n";
     }
 
-    /*if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
+    if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
         output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
-    }  coommented out because feild doesnot exist in modified form*/
+    } //MKH: Re-instate missing email validation
 
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {
-
         output_msg += "* The 'School' field can only contain text!\n";
     }
 
@@ -634,10 +747,6 @@ function validateForm1() {
 
 /** validates each form field on the referees page */
 function validateForm2() {
-    var text_only = /^[a-zA-Z ]+$/;
-    var num_only = /^[0-9]*$/;
-    var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
     var output_msg = "";
 
     var ans1 = document.getElementsByName("referee_name[]");
@@ -652,11 +761,8 @@ function validateForm2() {
         else if (!(text_only.test(ans1[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Name' field can only contain text!\n";
         }
-        /** MKH: Validates that the new field "referee_company" is not empty & contains text input only **/
-        if (ans5[i].value.trim() == "") {
-            output_msg += "* The Referee [" + (1 + i) + "] 'Company' field is empty!\n";
-        }
-        else if (!(text_only.test(ans5[i].value))) {
+        /** MKH: Updates validation of field "referee_company" to contain text input only if entered**/
+        if (ans5[i].value.trim() !== ""  && !(text_only.test(ans5[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Company' field can only contain text!\n";
         }
         if (ans2[i].value.trim() == "") {
@@ -672,7 +778,7 @@ function validateForm2() {
             output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field is empty!\n";
         }
         else if (!(num_only.test(ans4[i].value))) {
-            output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers!\n";
+            output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers and spaces!\n";
         }
     }
 
@@ -685,19 +791,12 @@ function validateForm2() {
 
 /** validates each form field of the education section of the outside skills page */
 function validateForm3() {
-    var num_only = /^[0-9]*$/;
-
     var output_msg = "";
 
     var element = document.getElementsByName("education_year[]");
     var element2 = document.getElementsByName("education_achievements[]");
     for (i = 0; i < element.length; i++) {
-        if (element[i].value.trim() == "") {
-            output_msg += "* The year of education cannot be empty!\n";
-        }
-        else if (!(num_only.test(element[i].value))) {
-            output_msg += "* The year of education '" + element[i].value + "' can only contain numbers e.g. 2017!\n";
-        }
+        /** MKH: Removed validation code for Year due to change in input design from text to dropdown **/
         if (element2[i].value.trim() == "") {
             output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
         }
@@ -746,15 +845,23 @@ $(document).ready(function() {
 });
 
 /** MKH: Generates and stores the option tags for year dropdown dynamically **/
-var year_2050_2018 = "";
-for(i=2050; i>=2018; i--){
-    year_2050_2018 += "<option value="+i+">"+i+"</option>";
-}
-var year_2016_1990 = "";
-for(i=2016; i>=1990; i--){
-    year_2016_1990 += "<option value="+i+">"+i+"</option>";
+var years_2050_1990 = "";
+var current_year = new Date().getFullYear();
+
+for(i=2050; i>=1990; i--){
+    if(i==current_year){
+        years_2050_1990 += "<option value="+i+" selected>"+i+"</option>";
+    } else {
+        years_2050_1990 += "<option value="+i+">"+i+"</option>";
+    }
 }
 /** MKH: Generation logic ends **/
+
+/** MKH: Validation regexes stored here **/
+var text_only = /^[a-zA-Z ]+$/;
+var num_only = /^(?=.*\d)[\d ]+$/;
+var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+/** MKH: Regexes ends **/
 
 // Submit  'aboutmeform'  data via AJAX
 $(document).ready(function() {

@@ -33,15 +33,19 @@
 
         <h2>Driver's License</h2>
 
-        <!-- HINT, this one left in because it contains an HTML <a> tag which cannot be contained in a title. Added to the input using a jquery script snippet -->
-        <p id="dlhint"> Having a drivers licence is very important, it can get you an interview over those who don't. If you don't, start the process <a  target = "_blank" href = "https://www.nzta.govt.nz/driver-licences/getting-a-licence/licences-by-vehicle-type/cars/"> here</a>.</p>
-        <input type="text" name="drivers" value="<?php if($fileexists == true && empty($drivers) == false){echo $drivers;} ?>" required placeholder="Full License">
+        <!-- HINT, we're leaving this one in. -->
+        <p id="dlhint" class="general-helptext"> Having a drivers licence is very important, it can get you an interview over those who don't. If you don't, start the process <a  target = "_blank" href = "https://www.nzta.govt.nz/driver-licences/getting-a-licence/licences-by-vehicle-type/cars/"> here</a>.</p><br>
+        <!-- MKH: Replaces text input for Driver's License with a dropdown selection -->
+        <select name="drivers">
+                <option value="None">None</option>
+                <option value="Learners License">Learners</option>
+                <option value="Restricted License">Restricted</option>
+                <option value="Full License">Full</option>
+        </select>
+        <!-- MKH: Adds 'Vehicle Type' field to the form section -->
+        <h2>Type of Vehicle allowed</h2>
+        <input type="text" name="vehicle_type" placeholder="e.g. Car, Motorcycle, Heavy Vehicle, Bus, Taxi, Forklift etc">
 
           </div>
        </div>
       </form>
-    <script>
-      $("input[name='drivers']").tooltip({
-        content: $("#dlhint").html()
-      });
-    </script>

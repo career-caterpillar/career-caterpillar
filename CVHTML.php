@@ -90,7 +90,7 @@
 				<h1> <?php echo $first_name." ".$last_name?> </h1>
 			</div>
 			<div id="details">
-				<p><?php echo $street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $phone . "  |  " . $mobile; ?></p>
+				<p><?php echo $street_num . " ".$street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $email . "  |  " . $phone . "  |  " . $mobile; ?></p> <!-- MKH: Transfers Email details  to CV pdf. Identified missing duirng regression testing 24/1/2017 -->
 			</div>
 		</div>
 
@@ -218,6 +218,8 @@
 
 						<li><strong>Driver's licence: </strong><?php echo $drivers;?> </li>
 
+						<li><strong>Vehicle Type allowed: </strong><?php echo $vehicle_type; ?> </li> <!--MKH: Transfers new 'Vehicle Type' field to CV pdf -->
+
 					</ul>
 	</div>
 
@@ -290,7 +292,9 @@
 
 				echo ' <ul> ';
 				echo '<li><strong>' . $referee_name[$i] .  '</strong></li>';
-				echo '<li>Company: ' . $referee_company[$i]  .  '</li>';     //MKH: Transfers the new field "referee_company" to CV pdf.
+				if(trim($referee_company[$i])!=="") { //MKH: Transfers referee company to CV pdf only if input entered
+                                    echo '<li>Company: ' . $referee_company[$i]  .  '</li>';     
+                                }
 				echo '<li>Position: ' . $referee_position[$i]  .  '</li>';
 				echo '<li>Email: ' . $referee_email[$i] .  '</li>';
 				echo '<li>Phone: ' . $referee_phone[$i]  .  '</li>';
