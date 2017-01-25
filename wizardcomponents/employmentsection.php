@@ -15,6 +15,7 @@
                   experience and can help get your foot in the door.(Always start with the most recent experience first)
                 </p>
                 <div id="employing">
+                  <div class = "inputfields">
                     <h2>Position Title</h2>
                     <input type='text' name='employment_posn[]'>
 					<h2>Organization</h2>
@@ -70,7 +71,8 @@
                     <h2>Responsibilities</h2>
                     <textarea name="employment_responsibility[]" class = "largetextfield" cols="70" rows="7"></textarea>
                 </div>
-                <input type="button" class="btn btn-primary btn-outline btn-sm" value="Add another employment" onClick="addEmployInput('employing');">
+              </div>
+                <input id = "addemp" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another employment" onClick="addEmployInput('employing');">
               </div>
             </div>
           </fieldset>
