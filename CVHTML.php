@@ -133,7 +133,7 @@
 									<li><strong>Driver's licence </strong> <?php echo "<li id='driverslicence'>" . $drivers; ?>
 									<?php if ($drivers !== 'None') {
 													if(empty($vehicle_type) == false) {?>
-															<?php echo "( Vehicle Type: " . $vehicle_type . " )</li>";
+															<?php echo "(Vehicle Type: " . $vehicle_type . ")</li>";
 													}
 												} ?>
 									</li>

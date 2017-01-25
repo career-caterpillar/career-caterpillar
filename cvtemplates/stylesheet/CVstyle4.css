@@ -1,5 +1,67 @@
 <head>
 <style>
 
+#cvheader h4, #details p {
+  display: none;
+}
+
+#cvpage h1 {
+  text-align: left;
+  font-size: 35pt;
+  width: 5em;
+  padding-top: 1em;
+}
+
+#cvpage h4 {
+  border-bottom: 2px solid grey;
+}
+
+
+#restofcontent{
+  margin-left: 17em;
+  margin-top: -25em;
+}
+
+#cvpage ul {
+  list-style-type: none;
+}
+
+#personalstatement {
+    text-align: justify;
+    text-justify: inter-word
+}
+
+#otherskills{
+  margin-left: -15em;
+}
+
+#otherskills{
+  margin-left: -20em;
+  margin-top: 10em;
+  width: 12em;
+}
+
+#otherskills li{
+  padding-bottom: 5px;
+}
+
+#educationHistory {
+  margin-top: -22em;
+}
+
+#personalstatement h4, #otherskills h4{
+  display:none;
+}
+
+#personalstatement{
+  margin-left: -20em;
+  margin-top: 27em;
+  width: 17em;
+}
+
+#personalqualities{
+  margin-top: -55em;
+}
+
 </style>
 </head>
