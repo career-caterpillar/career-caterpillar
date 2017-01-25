@@ -1,10 +1,7 @@
-
 /** adds a new input field for languages */
 
 /*KC
-
 these are helper funcitons for edit/delete/feedback functionality
-
 */
 
 function convertMonthtoNumber(month){
@@ -249,12 +246,13 @@ function finishrefsSection(inputnode){
 function finishempSection(inputnode) {
 
   var posVal =  String(jumpBack(inputnode,2).getElementsByTagName('input')[0].value);
-  var cityVal =  String(jumpBack(inputnode,2).getElementsByTagName('input')[1].value);
-  var countryVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[2].value);
+  var orgVal =  String(jumpBack(inputnode,2).getElementsByTagName('input')[1].value);
+  var cityVal =  String(jumpBack(inputnode,2).getElementsByTagName('input')[2].value);
+  var countryVal = String(jumpBack(inputnode,2).getElementsByTagName('input')[3].value);
   var startmonthVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[0].value);
   var startyearVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[1].value);
-  var stillValYes = String(jumpBack(inputnode,2).getElementsByTagName('input')[3].value);
-  var stillValNo = String(jumpBack(inputnode,2).getElementsByTagName('input')[4].value);
+  var stillValYes = String(jumpBack(inputnode,2).getElementsByTagName('input')[4].value);
+  var stillValNo = String(jumpBack(inputnode,2).getElementsByTagName('input')[5].value);
   var endmonthVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[2].value);
   var endyearVal = String(jumpBack(inputnode,2).getElementsByTagName('select')[3].value);
   var responsibilitiesVal = String(jumpBack(inputnode,2).getElementsByTagName('textarea')[0].value);
@@ -281,7 +279,7 @@ function finishempSection(inputnode) {
   showdeletes(jumpBack(inputnode,3));
   showedits(jumpBack(inputnode,3));
 
-  workingnode.appendChild(buildempFeedback(posVal, cityVal, countryVal, startmonthVal, startyearVal,stillVal,endmonthVal,endyearVal, responsibilitiesVal));
+  workingnode.appendChild(buildempFeedback(posVal, orgVal ,cityVal, countryVal, startmonthVal, startyearVal,stillVal,endmonthVal,endyearVal, responsibilitiesVal));
   workingnode.getElementsByClassName("feedback")[0].remove();
 
 }
@@ -330,12 +328,13 @@ function buildrefFeedback(name, company,position, email, phone){ /*builds a feed
     return newdiv;
 }
 
-function buildempFeedback(position, city, country, start_month, start_year,stillwork,end_month,end_year, responsibilities){
+function buildempFeedback(position, organization, city, country, start_month, start_year,stillwork,end_month,end_year, responsibilities){
 
   var newdiv = document.createElement('div');//create div
   newdiv.className = "feedback";//name div "feedback" for css
 
   var posVal = "<h2 style= 'text-decoration: underline;'>Position:</h2>" +  "<p>" + position + "</p>"; //create heading
+  var orgVal = "<h2 style= 'text-decoration: underline;'>Organization:</h2>" +  "<p>" + organization + "</p>"; //create heading
   var cityVal = "<h2 style= 'text-decoration: underline;'>City:</h2>" +  "<p>" + city + "</p>";// enter year into p tag
   var countryVal = "<h2 style= 'text-decoration: underline;'>Country:</h2>" +  "<p>" + country + "</p>";//create achievment heading
   var startmonthVal = "<h2 style= 'text-decoration: underline;'>Start Month:</h2>" +  "<p>" + start_month + "</p>";// enter achievment into p tag
@@ -349,7 +348,7 @@ function buildempFeedback(position, city, country, start_month, start_year,still
   var finishedbtn = '<input type="button" class="btn btn-primary btn-outline btn-sm  finishedbtns" value="finished" style = "display : none"  onClick="finishempSection(this);">';// create finished button
   var deletebtn = '<input type="button" class="btn btn-primary btn-outline btn-sm  deletebtns" value="delete" onClick="deleteSection(this);">';// create delete button
 
-  newdiv.innerHTML = posVal + cityVal + countryVal + startmonthVal + startyearVal + stillVal + endmonthVal +
+  newdiv.innerHTML = posVal +orgVal + cityVal + countryVal + startmonthVal + startyearVal + stillVal + endmonthVal +
                       endyearVal + responsibilitiesVal +
                       editbtn + finishedbtn + deletebtn ;//concatenate all and insert into newDiv
 
@@ -382,12 +381,13 @@ function addEmployInput(divName) {
 
 
     var posVal =  String(firstNode.getElementsByTagName('input')[0].value);
-    var cityVal =  String(firstNode.getElementsByTagName('input')[1].value);
-    var countryVal = String(firstNode.getElementsByTagName('input')[2].value)
+    var orgVal =  String(firstNode.getElementsByTagName('input')[1].value);
+    var cityVal =  String(firstNode.getElementsByTagName('input')[2].value);
+    var countryVal = String(firstNode.getElementsByTagName('input')[3].value)
     var startmonthVal = String(firstNode.getElementsByTagName('select')[0].value);
     var startyearVal = String(firstNode.getElementsByTagName('select')[1].value);
-    var stillValYes = String(firstNode.getElementsByTagName('input')[3].value);
-    var stillValNo = String(firstNode.getElementsByTagName('input')[4].value);
+    var stillValYes = String(firstNode.getElementsByTagName('input')[4].value);
+    var stillValNo = String(firstNode.getElementsByTagName('input')[5].value);
     var endmonthVal = String(firstNode.getElementsByTagName('select')[2].value);
     var endyearVal = String(firstNode.getElementsByTagName('select')[3].value);
     var responsibilitiesVal = String(firstNode.getElementsByTagName('textarea')[0].value);
@@ -408,16 +408,17 @@ function addEmployInput(divName) {
 
     if ((firstNode.style.display != 'none')){
 
-        if ((posVal || cityVal || countryVal || startmonthVal || startyearVal|| endmonthVal|| endyearVal|| responsibilitiesVal) !== ""){
+        if ((posVal || cityVal|| orgVal || countryVal || startmonthVal || startyearVal|| endmonthVal|| endyearVal|| responsibilitiesVal) !== ""){
 
-      newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ years_2050_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ years_2050_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+          newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'><h2>Organization</h2><input type='text' name='employment_orgnz[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ years_2050_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ years_2050_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
+          document.getElementById(divName).appendChild(newdiv);
           firstNode.style.display = 'none'; // hide firstnode
 
           parentnode.insertBefore(wrapper,firstNode);
           firstNode = parentnode.children[0];//refresh list to reference wrapper
 
           wrapper.appendChild(firstNode.nextSibling);
-          wrapper.appendChild(buildempFeedback(posVal, cityVal, countryVal, startmonthVal, startyearVal,stillVal,endmonthVal,endyearVal, responsibilitiesVal)); // fill wrapper with divs
+          wrapper.appendChild(buildempFeedback(posVal,orgVal, cityVal, countryVal, startmonthVal, startyearVal,stillVal,endmonthVal,endyearVal, responsibilitiesVal)); // fill wrapper with divs
 
           parentnode.insertBefore(newdiv,firstNode);
           parentnode.insertBefore(document.getElementById("addemp"),parentnode.children[1]);// move add extracurricular achievement
@@ -433,9 +434,6 @@ function addEmployInput(divName) {
     }
 
 
-    /** MKH: Enables month/year dropdown to be available as a dynamic input *
-    newdiv.innerHTML = "<hr><h2>Position Title</h2> <input type='text' name='employment_posn[]'> <h2>City</h2> <input type='text' name='employment_city[]'> <h2>Country</h2> <input type='text' name='employment_country[]'> <h2>Start Date</h2> <select name='employment_start_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_start_year[]'> "+ years_2050_1990 + " </select> <h2>Do you still work here?</h2> <input type='radio' name='still_work' value='yes'> Yes <input type='radio' name='still_work' value='no'> No <h2>End Date</h2> <h3>(if answer was 'no' above)</h3> <select name='employment_end_month[]'> <option value='' disabled selected>Month</option> <option value='Jan'>Janaury</option> <option value='Feb'>February</option> <option value='Mar'>March</option> <option value='Apr'>April</option> <option value='May'>May</option> <option value='Jun'>June</option> <option value='Jul'>July</option> <option value='Aug'>August</option> <option value='Sep'>September</option> <option value='Oct'>October</option> <option value='Nov'>November</option> <option value='Dec'>December</option> </select> <select name='employment_end_year[]'> "+ years_2050_1990 + " </select> <h2>Responsibilities</h2> <textarea name='employment_responsibility[]' class = 'largetextfield' cols='70' rows='7'></textarea>";
-    document.getElementById(divName).appendChild(newdiv);*/
 
 }
 
@@ -485,11 +483,6 @@ function addEducationInput(divName) {
     }else{
       firstNode.style.display = 'block';
     }
-
-
-    /** MKH: Enables year dropdown to be available as a dynamic input *
-    newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
-    document.getElementById(divName).appendChild(newdiv);*/
 
 }
 
@@ -826,16 +819,41 @@ function validateForm4() {
     return true;
 }
 
-/** LV returns whether or not the personal statement section has been filled out  */
+/** LV returns whether or not the optional personal statement section has been filled out  */
 function personalStatementFilled() {
-  if ($.trim($('#pstextarea').val()).length < 1) {
+  if ($.trim($('textarea[name="personal_statement"]').val()).length < 1) {
     return false;
   }
 
   return true;
 }
 
+/** LV returns whether or not the optional achievements & awards section has been filled out  */
+function achievementsFilled() {
+  if ($.trim($('textarea[name="awards_achievements[]"]').val()).length < 1) {
+    return false;
+  }
 
+  return true;
+}
+
+/** LV returns whether or not the optional extracurricular section has been filled out  */
+function extracurricularFilled() {
+  if ($.trim($('textarea[name="extracurricular_achievements[]"]').val()).length < 1) {
+    return false;
+  }
+
+  return true;
+}
+
+/** LV returns whether or not the optional other skills section has been filled out  */
+function otherSkillsFilled() {
+  if ($.trim($('input[name="lang[]"]').val()).length < 1 && $.trim($('input[name="drivers[]"]').val()).length < 1) {
+    return false;
+  }
+
+  return true;
+}
 
 $(document).ready(function() {
     // bind 'personaldetails' and provide a simple callback function
