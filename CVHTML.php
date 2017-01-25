@@ -95,12 +95,12 @@
 															<?php echo $employment_start_month [$i].' '.$employment_start_year [$i]; ?>
 															<?php if ($employment_end_date_empty == false) {echo " - ".$employment_end_month [$i].' '.$employment_end_year [$i]; }?>
 														</li>
-														<li style="margin-top:-1.4em; margin-left: 12em;">
+														<li id="employmentdetail">
 															<?php echo $employment_posn[$i];
 															 if($employment_orgnz_empty == false) { echo ": ". $employment_orgnz[$i]; }
 															 echo ", " . $employment_city [$i] . ", " . $employment_country [$i]; ?>
 															<?php echo " <br><br> " . "Roles and Responsibilities: " . " <br>" ?>
-															<li style="margin-left: 13em;"> <?php echo $employment_responsibility [$i];?> </li>
+															<li id="employmentresponsibility"> <?php echo $employment_responsibility [$i];?> </li>
 														</li> <?php
 											}
 										echo '</ul>';
@@ -115,22 +115,25 @@
 								include "cvcontent/otherskillsdata.php"; ?>
 								<h4>OTHER SKILLS</h4>
 								<ul>
-									<li><strong>Languages: </strong> <?php
+									<li><strong>Language(s) </strong> </li><?php
 											//create list of other skills in the CV
 											for($i = 0; $i < $arrsizeLang; $i ++) {
-												if(empty($lang[$i])==false){
-													echo " ". $lang[$i];
+												if($i == 0){
+													echo "<li id='language'>";
 												}
-												if ($i < ($arrsizeLang - 1)){
+												if(empty($lang[$i])==false){
+													echo $lang[$i];
+												}
+												if($i < ($arrsizeLang - 1)){
 													echo ",";
 												}
-											}	?>
-									</li>
+											}
+											echo "</li>";	?>
 
-									<li><strong>Driver's licence: </strong> <?php echo $drivers;?>
+									<li><strong>Driver's licence </strong> <?php echo "<li id='driverslicence'>" . $drivers; ?>
 									<?php if ($drivers !== 'None') {
 													if(empty($vehicle_type) == false) {?>
-															<vehicle> <?php echo "( Vehicle Type: " . $vehicle_type . " )"; ?> <vehicle> <?php
+															<?php echo "( Vehicle Type: " . $vehicle_type . " )</li>";
 													}
 												} ?>
 									</li>
@@ -148,7 +151,7 @@
 									if (trim($education_year[$i] ) !== "" && trim($education_achievements[$i]) !== "") {?>
 										<ul>
 											<li> <?php echo $education_year [$i]; ?> </li>
-											<li style="margin-top:-1.4em; margin-left: 12em;"> <?php echo $education_achievements [$i]; ?> </li>
+											<li id="educationachievement"> <?php echo $education_achievements [$i]; ?> </li>
 										</ul>
 									<?php }
 								}
@@ -165,7 +168,7 @@
 										for($i = 0; $i < $arrsizeYear; $i ++) {
 											if (empty ( $achieve_year [$i] ) == false && empty ( $awards_achievements [$i] == false )) {
 												echo '<li>' . $achieve_year [$i] . '</li>';
-												echo '<li style="margin-top:-1.4em; margin-left: 12em;">' . $awards_achievements [$i] . '</li>';
+												echo '<li id="awardsachievements">' . $awards_achievements [$i] . '</li>';
 											}
 											echo '<br/>';
 										}
@@ -202,13 +205,13 @@
 								for ($i = 0; $i < $arrsizeRefs; $i++){
 									echo ' <ul> ';
 									echo '<li><strong>' . $referee_name[$i] .  '</strong></li>';
-									echo '<li style="margin-top:-1.4em; margin-left: 12em;">' . $referee_position[$i];
+									echo '<li id="refereeposition">' . $referee_position[$i];
 									if(trim($referee_company[$i])!=="") { //MKH: Transfers referee company to CV pdf only if input entered
 										echo ": " . $referee_company[$i] ;
 									}
 									echo '</li>';
-									echo '<li style="margin-left: 12em;">Email: ' . $referee_email[$i] .  '</li>';
-									echo '<li style="margin-left: 12em;">Phone: ' . $referee_phone[$i]  .  '</li>';
+									echo '<li id="refereeemail">Email: ' . $referee_email[$i] .  '</li>';
+									echo '<li id="refereephone">Phone: ' . $referee_phone[$i]  .  '</li>';
 									echo ' </ul> ';
 								}
 							} ?>

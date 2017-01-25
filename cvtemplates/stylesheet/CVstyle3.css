@@ -41,11 +41,7 @@
   margin: 0em;
 }
 
-#individual {
-  display:none;
-}
-
-#personalstatement h4{
+#individual, #personalstatement h4 {
   display:none;
 }
 
@@ -55,6 +51,19 @@
 }
 
 refereedetails{
+  margin-left: 12em;
+}
+
+#educationachievement, #employmentdetail, #awardsachievements, #refereeposition, #language, #driverslicence{
+  margin-top:-1.35em;
+  margin-left: 12em;
+}
+
+#employmentresponsibility{
+  margin-left: 14em;
+}
+
+#refereeemail, #refereephone{
   margin-left: 12em;
 }
 
