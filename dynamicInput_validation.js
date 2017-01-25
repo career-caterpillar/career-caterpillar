@@ -463,7 +463,7 @@ function addEducationInput(divName) {
 
       if ((yearVal || achVal) !== ""){
         /** MKH: Enables year dropdown to be available as a dynamic input **/
-            newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
+            newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Qualification<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
         firstNode.style.display = 'none'; // hide firstnode
 
         parentnode.insertBefore(wrapper,firstNode);
@@ -689,12 +689,13 @@ function validateForm1() {;
     if (document.myForm1.street_num.value.trim() == "") {                   //MKH: Validates Street Number to be numeric only. Identified in Regression Testing 24/01/2017
         output_msg += "* The 'Street Number' field is empty!\n";
     }
-    else if (!(num_only.test(document.myForm1.street_num.value))) {
-        output_msg += "* The 'Street Number' field can only contain numbers!\n";
-    }
+    //MKH: Allows alphanumeric input e.g. 7A or 22/8 as the Street Number
 
     if (document.myForm1.street_add.value.trim() == "") {
-        output_msg += "* The 'Street Address' field is empty!\n";
+        output_msg += "* The 'Street Name' field is empty!\n";
+    }
+    else if (!(text_only.test(document.myForm1.street_add.value))) {     //MKH: Validates Street Name to allow text input only.
+        output_msg += "* The 'Street Name' field can only contain text!\n";
     }
 
     if (document.myForm1.suburb_add.value.trim() == "") {
