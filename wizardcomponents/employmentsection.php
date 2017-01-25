@@ -8,10 +8,11 @@
             <div class = "row">
               <div class="col-wholepage">
                 <!-- SECTION HINT -->
-                <p id="employmenthint" style="color:red; font-style:italic;">
+
+                <p id="employmenthint">
                   Probably the most important part of your CV, previous jobs and volunteering roles are very important to you're future employers.
                   These tend to be the biggest part in which a future employer will judge you. Volunteering is often just as valuable as previous work
-                  experience and can help get your foot in the door.(Always start with the most recent experience first)
+                  experience and can help get your foot in the door.<br/>(Always start with the most recent experience first)
                 </p>
                 <div id="employing">
                   <div class = "inputfields">

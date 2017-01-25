@@ -447,6 +447,7 @@ $(document).ready(function(){
 				$("#toprevbtn").css("visibility", "hidden");
 
 				curpage = pagenumber;//KC: set current page for correct side scrolling
+				$("input[name='first_name']").focus(); //MN: set the focus on the first_name box on page entry.
 				break;
 
 			case 2:
@@ -466,7 +467,7 @@ $(document).ready(function(){
 				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
-
+				$("textarea[name='personal_statement']").focus();
         break;
 
       case 3:
@@ -507,7 +508,7 @@ $(document).ready(function(){
 				$("#tonextbtn").css("visibility", "visible");
 				$("#toprevbtn").css("visibility", "visible");
 				curpage = pagenumber;
-
+				$("textarea[name='awards_achievements[]']").focus();
 				break;
 
 			case 5:
@@ -526,7 +527,7 @@ $(document).ready(function(){
 				$("#tonextbtn").css("visibility", "visible");
 				$("#toprevbtn").css("visibility", "visible");
 				curpage = pagenumber;
-
+				$("input[name='employment_posn[]']").focus();
 				break;
 
 			case 6:
@@ -546,7 +547,7 @@ $(document).ready(function(){
 				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
-
+				$("textarea[name='extracurricular_achievements[]']").focus();
 				break;
 
 			case 7:
@@ -567,7 +568,7 @@ $(document).ready(function(){
 				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
-
+				$("textarea[name='education_achievements[]']").focus();
 				break;
 
 			case 8:
@@ -606,6 +607,7 @@ $(document).ready(function(){
 				$("#toprevbtn").css("visibility", "visible");
 
 				curpage = pagenumber;
+				$("input[name='referee_name[]']").focus();
 				break;
 
 			case 10:
