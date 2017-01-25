@@ -1,4 +1,30 @@
 <body>
+
+		<?php
+			if(file_exists("cvcontent/personaldetails.php") == false ||
+				file_exists("cvcontent/personalqualitiesdata.php") ==false ||
+				file_exists("cvcontent/educationdata.php") == false ||
+				file_exists("cvcontent/refs.php")==false){
+					echo "<h3> Fill in the following section to complete the CV </h3>";
+			}
+
+			if(file_exists("cvcontent/personaldetails.php") == false){
+				echo "<h5 style='margin:0em'> PERSONAL DETAILS </h5>";
+			}
+
+			if(file_exists("cvcontent/personalqualitiesdata.php") ==false){
+				echo "<h5 style='margin:0em'> PERSONAL QUALITIES </h5>";
+			}
+
+			 if(file_exists("cvcontent/educationdata.php") == false){
+				echo "<h5 style='margin:0em'> EDUCATION </h5>";
+			}
+
+			 if(file_exists("cvcontent/refs.php")==false){
+				echo "<h5 style='margin:0em'> REFEREE </h5>";
+			}
+		?>
+
 	<div id="cvpage">
 
 		<!-- Add personal contacts to the top of the CV -->
@@ -130,7 +156,7 @@
 											}
 											echo "</li>";	?>
 
-									<li><strong>Driver's licence </strong> <?php echo "<li id='driverslicence'>" . $drivers; ?>
+									<li id="licencefield"><strong>Driver's licence </strong> <?php echo "<li id='driverslicence'>" . $drivers; ?>
 									<?php if ($drivers !== 'None') {
 													if(empty($vehicle_type) == false) {?>
 															<?php echo "(Vehicle Type: " . $vehicle_type . ")</li>";
