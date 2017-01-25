@@ -9,6 +9,7 @@ body {
 	background-color: #ffffff;
 }
 
+
 /* New bit starts here */
 
 #wholepage {
@@ -18,19 +19,21 @@ body {
 }
 
 #postcontainer {
-  padding-left: 5%;
+  padding-right: 5%;
   min-height: 100%;
 }
 
 #buttonbar {
+  position: relative;
+  right: 0;
   width: 7%;
-  margin-top: 18%;
-  position: fixed;
+  float:right;
   font-size: 30pt;
 }
 
 #buttonbar ul {
   list-style-type: none;
+  margin-top: 35vh;
 }
 
 #buttonbar li {
@@ -43,40 +46,41 @@ body {
 
 #sidebar {
 	display: flex;
-	width: 14%;
-	min-height: 100%;
-	background-color: rgb(38, 164, 235);
   position: fixed;
-  padding-top: 50px;
+	background-color: rgb(38, 164, 235);
+  float: left;
+  padding-top:4em;
+  padding-bottom: 4em;
 }
 
 #sidebar-left {
-	width: 70px;
+	width: 30%;
+  height: 100%;
+  padding-left: 5%;
+}
+
+#sidebar-right {
+  height: 100%;
 }
 
 #sidebar ul {
-	min-height: 100%;
 	list-style-type: none;
 	padding-left: 0;
+  min-height: 100%;
 }
 
 #sidebar li {
-	height: 50px;
-	text-align: left;
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-bottom: 30px;
+
 }
 
 #sidebar-left li {
 	border: 4px solid white;
 	border-radius: 10px;
   cursor: pointer;
-  font-size: 25pt;
+
 }
 
 #sidebar-right li {
-	padding-top: 10px;
   color: white;
 }
 
@@ -112,10 +116,12 @@ body {
 
 .col-left {
   min-width: 50%;
+  padding-right: 2%;
 }
 
 .col-right {
   min-width: 50%;
+  padding-left: 2%;
 }
 
 .col-wholepage {
@@ -123,9 +129,25 @@ body {
 }
 
 input {
-  width: 90%;
+  width: 100%;
   line-height: 40px;
   font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+input[type="button"] {
+  width: 200px;
+  height: 50px;
+  color: white;
+  border-color: rgb(38, 164, 235);
+  background-color: rgb(38, 164, 235);
+  float: right;
+  border-top:
+}
+
+input[type="button"]:hover {
+  color: white;
 }
 
 input, label {
@@ -194,17 +216,17 @@ h3 {
 	padding-right: 15%;
 }
 
-button {
-	display: inline;
-}
-
 textarea {
   resize: none;
-  font-size: 16px;
+  font-size: 20px;
+  padding: 10px;
 }
 
 #personalstatementsection textarea {
-  height: 600px;
+  margin-top: 5%;
+  height: 80%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 #output {
@@ -216,8 +238,12 @@ textarea {
 	display: none;
 }
 
-#languages {
-	padding-bottom: 10px;
+#languages-container {
+  padding-bottom: 5%;
+}
+
+#languages input {
+  margin-bottom: 1%;
 }
 
 #centered {
@@ -258,7 +284,7 @@ textarea {
 	width: 79%;
   min-height: 100%;
 	background-color: #ffffff;
-  margin-left: 14%;
+  margin-left: 20%;
 }
 
 .center {
@@ -274,52 +300,6 @@ textarea {
 	height: 100%;
 	background-color: 555555;
 	border: 3px solid green;
-}
-
-.btnmain {
-	text-align:right;
-	position: fixed;
-	background: #ffffff;
-	background-image: -webkit-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -moz-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	color: #000000;
-	font-size: 24px;
-	background: none;
-	font-size: 24pt;
-	width: 15%;
-}
-
-.btnCreate {
-	position: fixed;
-	background: #ffffff;
-	background-image: -webkit-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -moz-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	color: #000000;
-	font-size: 24pt;
-	width: 15%;
-
-}
-
-.btnmake {
-	position: fixed;
-	background: #ffffff;
-	background-image: -webkit-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -moz-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -ms-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
-	background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
-	color: #000000;
-	font-size: 24px;
-	border: solid #555555 5px;
-	background: none;
-	width: 15%;
-	vertical-align: middle;
 }
 
 textarea {
