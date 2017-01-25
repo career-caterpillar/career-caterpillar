@@ -359,7 +359,7 @@ function buildempFeedback(position, organization, city, country, start_month, st
 function addLanguageInput(divName) {
 
     var newdiv = document.createElement('div');
-    newdiv.innerHTML = "<input type='text' required='required' name='lang[]'> <input type='button' class='btn btn-primary btn-outline btn-sm  deletelang' value='delete' onClick='deletethis(this);'>";
+    newdiv.innerHTML = "<input type='text' required='required' name='lang[]'> <input type='button' class='btn btn-primary deletelang' value='delete' onClick='deletethis(this);'>";
     console.log(newdiv.innerHTML);
     document.getElementById(divName).appendChild(newdiv);
 
@@ -671,66 +671,91 @@ function validateForm1() {;
 
     var output_msg = "";
 
-
     if (document.myForm1.first_name.value.trim() == "") {
         output_msg += "* The 'First Name' field is empty!\n";
+        document.myForm1.first_name.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
     else if (!(text_only.test(document.myForm1.first_name.value))) {
         output_msg += "* The 'First Name' field can only contain text!\n";
+        document.myForm1.first_name.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.first_name.style.border = ""; //MKH: Adds red border to invalid input
 
     if (document.myForm1.last_name.value.trim() == "") {
         output_msg += "* The 'Last Name' field is empty!\n";
+        document.myForm1.last_name.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
     else if (!(text_only.test(document.myForm1.last_name.value))) {
         output_msg += "* The 'Last Name' field can only contain text!\n";
+        document.myForm1.last_name.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.last_name.style.border = ""; //MKH: Adds red border to invalid input
 
     if (document.myForm1.street_num.value.trim() == "") {                   //MKH: Validates Street Number to be numeric only. Identified in Regression Testing 24/01/2017
         output_msg += "* The 'Street Number' field is empty!\n";
+        document.myForm1.street_num.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.street_num.style.border = ""; //MKH: Adds red border to invalid input
     //MKH: Allows alphanumeric input e.g. 7A or 22/8 as the Street Number
 
     if (document.myForm1.street_add.value.trim() == "") {
         output_msg += "* The 'Street Name' field is empty!\n";
+        document.myForm1.street_add.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
     else if (!(text_only.test(document.myForm1.street_add.value))) {     //MKH: Validates Street Name to allow text input only.
         output_msg += "* The 'Street Name' field can only contain text!\n";
+        document.myForm1.street_add.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.street_add.style.border = ""; //MKH: Adds red border to invalid input
 
     if (document.myForm1.suburb_add.value.trim() == "") {
         output_msg += "* The 'Suburb' field is empty!\n";
+        document.myForm1.suburb_add.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
     else if (!(text_only.test(document.myForm1.suburb_add.value))) {
         output_msg += "* The 'Suburb' can only contain text!\n";
+        document.myForm1.suburb_add.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.suburb_add.style.border = ""; //MKH: Adds red border to invalid input
 
     if (document.myForm1.city_add.value.trim() == "") {
         output_msg += "* The 'City' field is empty!\n";
+        document.myForm1.city_add.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
     else if (!(text_only.test(document.myForm1.city_add.value))) {
         output_msg += "* The 'City' field can only contain text!\n";
+        document.myForm1.city_add.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.city_add.style.border = ""; //MKH: Adds red border to invalid input
 
     if (document.myForm1.phone.value.trim() !== "" && !(num_only.test(document.myForm1.phone.value))) {               //MKH: Makes phone field to be non-mandatory, but allows numbers only if input entered.
         output_msg += "* The 'Phone' field can only contain numbers and spaces!\n";
+        document.myForm1.phone.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.phone.style.border = ""; //MKH: Adds red border to invalid input
 
     if (document.myForm1.mobile.value.trim() == "") {                   //MKH: Prompts user to enter value if input missing
         output_msg += "* The 'Mobile' field is empty!\n";
+        document.myForm1.mobile.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
     else if (!(num_only.test(document.myForm1.mobile.value))) {
         output_msg += "* The 'Mobile' field can only contain numbers and spaces!\n";
+        document.myForm1.mobile.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.mobile.style.border = ""; //MKH: Adds red border to invalid input
 
     if (!(email_yo.test(document.myForm1.email.value)) || document.myForm1.email.value.trim() == "") {
         output_msg += "* The 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
+        document.myForm1.email.style.border = validation_error_border_style; //MKH: Adds red border to invalid input        
     } //MKH: Re-instate missing email validation
-
+    else document.myForm1.email.style.border = ""; //MKH: Adds red border to invalid input
+    
     //MKH: Makes school field to be non-mandatory, but allows text only if input entered.
     if (document.myForm1.school_name.value.trim() !== "" && !(text_only.test(document.myForm1.school_name.value))) {
         output_msg += "* The 'School' field can only contain text!\n";
+        document.myForm1.school_name.style.border = validation_error_border_style; //MKH: Adds red border to invalid input
     }
+    else document.myForm1.school_name.style.border = ""; //MKH: Adds red border to invalid input
 
     if (output_msg !== "") {
         alert(output_msg);
@@ -751,29 +776,46 @@ function validateForm2() {
     for (i = 0; i < ans1.length; i++) {
         if (ans1[i].value.trim() == "") {
             output_msg += "* The Referee [" + (1 + i) + "] 'Name' field is empty!\n";
+            ans1[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
         else if (!(text_only.test(ans1[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Name' field can only contain text!\n";
+            ans1[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
+        else ans1[i].style.border = ""; //MKH: Adds red border to invalid input
+        
         /** MKH: Updates validation of field "referee_company" to contain text input only if entered**/
         if (ans5[i].value.trim() !== ""  && !(text_only.test(ans5[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Company' field can only contain text!\n";
+            ans5[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
+        else ans5[i].style.border = ""; //MKH: Adds red border to invalid input
+        
         if (ans2[i].value.trim() == "") {
             output_msg += "* The Referee [" + (1 + i) + "] 'Position' field is empty!\n";
+            ans2[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
         else if (!(text_only.test(ans2[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Position' field can only contain text!\n";
+            ans2[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
+        else ans2[i].style.border = ""; //MKH: Adds red border to invalid input
+        
         if (!(email_yo.test(ans3[i].value)) || ans3[i].value.trim() == "") {
             output_msg += "* The Referee [" + (1 + i) + "] 'Email' entered is invalid! Enter email in the format of someone@example.com\n";
+            ans3[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
+        else ans3[i].style.border = ""; //MKH: Adds red border to invalid input
+        
         if (ans4[i].value.trim() == "") {
             output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field is empty!\n";
+            ans4[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
         else if (!(num_only.test(ans4[i].value))) {
             output_msg += "* The Referee [" + (1 + i) + "] 'Phone' field can only contain numbers and spaces!\n";
+            ans4[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
+        else ans4[i].style.border = ""; //MKH: Adds red border to invalid input
     }
 
     if (output_msg !== "") {
@@ -792,8 +834,10 @@ function validateForm3() {
     for (i = 0; i < element.length; i++) {
         /** MKH: Removed validation code for Year due to change in input design from text to dropdown **/
         if (element2[i].value.trim() == "") {
-            output_msg += "* The educational achievements for year '" + element[i].value + "' is missing. Please update.\n ";
+            output_msg += "* The educational qualification is missing. Please update.\n ";
+            element2[i].style.border = validation_error_border_style; //MKH: Adds red border to invalid input
         }
+        else element2[i].style.border = ""; //MKH: Adds red border to invalid input
     }
 
     if (output_msg !== "") {
@@ -805,13 +849,13 @@ function validateForm3() {
 
 /** MKH: validates that atleast 3 qualities are selected on the personal qualities page */
 function validateForm4() {
-	var numChecked = 0;
+    var numChecked = 0;
 
-	$("input:checkbox").each(function() {
+    $("input:checkbox").each(function() {
         if($(this).is(':checked')){
         numChecked++;
         }
-	});
+    });
 
     if (numChecked<3) {
         alert("Please make sure to have selected atleast 3 qualities");
@@ -822,44 +866,33 @@ function validateForm4() {
 
 /** LV returns whether or not the optional personal statement section has been filled out  */
 function personalStatementFilled() {
-  if ($.trim($('textarea[name="personal_statement"]').val()).length < 1) {
-    return false;
-  }
-
-  return true;
+  return $.trim($('textarea[name="personal_statement"]').val()).length > 0;
 }
 
 /** LV returns whether or not the optional achievements & awards section has been filled out  */
 function achievementsFilled() {
-  if ($.trim($('textarea[name="awards_achievements[]"]').val()).length < 1) {
-    return false;
-  }
+  return $.trim($('textarea[name="awards_achievements[]"]').val()).length > 0;
+}
 
-  return true;
+/** LV returns whether the position field of the optional employment section has been filled out  */
+function employmentFilled() {
+  return $.trim($('input[name="employment_posn[]"]').val()).length > 0;
 }
 
 /** LV returns whether or not the optional extracurricular section has been filled out  */
 function extracurricularFilled() {
-  if ($.trim($('textarea[name="extracurricular_achievements[]"]').val()).length < 1) {
-    return false;
-  }
-
-  return true;
+  return $.trim($('textarea[name="extracurricular_achievements[]"]').val()).length > 0;
 }
 
 /** LV returns whether or not the optional other skills section has been filled out  */
 function otherSkillsFilled() {
-  if ($.trim($('input[name="lang[]"]').val()).length < 1 && $.trim($('input[name="drivers[]"]').val()).length < 1) {
-    return false;
-  }
-
-  return true;
+  return $.trim($('input[name="lang[]"]').val()).length < 1 && $.trim($('input[name="drivers[]"]').val()).length > 0;
 }
 
 $(document).ready(function() {
     // bind 'personaldetails' and provide a simple callback function
     $('#personaldetailsform').ajaxForm(function() {
-    	alert("saved personal details");
+        alert("saved personal details");
     });
 });
 
@@ -882,23 +915,25 @@ var num_only = /^(?=.*\d)[\d ]+$/;
 var email_yo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 /** MKH: Regexes ends **/
 
+var validation_error_border_style = "1px solid #FF0000" //MKH: Store border styling upon validation error
+
 // Submit  'aboutmeform'  data via AJAX
 $(document).ready(function() {
     $('#aboutmeform').ajaxForm(function() {
-    	alert("Saved About me");
+        alert("Saved About me");
     });
 });
 
 // Submit  'outsideskillform'  data via AJAX
 $(document).ready(function() {
     $('#outsideskillform').ajaxForm(function() {
-    	alert("Saved Work and Education");
+        alert("Saved Work and Education");
     });
 });
 
 // Submit  'refereeform'  data via AJAX
 $(document).ready(function() {
     $('#refereeform').ajaxForm(function() {
-    	alert("Saved Referees");
+        alert("Saved Referees");
     });
 });

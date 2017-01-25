@@ -4,10 +4,11 @@
         <!-- START OF EMPLOYMENT SECTION -->
 
           <fieldset>
-            <legend>Employment/Volunteering</legend>
+            <legend>Employment & Volunteering</legend>
             <div class = "row">
               <div class="col-wholepage">
                 <!-- SECTION HINT -->
+
                 <p id="employmenthint">
                   Probably the most important part of your CV, previous jobs and volunteering roles are very important to you're future employers.
                   These tend to be the biggest part in which a future employer will judge you. Volunteering is often just as valuable as previous work
@@ -43,9 +44,10 @@
                     <select name="employment_start_year[]" class='year-dd'>     <!-- MKH: Allows Start Year to be selected between 1990 to 2050. Default Current Year -->
                     <script>document.write(years_2050_1990)</script> <!-- MKH: Option tags written dynamically from dyamicInput_validation.js variable -->
                     </select>
-                    <h2>Do you still work here?</h2>
-                    <input type="radio" name="still_work" value="yes"> Yes
-                    <input type="radio" name="still_work" value="no"> No
+                    <!-- MKH: Employment Section - Radio button and text placed on the same row -->
+                    <br><br><h2 style="display:inline;">Do you still work here?&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                    <input type="radio" name="still_work" value="yes"> Yes &nbsp;&nbsp;
+                    <input type="radio" name="still_work" value="no"> No 
                     <h2>End Date</h2>
                     <h3>(if answer was 'no' above)</h3>
                     <!-- MKH: Replace End Date Input with two dropdowns for End Month and Year -->
@@ -71,7 +73,7 @@
                     <textarea name="employment_responsibility[]" class = "largetextfield" cols="70" rows="7"></textarea>
                 </div>
               </div>
-                <input id = "addemp" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another employment" onClick="addEmployInput('employing');">
+                <input id = "addemp" type="button" class="btn btn-primary" value="Add" onClick="addEmployInput('employing');">
               </div>
             </div>
           </fieldset>

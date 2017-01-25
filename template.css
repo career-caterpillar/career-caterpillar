@@ -128,11 +128,8 @@ body {
   width: 100%;
 }
 
-input:not([type="radio"]) {
-  width: 100%;
-}
-
 input {
+  width: 100%;
   line-height: 40px;
   font-size: 20px;
   padding-left: 10px;
@@ -146,14 +143,23 @@ input[type="button"] {
   border-color: rgb(38, 164, 235);
   background-color: rgb(38, 164, 235);
   float: right;
-  border-top:
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 18pt;
+  text-transform: capitalize;
 }
 
 input[type="button"]:hover {
   color: white;
+  border-color: rgb(8, 134, 205);
+  background-color: rgb(8, 134, 205);
+}
+input[type="button"]:focus {
+  color: white;
+  background-color: rgb(38, 164, 235);
 }
 
-input:not([type="radio"]), label {
+input, label {
   display: block;
 }
 
@@ -203,11 +209,6 @@ h3 {
 }
 
 
-.btn.outline {
-	background: none;
-	padding: 12px 22px;
-}
-
 .navbar {
 	background-color: black;
 }
@@ -223,6 +224,10 @@ textarea {
   resize: none;
   font-size: 20px;
   padding: 10px;
+}
+
+textarea:focus {
+  border: 1px solid rgb(38, 164, 235);
 }
 
 #personalstatementsection textarea {
@@ -316,6 +321,10 @@ textarea {
 }
 
 /* Stuff that Mark added for personal qualities */
+.QualitiesFlex {
+  -moz-columns: 3;
+  columns: 3;
+}
 
 .QualitiesFlex label {
   font-size: 16pt;

@@ -43,7 +43,7 @@
 							<input type='text' name='referee_phone[]' required>
 						</div>
 						</div>
-						<input id = "refsclick" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another referee" onClick="addRefereeInput('referee_list');">
+						<input id = "refsclick" type="button" class="btn btn-primary" value="Add" onClick="addRefereeInput('referee_list');">
 					</div>
 				</div>
 		</fieldset>

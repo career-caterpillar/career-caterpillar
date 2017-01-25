@@ -25,7 +25,7 @@
 
               </div>
               </div>
-              <input id ="addedu" type="button" class="btn btn-primary btn-outline btn-sm" value="Add another year of study" onClick="addEducationInput('education_hist');">
+              <input id ="addedu" type="button" class="btn btn-primary" value="Add" onClick="addEducationInput('education_hist');">
             </div>
           </div>
         </fieldset>
