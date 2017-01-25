@@ -287,13 +287,21 @@ $(document).ready(function(){
 					$("#achievementsbtn").attr('class', "completed");
 					break;
 
-					case 6:
-						if(!extracurricularFilled()) {
-							return;
-						}
+				case 5:
+					if(!employmentFilled()) {
+						return;
+					}
 
-						$("#extracurricularbtn").attr('class', "completed");
-						break;
+					$("#employmentbtn").attr('class', "completed");
+					break;
+
+				case 6:
+					if(!extracurricularFilled()) {
+						return;
+					}
+
+					$("#extracurricularbtn").attr('class', "completed");
+					break;
 
 				case 7:
 		    	if(!validateForm3()){

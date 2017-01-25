@@ -30,7 +30,7 @@
            ?>
             </div>
 
-            <input type="button" class = "btn btn-primary btn-outline btn-sm" value="Add another language" onClick="addLanguageInput('languages');">
+            <input type="button" class = "btn btn-primary" value="Add" onClick="addLanguageInput('languages');">
           </div>
 
           <h2>Driver's License</h2>
