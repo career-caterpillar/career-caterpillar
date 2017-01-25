@@ -19,7 +19,7 @@
                  <script>document.write(years_2050_1990)</script> <!-- MKH: Option tags written dynamically from dyamicInput_validation.js variable -->
                  </select>
 
-                  <h2>Achievements<span class="redAsterisk">*</span></h2>
+                  <h2>Qualification<span class="redAsterisk">*</span></h2> <!-- MKH: Improves textual representation/wording of the section - from achivement to Qualification -->
 
                   <textarea name="education_achievements[]" class = "largetextfield" cols="70" rows="7" required title="NCEA can be complicated for many employers to understand, so make sure you put your academic results in a format that will be easy for your future employers to understand. Always start with your most recent year of study."></textarea>
 

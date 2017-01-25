@@ -463,7 +463,7 @@ function addEducationInput(divName) {
 
       if ((yearVal || achVal) !== ""){
         /** MKH: Enables year dropdown to be available as a dynamic input **/
-            newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Achievements<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
+            newdiv.innerHTML = "<hr><h2>Year<span class='redAsterisk'>*</span></h2> <select name='education_year[]'> "+ years_2050_1990 + " </select> <h2>Qualification<span class='redAsterisk'>*</span></h2> <textarea name='education_achievements[]' class = 'largetextfield' cols='70' rows='7' required></textarea>";
         firstNode.style.display = 'none'; // hide firstnode
 
         parentnode.insertBefore(wrapper,firstNode);
