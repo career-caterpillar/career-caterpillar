@@ -504,16 +504,41 @@ function validateForm4() {
     return true;
 }
 
-/** LV returns whether or not the personal statement section has been filled out  */
+/** LV returns whether or not the optional personal statement section has been filled out  */
 function personalStatementFilled() {
-  if ($.trim($('#pstextarea').val()).length < 1) {
+  if ($.trim($('textarea[name="personal_statement"]').val()).length < 1) {
     return false;
   }
 
   return true;
 }
 
+/** LV returns whether or not the optional achievements & awards section has been filled out  */
+function achievementsFilled() {
+  if ($.trim($('textarea[name="awards_achievements[]"]').val()).length < 1) {
+    return false;
+  }
 
+  return true;
+}
+
+/** LV returns whether or not the optional extracurricular section has been filled out  */
+function extracurricularFilled() {
+  if ($.trim($('textarea[name="extracurricular_achievements[]"]').val()).length < 1) {
+    return false;
+  }
+
+  return true;
+}
+
+/** LV returns whether or not the optional other skills section has been filled out  */
+function otherSkillsFilled() {
+  if ($.trim($('input[name="lang[]"]').val()).length < 1 && $.trim($('input[name="drivers[]"]').val()).length < 1) {
+    return false;
+  }
+
+  return true;
+}
 
 $(document).ready(function() {
     // bind 'personaldetails' and provide a simple callback function

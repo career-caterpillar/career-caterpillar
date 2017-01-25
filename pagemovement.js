@@ -5,6 +5,47 @@
 
 $(document).ready(function(){
 
+	function setupSidebar() {
+
+		var numBoxes = 10;
+		var windowHeight = $(window).height();
+		var windowWidth = $(window).width();
+		var sidebarHeight = windowHeight;
+		var sidebarWidth = windowWidth * 0.15;
+		var sidebarBoxHeight = sidebarHeight / (numBoxes + 6);
+		var sidebarRightPadding = sidebarWidth * 0.1;
+		var sidebarRightTopPadding = sidebarBoxHeight / 3;
+
+		$('#sidebar').height(sidebarHeight);
+		$('#sidebar').width(sidebarWidth);
+		$('#sidebar li').height(sidebarBoxHeight);  // height of sidebar boxes
+		$('#sidebar-left li').width(sidebarBoxHeight) // width of sidebar boxes
+
+		$('#sidebar li').css ({
+			"margin-bottom": sidebarBoxHeight / 4,
+		});
+
+		$('#sidebar-right').css({
+			"padding-left": sidebarRightPadding,
+			"padding-top": sidebarRightTopPadding,
+			"padding-right": sidebarRightPadding,
+		});
+
+		$('#sidebar-right li').css({
+			"margin-bottom": sidebarBoxHeight / 2.6,
+		});
+
+		$('#sidebar-left span').css({
+			"font-size": windowHeight / 20,
+		})
+
+	}
+
+	$(window).resize(function() {
+        setupSidebar();
+    });
+
+
 	var curpage = 1;
 
 	/**
@@ -13,6 +54,7 @@ $(document).ready(function(){
 	*/
   function setup() {
 
+		setupSidebar();
     $("#toprevbtn").css("visibility", "hidden");
     $("#refereespage").hide();
     $("#cvpreview").hide();
@@ -237,6 +279,22 @@ $(document).ready(function(){
 					}
 				break;
 
+				case 4:
+					if(!achievementsFilled()) {
+						return;
+					}
+
+					$("#achievementsbtn").attr('class', "completed");
+					break;
+
+					case 6:
+						if(!extracurricularFilled()) {
+							return;
+						}
+
+						$("#extracurricularbtn").attr('class', "completed");
+						break;
+
 				case 7:
 		    	if(!validateForm3()){
 						$("#educationbtn").attr('class', "current-box");
@@ -245,6 +303,14 @@ $(document).ready(function(){
 						$("#educationbtn").attr('class', "completed");
 					break;
 				}
+
+				case 8:
+					if(!otherSkillsFilled()) {
+						return;
+					}
+
+					$("#otherskillsbtn").attr('class', "completed");
+					break;
 
 				case 9:
 					if(!validateForm2()) {
@@ -541,7 +607,7 @@ $(document).ready(function(){
 				} else {
 				removecurrentfromalllabels();
 				$("#cvbtn").attr('class', "current-box");
-				$("#pslabel").attr('class', "current");
+				$("#cvlabel").attr('class', "current");
 				}
 				submitPage(curpage);
 				hidepages();
