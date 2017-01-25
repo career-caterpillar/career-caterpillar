@@ -24,7 +24,6 @@ td {
 }
 
 #cvpage h1 {
-  text-align: right;
   font-size: 35pt;
 }
 
@@ -39,25 +38,24 @@ td {
   align-items: center;
 }
 
-#name{
-  width: 100%;
+#firstlastname{
+  padding-top: 30px;
 }
 
 #details {
   width: 100%;
 }
 
+#cvheader h4, #details p{
+  display: none;
+}
+
 #individual {
-  display: none;
-}
-
-#cvheader h4{
-  display: none;
-}
-
-#details p {
   color: grey;
+  text-align: right;
   margin-bottom: 10px;
+  margin-left: 30em;
+  margin-top: -8em;
 }
 </style>
 </head>

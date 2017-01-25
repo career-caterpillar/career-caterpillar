@@ -7,17 +7,17 @@
 							include "cvcontent/personaldetails.php"; ?>
 							<h4>PERSONAL DETAILS</h4>
 							<div id="name">
-								<h1> <?php echo $first_name." ".$last_name?> </h1>
+								<h1 id="firstlastname"> <?php echo $first_name." ".$last_name?> </h1>
 							</div>
 							<div id="details">
 								<div id="individual">
-									<street> <?php echo $street_num . " " . $street_add; ?> </street>
-									<suburb> <?php echo $suburb_add ?> </suburb>
-									<city> <?php echo $city_add; ?> </city>
-									<school> <?php echo $school_name; ?> </school>
-									<email> <?php echo $email; ?> </email>
-									<phone>	<?php	if(empty($phone) == false){ echo $phone; } ?> </phone>
-									<mobile>	<?php	echo  $mobile; ?> </mobile>
+									<street> <?php echo $street_num . " " . $street_add; ?> </street> <br/>
+									<suburb> <?php echo $suburb_add ?> </suburb> <br/>
+									<city> <?php echo $city_add; ?> </city> <br/>
+									<school> <?php echo $school_name; ?> </school> <br/>
+									<email> <?php echo $email; ?> </email> <br/>
+									<phone>	<?php	if(empty($phone) == false){ echo $phone; } ?> </phone> <br/>
+									<mobile>	<?php	echo  $mobile; ?> </mobile> <br/>
 								</div>
 								<p> <?php echo $street_num . " ".$street_add . ", " . $suburb_add . ", " . $city_add . "  |  " . $school_name . "  |  " . $email . "  |  ";
 													if(empty($phone) ==  false) {echo $phone . "  |  ";}
