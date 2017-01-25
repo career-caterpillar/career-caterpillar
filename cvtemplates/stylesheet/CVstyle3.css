@@ -4,6 +4,10 @@
   font-size: 11pt;
 }
 
+#cvpage * {
+  font-size: 11pt;
+}
+
 #cvpage h1 {
   text-align: left;
   font-size: 35pt;
@@ -21,6 +25,11 @@
 #cvpage ul {
   padding-left: 1em;
   list-style-type: none;
+}
+
+#personalstatement {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 #cvheader {
