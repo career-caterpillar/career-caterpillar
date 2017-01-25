@@ -128,8 +128,12 @@ body {
   width: 100%;
 }
 
-input {
+input:not([type="radio"]){ /** MKH: Employment Section - Radio button and text placed on the same row **/
   width: 100%;
+}
+  
+
+input {
   line-height: 40px;
   font-size: 20px;
   padding-left: 10px;
@@ -159,7 +163,7 @@ input[type="button"]:focus {
   background-color: rgb(38, 164, 235);
 }
 
-input, label {
+input:not([type="radio"]), label { /** MKH: Employment Section - Radio button and text placed on the same row **/
   display: block;
 }
 
