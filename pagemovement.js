@@ -615,8 +615,8 @@ $(document).ready(function(){
 				$("#cvCreate").show();
 				$("#tonextbtn").css("visibility", "hidden");
 				$("#toprevbtn").css("visibility", "visible");
-				$('#cv1').attr('src', $('#cv1').attr('src'));
-				$('#cv2').attr('src', $('#cv2').attr('src'));
+				$('#pdf-refresh1').attr('src', $('#pdf-refresh1').attr('src'));
+				$('#pdf-refresh2').attr('src', $('#pdf-refresh2').attr('src'));
 				$('#cv').attr('src', $('#cv').attr('src'));
 				curpage = pagenumber;
 			  break;

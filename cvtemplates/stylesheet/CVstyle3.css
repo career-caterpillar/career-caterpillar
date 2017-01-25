@@ -1,0 +1,62 @@
+<head>
+<style>
+#cvpage * {
+  font-size: 11pt;
+}
+
+#cvpage h1 {
+  text-align: left;
+  font-size: 35pt;
+  margin: 0em;
+}
+
+#cvpage h4 {
+  font-size: 12pt;
+  text-align: left;
+  padding-bottom: 2pt;
+  border-bottom: 2px solid grey;
+  margin: 0em;
+}
+
+#cvpage ul {
+  padding-left: 1em;
+  list-style-type: none;
+}
+
+#cvheader {
+  align-items: center;
+  margin: 0em;
+}
+
+#cvheader h4{
+  display: none;
+}
+
+#name{
+  width: 100%;
+}
+
+#details p {
+  color: grey;
+  margin: 0em;
+}
+
+#individual {
+  display:none;
+}
+
+#personalstatement h4{
+  display:none;
+}
+
+#personalstatement ul{
+  margin: 1em;
+  padding: 0em;
+}
+
+refereedetails{
+  margin-left: 12em;
+}
+
+</style>
+</head>

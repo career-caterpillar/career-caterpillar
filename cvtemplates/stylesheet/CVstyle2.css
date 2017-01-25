@@ -47,6 +47,13 @@ td {
   width: 100%;
 }
 
+#individual {
+  display: none;
+}
+
+#cvheader h4{
+  display: none;
+}
 
 #details p {
   color: grey;
