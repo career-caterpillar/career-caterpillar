@@ -48,6 +48,14 @@
 														echo "</div>";
 			              	?>
 
+											<style>
+											.QualitiesFlex {
+												-webkit-columns: <?php echo $cols ?>;
+											  -moz-columns: <?php echo $cols ?>;
+											  columns: <?php echo $cols ?>;
+											}
+											</style>
+
 			                  <script>
 			                      var $maxChoices = 6; //Change this number to allow selection of more personal qualities.
 			                      $('.QualitiesContainer :checkbox').change(function () { //Add a function to the change action of the checkboxes in the Qualties section.

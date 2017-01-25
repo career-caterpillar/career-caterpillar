@@ -313,10 +313,6 @@ textarea {
 }
 
 /* Stuff that Mark added for personal qualities */
-.QualitiesFlex {
-  -moz-columns: 3;
-  columns: 3;
-}
 
 .QualitiesFlex label {
   font-size: 16pt;
