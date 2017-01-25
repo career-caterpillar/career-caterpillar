@@ -7,7 +7,7 @@
 							include "cvcontent/personaldetails.php"; ?>
 							<h4>PERSONAL DETAILS</h4>
 							<div id="name">
-								<h1 id="firstlastname"> <?php echo $first_name." ".$last_name?> </h1>
+								<h1 id="firstlastname"> <?php echo "<firstname>". $first_name. "</firstname>". " " ."<lastname> " . $last_name. "</lastname>"?> </h1>
 							</div>
 							<div id="details">
 								<div id="individual">
@@ -35,7 +35,7 @@
 								if ((sizeof($personal_statement) >= 1)) { // Check to see if there is a personal statement ?>
 									<h4 align="left">PERSONAL STATEMENT</h4>
 										<ul>
-											<li> <?php echo $personal_statement;
+											<li id="personalstatementdata"> <?php echo $personal_statement;
 								} ?>
 											</li> <!-- Add statment to CV-->
 										</ul>
@@ -50,7 +50,7 @@
 									<!-- list personal qualities -->
 									<ul>
 										<?php for ($i = 0; $i < count($qualities); $i++) { ?>
-										<li> <?php echo $qualities[$i]; ?> </li>
+										<li id="qualities"> <?php echo $qualities[$i]; ?> </li>
 										<?php } ?>
 									</ul>
 				<?php } ?>
@@ -91,7 +91,7 @@
 													$employment_start_date_empty == false &&
 													$employment_responsibility_empty == false) {
 														/*Add tabulated work details to CV*/ ?>
-														<li>
+														<li id="employmentyear">
 															<?php echo $employment_start_month [$i].' '.$employment_start_year [$i]; ?>
 															<?php if ($employment_end_date_empty == false) {echo " - ".$employment_end_month [$i].' '.$employment_end_year [$i]; }?>
 														</li>
@@ -114,8 +114,8 @@
 				<?php if(file_exists("cvcontent/otherskillsdata.php")){
 								include "cvcontent/otherskillsdata.php"; ?>
 								<h4>OTHER SKILLS</h4>
-								<ul>
-									<li><strong>Language(s) </strong> </li><?php
+								<ul id="otherskillslist">
+									<li id="langhead"><strong>Language(s) </strong> </li><?php
 											//create list of other skills in the CV
 											for($i = 0; $i < $arrsizeLang; $i ++) {
 												if($i == 0){

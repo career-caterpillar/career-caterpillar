@@ -2,25 +2,17 @@
 <style>
 #cvpage * {
   font-size: 11pt;
-
 }
 
 #cvpage ul {
-  margin-left: 50px;
+  margin-left: 16em;
   list-style-type: none;
+  padding-bottom: 0em;
 }
 
 #restofcontent li {
-  margin-bottom: 10px;
-}
-td {
-	 vertical-align: top;
-	 padding-left: 20px;
-}
-
-
-#restofcontent div {
-  margin-bottom: 10px;
+  margin-top: -2.5em;
+  margin-bottom: 1px;
 }
 
 #cvpage h1 {
@@ -28,14 +20,10 @@ td {
 }
 
 #cvpage h4 {
-  font-size: 16pt;
+  font-size: 10pt;
   text-align: left;
-  padding-bottom: 10pt;
-  border-bottom: 2px solid grey;
-}
-
-#cvheader {
-  align-items: center;
+  padding-top : 20pt;
+  border-top: 2px solid grey;
 }
 
 #firstlastname{
@@ -57,5 +45,14 @@ td {
   margin-left: 30em;
   margin-top: -8em;
 }
+
+#employmentresponsibility{
+  padding-bottom: 20px;
+}
+
+#educationachievement, #awardsachievements, #refereephone{
+  padding-bottom: 30px;
+}
+
 </style>
 </head>
