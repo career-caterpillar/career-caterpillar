@@ -6,7 +6,6 @@
 	<div id="cvpage">
 
 		<?php
-
 		$personaldetailsexist = false;
 		$refsexist = false;
 		$personalstatementexist = false;
@@ -16,59 +15,46 @@
 		$educationexist = false;
 		$extraexist = false;
 		$otherskillsexist = false;
-
                 /*
-
 		This section of code checks to see if submitted form data is available before including it in the
 		CV
-
                 */
 		if(file_exists("cvcontent/personaldetails.php")){
 			$personaldetailsexist = true;
 			include "cvcontent/personaldetails.php";
 		}
-
 		if(file_exists("cvcontent/refs.php")){
 			$refsexist = true;
 			include "cvcontent/refs.php";
 		}
-
 		if(file_exists("cvcontent/personalstatementdata.php")){
 			$personalstatementexist  = true;
 			include "cvcontent/personalstatementdata.php";
 		}
-
 		if(file_exists("cvcontent/personalqualitiesdata.php")){
 			$personalqualitiesdataexist  = true;
 			include "cvcontent/personalqualitiesdata.php";
 		}
-
 		if(file_exists("cvcontent/achievementsdata.php")){
 			$achievementsexist = true;
 			include "cvcontent/achievementsdata.php";
 		}
-
 		if(file_exists("cvcontent/employmentdata.php")){
 			$employmentexist = true;
 			include "cvcontent/employmentdata.php";
 		}
-
 		if(file_exists("cvcontent/educationdata.php")){
 			$educationexist = true;
 			include "cvcontent/educationdata.php";
 		}
-
 		if(file_exists("cvcontent/extracurriculardata.php")){
 			$extraexist = true;
 			include "cvcontent/extracurriculardata.php";
 		}
-
 		if(file_exists("cvcontent/otherskillsdata.php")){
 			$otherskillsexist = true;
 			include "cvcontent/otherskillsdata.php";
 		}
-
-
 		if ($personaldetailsexist == false ||
 		$refsexist == false ||
 		$personalstatementexist == false||
@@ -80,7 +66,6 @@
 			echo "<br>SAVE THE CV CONTENT <br></br>";
 			return;
 		}
-
 		?>
 
 		<!-- Add personal contacts to the top of the CV -->
@@ -136,17 +121,14 @@
 
         <?php
               $employment_posn_empty = empty ( $employment_posn [0] );
+              $employment_orgnz_empty = empty ( $employment_orgnz [0] ); /** MKH: Adds a new field "Organization" to the Employment section **/
               $employment_city_empty = empty ( $employment_city [0] );
               $employment_country_empty = empty ( $employment_country [0] );
               $employment_start_date_empty = empty ( $employment_start_month [0] ) || empty ( $employment_start_year [0] ); /* MKH: Replaces start date with the start month and start year */
               $employment_end_date_empty = empty ( $employment_end_month [0] ) || empty ( $employment_end_year [0] ); /* MKH: Replaces end date with the end month and end year */
               $employment_responsibility_empty = empty ( $employment_responsibility [0] );
-
                /* if the user has entered employment details then this section to CV else leave it blank */
-
               if ($employment_posn_empty == false &&
-
-
 									$employment_city_empty == false &&
 									$employment_country_empty == false &&
 									$employment_start_date_empty == false &&
@@ -159,30 +141,27 @@
 				<?php
               }
               for($i = 0; $i < $arrsizeEmp; $i ++) {
-
                   $employment_posn_empty = empty ( $employment_posn [$i] );
+                  $employment_orgnz_empty = empty ( $employment_orgnz [$i] );  /** MKH: Adds a new field "Organization" to the Employment section **/
                   $employment_city_empty = empty ( $employment_city [$i] );
                   $employment_country_empty = empty ( $employment_country [$i] );
                   $employment_start_date_empty = empty ( $employment_start_month [$i] ) || empty ( $employment_start_year [$i] ); /* MKH: Replaces start date with the start month and start year */
                   $employment_end_date_empty = empty ( $employment_end_month [$i] ) || empty ( $employment_end_year [$i] ); /* MKH: Replaces end date with the end month and end year */
                   $employment_responsibility_empty = empty ( $employment_responsibility [$i] );
-
                   echo '<ul>';
-
                   /*Only add table if all of the feilds are false*/
-
                   if ($employment_posn_empty == false &&
+										$employment_orgnz_empty == false &&       /** MKH: Adds a new field "Organization" to the Employment section **/
 										$employment_city_empty == false &&
 										$employment_country_empty == false &&
 										$employment_start_date_empty == false &&
 										$employment_end_date_empty == false &&
 										$employment_responsibility_empty == false) {
-
                  /*Add tabulated work details to CV*/
-
         ?>
                   <table>
                         <tr><td style="width=30%">Position Title </td> <td style="width=3%"> : </td> <td style="width=66%"><?php echo $employment_posn[$i];?> </td></tr>
+						<tr><td style="width=30%">Organization </td> <td style="width=3%"> : </td> <td style="width=66%"><?php echo $employment_orgnz[$i];?> </td></tr> /** MKH: Adds a new field "Organization" to the Employment section **/
                         <tr><td style="width=30%">City </td> <td style="width=3%"> : </td> <td style="width=66%"> <?php echo $employment_city [$i];?> </td></tr>
                         <tr><td style="width=30%">Country </td><td style="width=3%"> : </td> <td style="width=66%"> <?php echo $employment_country [$i];?>  </td></tr>
                         <tr><td style="width=30%">Start Date </td><td style="width=3%"> : </td><td style="width=66%"> <?php echo $employment_start_month [$i].' '.$employment_start_year [$i]; ?>  </td></tr> <!-- MKH: Start Date repaced by Start Month and Year and transferred to CV pdf -->
@@ -193,7 +172,6 @@
                   }
                   echo '</ul>';
               }
-
         ?>
     </div>
 
@@ -210,7 +188,6 @@
 								echo '<li>' . $lang[$i] . '</li>';
 							}
 						}
-
 						echo '</ul>';
 			?>
 						</li>
@@ -228,16 +205,13 @@
 
 			<h4 align="left">EDUCATION HISTORY</h4>
 				<?php
-
 				//create list of education history in the CV
-
 				for($i = 0; $i < $arrsizeEdu; $i ++) {
 					echo ' <ul> ';
 					echo '<li><strong>' . $education_year [$i] . '</strong></li>';
 					echo '<li>Achievements: <br> ' . $education_achievements [$i] . '</li>';
 					echo ' </ul> ';
 				}
-
 				?>
 
 	</div>
@@ -266,9 +240,7 @@
 				<h4 align="left">EXTRACURRICULAR DETAILS</h4>
 				<?php
 				echo ' <ul> ';
-
 				//create list of extracurricular details in the CV
-
 				for($i = 1; $i < $arrsizeExt; $i ++) {//KC change to 1 to avoid printing input to pdf
 					if (empty ( $extracurricular_year [$i] ) == false && empty ( $extracurricular_achievements [$i] == false )) {
 						echo '<li>Year: ' . $extracurricular_year [$i] . '</li>';
@@ -285,11 +257,8 @@
 		<h4 align="left">REFEREES</h4>
 
 			<?php
-
 				//create list of referees in the CV
-
 				for ($i = 0; $i < $arrsizeRefs; $i++){
-
 				echo ' <ul> ';
 				echo '<li><strong>' . $referee_name[$i] .  '</strong></li>';
 				if(trim($referee_company[$i])!=="") { //MKH: Transfers referee company to CV pdf only if input entered
@@ -300,9 +269,7 @@
 				echo '<li>Phone: ' . $referee_phone[$i]  .  '</li>';
 				echo ' </ul> ';
 				echo ' <br> ';
-
 				}
-
 			?>
 	  </div>
 
