@@ -21,7 +21,7 @@
 			<fieldset>
 				<legend>Personal Qualities<span class="redAsterisk">*</span></legend>
 					<!-- Hint -->
-					<span id="pqhint" style="color:red;">Select up to 6 of the following that best describe you. Hover over each for a description.</span><br>
+					<span id="pqhint">Select 3 to 6 of the following that best describe you. Hover over each option for a description.</span><br>
 
 			  	  	<div class = "row">
 			  	    	<div class="col-wholepage">
