@@ -1,6 +1,8 @@
 <?php
 $lang = array();
 array_push( $lang,"English");
-$drivers = "";
-$arrsizeLang="1";
+array_push( $lang,"Mandarin");
+$drivers = "Restricted License";
+$vehicle_type = "Car";
+$arrsizeLang="2";
 ?>

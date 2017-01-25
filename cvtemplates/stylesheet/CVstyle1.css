@@ -13,10 +13,12 @@
 #restofcontent li {
   margin-bottom: 10px;
 }
+
 td {
 	 vertical-align: top;
 	 padding-left: 20px;
 }
+
 
 
 #restofcontent div {
@@ -37,6 +39,14 @@ td {
 
 #cvheader {
   align-items: center;
+}
+
+#individual {
+  display: none;
+}
+
+#cvheader h4{
+  display: none;
 }
 
 #name{

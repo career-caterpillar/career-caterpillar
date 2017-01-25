@@ -20,6 +20,10 @@
 		<iframe  id="pdf-refresh2" src="cvtemplates/CV2.php" height="400"></iframe>
 	</button>
 
+	<button id="cv3" class="cvtemplates" onclick="expandCV(3)">
+		<iframe  id="pdf-refresh3" src="cvtemplates/CV3.php" height="400"></iframe>
+	</button>
+
 	<iframe  id="cv" src="" height="1500" width="100%" style="display:none"></iframe>
 </div>
 
@@ -28,6 +32,7 @@
 function expandCV(choice) {
 	document.getElementById('cv1').style.display='none';
 	document.getElementById('cv2').style.display='none';
+	document.getElementById('cv3').style.display='none';
 	document.getElementById('close').style.display='block';
 	document.getElementById('cv').style.display='block';
 
@@ -40,6 +45,10 @@ function expandCV(choice) {
 				document.getElementById('cv').src='cvtemplates/CV2.php';
 				break;
 
+			case 3:
+				document.getElementById('cv').src='cvtemplates/CV3.php';
+				break;
+
 			default:
 				break;
 		}
@@ -50,5 +59,6 @@ function viewtemplates(){
 	document.getElementById('cv').style.display='none';
 	document.getElementById('cv1').style.display='inline';
 	document.getElementById('cv2').style.display='inline';
+	document.getElementById('cv3').style.display='inline';
 }
 </script>
