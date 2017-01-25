@@ -44,9 +44,10 @@
                     <select name="employment_start_year[]" class='year-dd'>     <!-- MKH: Allows Start Year to be selected between 1990 to 2050. Default Current Year -->
                     <script>document.write(years_2050_1990)</script> <!-- MKH: Option tags written dynamically from dyamicInput_validation.js variable -->
                     </select>
-                    <h2>Do you still work here?</h2>
-                    <input type="radio" name="still_work" value="yes"> Yes
-                    <input type="radio" name="still_work" value="no"> No
+                    <!-- MKH: Employment Section - Radio button and text placed on the same row -->
+                    <br><br><h2 style="display:inline;">Do you still work here?&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                    <input type="radio" name="still_work" value="yes"> Yes &nbsp;&nbsp;
+                    <input type="radio" name="still_work" value="no"> No 
                     <h2>End Date</h2>
                     <h3>(if answer was 'no' above)</h3>
                     <!-- MKH: Replace End Date Input with two dropdowns for End Month and Year -->
